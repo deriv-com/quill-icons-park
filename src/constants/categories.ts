@@ -3,7 +3,7 @@ export const CATEGORIES = {
   CURRENCIES: 'Currencies',
   FLAGS: 'Flags',
   ILLUSTRATIVE: 'Illustrative',
-  LABEL_PAIRED: 'LabelPaired',
+  LABEL_PAIRED: 'Label Paired',
   LOGO: 'Logo',
   MARKETS: 'Markets',
   SOCIAL: 'Social',

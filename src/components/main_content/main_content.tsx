@@ -1,5 +1,5 @@
-import IconDetails from './icon-details/icon-details';
-import IconsGrid from './icons-grid/icons-grid';
+import IconDetails from './icon_details/icon_details';
+import IconsGrid from './icons_grid/icons_grid';
 
 const MainContent = () => {
   return (
