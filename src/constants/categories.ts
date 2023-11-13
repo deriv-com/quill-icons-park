@@ -1,11 +1,11 @@
-export const CATEGORIES = [
-  'All',
-  'Currencies',
-  'Flags',
-  'Illustrative',
-  'LabelPaired',
-  'Logo',
-  'Markets',
-  'Social',
-  'Standalone',
-];
+export const CATEGORIES = {
+  ALL: 'All',
+  CURRENCIES: 'Currencies',
+  FLAGS: 'Flags',
+  ILLUSTRATIVE: 'Illustrative',
+  LABEL_PAIRED: 'LabelPaired',
+  LOGO: 'Logo',
+  MARKETS: 'Markets',
+  SOCIAL: 'Social',
+  STANDALONE: 'Standalone',
+};
