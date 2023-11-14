@@ -4,17 +4,23 @@ import IconEntry from './icon_entry/icon_entry';
 import { CATEGORIES } from '../../../constants/categories';
 import { QuillSvgProps } from '@deriv/quill-icons';
 import { CategoryContext } from '../../../context/category_context';
+import { SearchContext } from '../../../context/search_context';
 
 const IconsGrid = () => {
+  const searchContext = useContext(SearchContext);
   const categoryContext = useContext(CategoryContext);
+
+  const searchText = searchContext?.searchText ?? '';
   const categorySelected = categoryContext?.categorySelected ?? CATEGORIES.CURRENCIES;
 
-  const memoizedGetIcons = useCallback(() => getIcons(categorySelected), [categorySelected]);
-  const icons = memoizedGetIcons();
+  const memoizedIcons = useCallback(
+    () => getIcons(searchText, categorySelected),
+    [searchText, categorySelected],
+  );
 
   return (
     <div className='grid grid-cols-3 gap-4 p-4 md:grid-cols-6'>
-      {icons
+      {memoizedIcons()
         .filter(([iconName]) => iconName.endsWith('Icon'))
         .map(([iconName, icon]) => (
           <IconEntry

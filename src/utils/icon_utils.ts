@@ -9,24 +9,34 @@ import * as MarketsQuillIcons from '@deriv/quill-icons/Markets';
 import * as SocialQuillIcons from '@deriv/quill-icons/Social';
 import * as StandaloneQuillIcons from '@deriv/quill-icons/Standalone';
 
-export const getIcons = (category: string, search = '') => {
+export const getIcons = (searchText: string, category: string) => {
   switch (category) {
     case CATEGORIES.CURRENCIES:
-      return Object.entries(CurrenciesQuillIcons);
+      return Object.entries(CurrenciesQuillIcons).filter(([iconName]) =>
+        iconName.includes(searchText),
+      );
     case CATEGORIES.FLAGS:
-      return Object.entries(FlagsQuillIcons);
+      return Object.entries(FlagsQuillIcons).filter(([iconName]) => iconName.includes(searchText));
     case CATEGORIES.ILLUSTRATIVE:
-      return Object.entries(IllustrativeQuillIcons);
+      return Object.entries(IllustrativeQuillIcons).filter(([iconName]) =>
+        iconName.includes(searchText),
+      );
     case CATEGORIES.LABEL_PAIRED:
-      return Object.entries(LabelPairedQuillIcons);
+      return Object.entries(LabelPairedQuillIcons).filter(([iconName]) =>
+        iconName.includes(searchText),
+      );
     case CATEGORIES.LOGO:
-      return Object.entries(LogoQuillIcons);
+      return Object.entries(LogoQuillIcons).filter(([iconName]) => iconName.includes(searchText));
     case CATEGORIES.MARKETS:
-      return Object.entries(MarketsQuillIcons);
+      return Object.entries(MarketsQuillIcons).filter(([iconName]) =>
+        iconName.includes(searchText),
+      );
     case CATEGORIES.SOCIAL:
-      return Object.entries(SocialQuillIcons);
+      return Object.entries(SocialQuillIcons).filter(([iconName]) => iconName.includes(searchText));
     case CATEGORIES.STANDALONE:
-      return Object.entries(StandaloneQuillIcons);
+      return Object.entries(StandaloneQuillIcons).filter(([iconName]) =>
+        iconName.includes(searchText),
+      );
   }
-  return Object.entries(AllQuillIcons);
+  return Object.entries(AllQuillIcons).filter(([iconName]) => iconName.includes(searchText));
 };

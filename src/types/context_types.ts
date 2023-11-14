@@ -10,3 +10,8 @@ export type TCategoryContext = {
   categorySelected?: string;
   setCategorySelected?: Dispatch<SetStateAction<string>>;
 } | null;
+
+export type TSearchContext = {
+  searchText?: string;
+  setSearchText?: Dispatch<SetStateAction<string>>;
+} | null;
