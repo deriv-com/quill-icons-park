@@ -13,7 +13,7 @@ const Categories = () => {
           key={key}
           className={classNames(
             selected === category ? 'border-rose-500 bg-rose-500 text-white' : 'border-slate-500',
-            'flex min-w-max rounded-lg border px-2 py-1 transition-all delay-75',
+            'flex min-w-max cursor-pointer rounded-lg border px-2 py-1 transition-all delay-75',
           )}
           onClick={() => setSelected(category)}
         >
