@@ -1,13 +1,4 @@
-import { QuillSvgProps } from '@deriv/quill-icons';
-import { Dispatch, SetStateAction, createContext } from 'react';
-
-export type TIconEntry = {
-  iconName: string;
-  Icon: React.ForwardRefExoticComponent<Omit<QuillSvgProps, 'ref'>>;
-};
-export type TIconContext = {
-  iconSelected?: TIconEntry;
-  setIconSelected?: Dispatch<SetStateAction<TIconEntry | undefined>>;
-} | null;
+import { createContext } from 'react';
+import { TIconContext } from '../types/context_types';
 
 export const IconContext = createContext<TIconContext>({});
