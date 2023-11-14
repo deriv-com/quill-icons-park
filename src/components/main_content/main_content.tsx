@@ -6,10 +6,13 @@ import { IconContext } from '../../context/icon_context';
 
 const MainContent = () => {
   const [iconSelected, setIconSelected] = useState<TIconEntry>();
-  const value = useMemo(() => ({ iconSelected, setIconSelected }), [iconSelected, setIconSelected]);
+  const iconContextValue = useMemo(
+    () => ({ iconSelected, setIconSelected }),
+    [iconSelected, setIconSelected],
+  );
 
   return (
-    <IconContext.Provider value={value}>
+    <IconContext.Provider value={iconContextValue}>
       <div className='grid w-full sm:grid-cols-[1fr_1fr] md:grid-cols-[3fr_1fr]'>
         <IconsGrid />
         <IconDetails />

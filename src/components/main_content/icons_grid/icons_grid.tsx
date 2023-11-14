@@ -1,13 +1,15 @@
-import { useCallback } from 'react';
+import { useCallback, useContext } from 'react';
 import { getIcons } from '../../../utils/icon_utils';
 import IconEntry from './icon_entry/icon_entry';
 import { CATEGORIES } from '../../../constants/categories';
 import { QuillSvgProps } from '@deriv/quill-icons';
+import { CategoryContext } from '../../../context/category_context';
 
 const IconsGrid = () => {
-  const category = localStorage.getItem('category') ?? CATEGORIES.ALL;
+  const categoryContext = useContext(CategoryContext);
+  const categorySelected = categoryContext?.categorySelected ?? CATEGORIES.CURRENCIES;
 
-  const memoizedGetIcons = useCallback(() => getIcons(category), [category]);
+  const memoizedGetIcons = useCallback(() => getIcons(categorySelected), [categorySelected]);
   const icons = memoizedGetIcons();
 
   return (

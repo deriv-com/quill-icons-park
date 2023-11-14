@@ -5,3 +5,8 @@ export type TIconContext = {
   iconSelected?: TIconEntry;
   setIconSelected?: Dispatch<SetStateAction<TIconEntry | undefined>>;
 } | null;
+
+export type TCategoryContext = {
+  categorySelected?: string;
+  setCategorySelected?: Dispatch<SetStateAction<string>>;
+} | null;

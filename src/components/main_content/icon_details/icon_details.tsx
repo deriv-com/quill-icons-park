@@ -1,10 +1,18 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { IconContext } from '../../../context/icon_context';
+import { CategoryContext } from '../../../context/category_context';
 
 const IconDetails = () => {
   const iconContext = useContext(IconContext);
+  const categoryContext = useContext(CategoryContext);
+
   const iconSelected = iconContext?.iconSelected;
+  const setIconSelected = iconContext?.setIconSelected;
   const Icon = iconSelected?.Icon;
+
+  const categorySelected = categoryContext?.categorySelected;
+
+  useEffect(() => setIconSelected?.(undefined), [categorySelected, setIconSelected]);
 
   return (
     <div className='p-4'>
