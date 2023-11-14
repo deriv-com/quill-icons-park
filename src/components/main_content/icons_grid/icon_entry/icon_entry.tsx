@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import { useContext } from 'react';
-import { IconContext, TIconEntry } from '../../../../context/icon_context';
+import { IconContext } from '../../../../context/icon_context';
+import { TIconEntry } from '../../../../types/icon_types';
 
 const IconEntry = ({ iconName, Icon }: TIconEntry) => {
   const iconContext = useContext(IconContext);
