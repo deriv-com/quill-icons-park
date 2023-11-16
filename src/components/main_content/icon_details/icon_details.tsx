@@ -2,7 +2,7 @@ import { useContext, useEffect } from 'react';
 import { IconContext } from '../../../context/icon_context';
 import { CategoryContext } from '../../../context/category_context';
 import classNames from 'classnames';
-import { StandaloneComputerMouseScrollwheelBoldIcon } from '@deriv/quill-icons/Standalone';
+import NoIconSelected from './no_icon_selected/no_icon_selected';
 
 const IconDetails = () => {
   const iconContext = useContext(IconContext);
@@ -27,17 +27,7 @@ const IconDetails = () => {
         <span>Icon Details</span>
         <div className='flex items-center justify-center'>{Icon && <Icon />}</div>
       </div>
-      <div
-        className={classNames(
-          'sticky top-60 transition-opacity delay-100',
-          Icon ? 'translate-x-96 opacity-0' : 'translate-x-0 opacity-100',
-        )}
-      >
-        <div className='flex flex-col items-center opacity-50'>
-          <StandaloneComputerMouseScrollwheelBoldIcon />
-          <span>Select an icon to see it's details!</span>
-        </div>
-      </div>
+      <NoIconSelected isIconSelected={!!Icon} />
     </div>
   );
 };
