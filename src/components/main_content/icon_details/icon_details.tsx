@@ -33,9 +33,9 @@ const IconDetails = () => {
           Icon ? 'translate-x-96 opacity-0' : 'translate-x-0 opacity-100',
         )}
       >
-        <div className='flex flex-col align-middle opacity-50'>
+        <div className='flex flex-col items-center opacity-50'>
           <StandaloneComputerMouseScrollwheelBoldIcon />
-          <span>Select an icon to see details!</span>
+          <span>Select an icon to see it's details!</span>
         </div>
       </div>
     </div>

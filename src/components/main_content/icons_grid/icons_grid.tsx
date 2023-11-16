@@ -20,15 +20,13 @@ const IconsGrid = () => {
 
   return (
     <div className='grid grid-cols-3 gap-4 p-4 md:grid-cols-6'>
-      {memoizedIcons()
-        .filter(([iconName]) => iconName.endsWith('Icon'))
-        .map(([iconName, icon]) => (
-          <IconEntry
-            key={iconName}
-            iconName={iconName}
-            Icon={icon as React.ForwardRefExoticComponent<Omit<QuillSvgProps, 'ref'>>}
-          />
-        ))}
+      {memoizedIcons().map(([iconName, icon]) => (
+        <IconEntry
+          key={iconName}
+          iconName={iconName}
+          Icon={icon as React.ForwardRefExoticComponent<Omit<QuillSvgProps, 'ref'>>}
+        />
+      ))}
     </div>
   );
 };
