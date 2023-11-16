@@ -30,7 +30,7 @@ const IconsGrid = () => {
       ))}
     </div>
   ) : (
-    <NoIconsFound searchText={searchText} />
+    <NoIconsFound searchText={searchText} categorySelected={categorySelected} />
   );
 };
 
