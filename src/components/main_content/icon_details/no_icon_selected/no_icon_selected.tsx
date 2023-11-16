@@ -8,8 +8,8 @@ type TNoIconSelected = {
 const NoIconSelected = ({ isIconSelected }: TNoIconSelected) => (
   <div
     className={classNames(
-      'sticky top-60 transition-opacity delay-100',
-      isIconSelected ? 'translate-x-96 opacity-0' : 'translate-x-0 opacity-100',
+      'sticky top-60 transition-opacity',
+      isIconSelected ? 'opacity-0' : 'opacity-100',
     )}
   >
     <div className='flex flex-col items-center opacity-50'>

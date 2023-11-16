@@ -22,8 +22,8 @@ const IconDetails = () => {
     <div className='relative p-4'>
       <div
         className={classNames(
-          'sticky top-36 flex flex-col gap-4 rounded-xl bg-white p-4 shadow-xl transition-all delay-100',
-          Icon ? 'opacity-1 translate-x-0' : 'translate-x-96 opacity-0',
+          'sticky top-36 flex flex-col gap-4 rounded-xl bg-white p-4 shadow-xl transition-all',
+          Icon ? 'opacity-1 translate-y-0' : 'translate-y-96 opacity-0',
         )}
       >
         <div>Icon Details</div>
