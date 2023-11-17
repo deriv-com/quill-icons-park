@@ -1,4 +1,4 @@
-import { CATEGORIES } from '../constants/categories';
+import { CATEGORIES } from '../constants/category_constants';
 import * as AllQuillIcons from '@deriv/quill-icons';
 import * as CurrenciesQuillIcons from '@deriv/quill-icons/Currencies';
 import * as FlagsQuillIcons from '@deriv/quill-icons/Flags';

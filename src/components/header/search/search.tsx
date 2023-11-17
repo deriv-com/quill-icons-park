@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { SearchContext } from '../../../context/search_context';
 import { StandaloneSearchBoldIcon } from '@deriv/quill-icons';
+import { debouncedStateUpdater } from '../../../utils/text_utils';
 
 const Search = () => {
   const searchContext = useContext(SearchContext);
@@ -12,7 +13,7 @@ const Search = () => {
         <input
           className='rounded-xl border-2 border-transparent px-4 py-2 shadow-xl outline-none transition-all focus:border-rose-500 sm:min-w-[20rem] '
           type='text'
-          onChange={(event) => setSearchText?.(event.target.value)}
+          onChange={debouncedStateUpdater(setSearchText)}
           placeholder='Search'
         />
         <span className='absolute right-2 opacity-50'>
