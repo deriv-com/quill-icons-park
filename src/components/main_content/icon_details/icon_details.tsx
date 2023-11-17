@@ -4,6 +4,7 @@ import { CategoryContext } from '../../../context/category_context';
 import classNames from 'classnames';
 import NoIconSelected from './no_icon_selected/no_icon_selected';
 import { getSplitIconName } from '../../../utils/text_utils';
+import ActionButton from './action_button/action_button';
 
 const IconDetails = () => {
   const iconContext = useContext(IconContext);
@@ -28,9 +29,10 @@ const IconDetails = () => {
       >
         <div>Icon Details</div>
         <div className='flex flex-col items-center justify-center gap-4'>
-          {Icon && <Icon />}
+          {Icon && <Icon id='test' />}
           <div>{getSplitIconName(iconName).join(' ')}</div>
         </div>
+        <ActionButton primary label='Download SVG' onClick={() => {}} />
       </div>
       <NoIconSelected isVisible={!Icon} />
     </div>
