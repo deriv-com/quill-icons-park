@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { CATEGORIES } from '../../../constants/categories';
+import { CATEGORIES } from '../../../constants/category_constants';
 import './categories.scss';
 import classNames from 'classnames';
 import { CategoryContext } from '../../../context/category_context';

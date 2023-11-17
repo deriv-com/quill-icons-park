@@ -1,0 +1,1 @@
+export const SEARCH_TEXT_DEBOUNCE_DELAY = 300;

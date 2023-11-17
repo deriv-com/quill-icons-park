@@ -32,7 +32,7 @@ const IconDetails = () => {
           <div>{getSplitIconName(iconName).join(' ')}</div>
         </div>
       </div>
-      <NoIconSelected isIconSelected={!!Icon} />
+      <NoIconSelected isVisible={!Icon} />
     </div>
   );
 };

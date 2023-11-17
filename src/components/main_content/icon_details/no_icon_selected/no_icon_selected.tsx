@@ -2,14 +2,14 @@ import classNames from 'classnames';
 import { StandaloneComputerMouseScrollwheelBoldIcon } from '@deriv/quill-icons/Standalone';
 
 type TNoIconSelected = {
-  isIconSelected: boolean;
+  isVisible: boolean;
 };
 
-const NoIconSelected = ({ isIconSelected }: TNoIconSelected) => (
+const NoIconSelected = ({ isVisible }: TNoIconSelected) => (
   <div
     className={classNames(
       'sticky top-60 transition-opacity',
-      isIconSelected ? 'opacity-0' : 'opacity-100',
+      isVisible ? 'opacity-100' : 'opacity-0',
     )}
   >
     <div className='flex flex-col items-center opacity-50'>

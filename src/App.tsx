@@ -3,7 +3,7 @@ import './App.scss';
 import Header from './components/header/header';
 import MainContent from './components/main_content/main_content';
 import { CategoryContext } from './context/category_context';
-import { CATEGORIES } from './constants/categories';
+import { CATEGORIES } from './constants/category_constants';
 import { SearchContext } from './context/search_context';
 
 const App = () => {
