@@ -1,3 +1,4 @@
+import { TCategoryType } from './category_types';
 import { TIconEntry } from './icon_types';
 import { Dispatch, SetStateAction } from 'react';
 
@@ -7,8 +8,8 @@ export type TIconContext = {
 } | null;
 
 export type TCategoryContext = {
-  categorySelected?: string;
-  setCategorySelected?: Dispatch<SetStateAction<string>>;
+  categorySelected?: TCategoryType;
+  setCategorySelected?: Dispatch<SetStateAction<TCategoryType>>;
 } | null;
 
 export type TSearchContext = {
