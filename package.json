@@ -12,10 +12,12 @@
   "dependencies": {
     "@deriv/quill-icons": "^1.0.10",
     "classnames": "^2.3.2",
+    "file-saver": "^2.0.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@types/file-saver": "^2.0.7",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
