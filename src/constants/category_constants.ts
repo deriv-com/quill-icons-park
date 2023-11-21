@@ -1,4 +1,4 @@
-export const CATEGORIES = {
+export const CATEGORIES = Object.freeze({
   ALL: 'All',
   CURRENCIES: 'Currencies',
   FLAGS: 'Flags',
@@ -8,4 +8,6 @@ export const CATEGORIES = {
   MARKETS: 'Markets',
   SOCIAL: 'Social',
   STANDALONE: 'Standalone',
-};
+});
+
+export const DEFAULT_CATEGORY = CATEGORIES.CURRENCIES;

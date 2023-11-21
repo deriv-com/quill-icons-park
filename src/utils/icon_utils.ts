@@ -1,5 +1,4 @@
 import { CATEGORIES } from '../constants/category_constants';
-import * as AllQuillIcons from '@deriv/quill-icons';
 import * as CurrenciesQuillIcons from '@deriv/quill-icons/Currencies';
 import * as FlagsQuillIcons from '@deriv/quill-icons/Flags';
 import * as IllustrativeQuillIcons from '@deriv/quill-icons/Illustrative';
@@ -8,52 +7,36 @@ import * as LogoQuillIcons from '@deriv/quill-icons/Logo';
 import * as MarketsQuillIcons from '@deriv/quill-icons/Markets';
 import * as SocialQuillIcons from '@deriv/quill-icons/Social';
 import * as StandaloneQuillIcons from '@deriv/quill-icons/Standalone';
+import * as AllQuillIcons from '@deriv/quill-icons';
+import { TCategoryType } from '../types/category_types';
 
-export const getIcons = (searchText: string, category: string) => {
+const getQuillIconsModule = (category: TCategoryType) => {
   switch (category) {
     case CATEGORIES.CURRENCIES:
-      return Object.entries(CurrenciesQuillIcons).filter(
-        ([iconName]) =>
-          iconName.endsWith('Icon') && iconName.toLowerCase().includes(searchText.toLowerCase()),
-      );
+      return CurrenciesQuillIcons;
     case CATEGORIES.FLAGS:
-      return Object.entries(FlagsQuillIcons).filter(
-        ([iconName]) =>
-          iconName.endsWith('Icon') && iconName.toLowerCase().includes(searchText.toLowerCase()),
-      );
+      return FlagsQuillIcons;
     case CATEGORIES.ILLUSTRATIVE:
-      return Object.entries(IllustrativeQuillIcons).filter(
-        ([iconName]) =>
-          iconName.endsWith('Icon') && iconName.toLowerCase().includes(searchText.toLowerCase()),
-      );
+      return IllustrativeQuillIcons;
     case CATEGORIES.LABEL_PAIRED:
-      return Object.entries(LabelPairedQuillIcons).filter(
-        ([iconName]) =>
-          iconName.endsWith('Icon') && iconName.toLowerCase().includes(searchText.toLowerCase()),
-      );
+      return LabelPairedQuillIcons;
     case CATEGORIES.LOGO:
-      return Object.entries(LogoQuillIcons).filter(
-        ([iconName]) =>
-          iconName.endsWith('Icon') && iconName.toLowerCase().includes(searchText.toLowerCase()),
-      );
+      return LogoQuillIcons;
     case CATEGORIES.MARKETS:
-      return Object.entries(MarketsQuillIcons).filter(
-        ([iconName]) =>
-          iconName.endsWith('Icon') && iconName.toLowerCase().includes(searchText.toLowerCase()),
-      );
+      return MarketsQuillIcons;
     case CATEGORIES.SOCIAL:
-      return Object.entries(SocialQuillIcons).filter(
-        ([iconName]) =>
-          iconName.endsWith('Icon') && iconName.toLowerCase().includes(searchText.toLowerCase()),
-      );
+      return SocialQuillIcons;
     case CATEGORIES.STANDALONE:
-      return Object.entries(StandaloneQuillIcons).filter(
-        ([iconName]) =>
-          iconName.endsWith('Icon') && iconName.toLowerCase().includes(searchText.toLowerCase()),
-      );
+      return StandaloneQuillIcons;
+    default:
+      return AllQuillIcons;
   }
-  return Object.entries(AllQuillIcons).filter(
+};
+
+export const getIcons = (searchText: string, category: TCategoryType) => {
+  const quillIconsModule = getQuillIconsModule(category);
+  return Object.entries(quillIconsModule).filter(
     ([iconName]) =>
-      iconName.endsWith('Icon') && iconName.toLowerCase().includes(searchText.toLowerCase()),
+      iconName.endsWith('Icon') && iconName.match(new RegExp(searchText, 'i'))?.length,
   );
 };
