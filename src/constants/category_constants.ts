@@ -9,3 +9,5 @@ export const CATEGORIES = Object.freeze({
   SOCIAL: 'Social',
   STANDALONE: 'Standalone',
 });
+
+export const DEFAULT_CATEGORY = CATEGORIES.CURRENCIES;

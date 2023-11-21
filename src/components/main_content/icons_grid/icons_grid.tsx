@@ -1,7 +1,7 @@
 import { useCallback, useContext } from 'react';
 import { getIcons } from '../../../utils/icon_utils';
 import IconEntry from './icon_entry/icon_entry';
-import { CATEGORIES } from '../../../constants/category_constants';
+import { DEFAULT_CATEGORY } from '../../../constants/category_constants';
 import { QuillSvgProps } from '@deriv/quill-icons';
 import { CategoryContext } from '../../../context/category_context';
 import { SearchContext } from '../../../context/search_context';
@@ -12,7 +12,7 @@ const IconsGrid = () => {
   const categoryContext = useContext(CategoryContext);
 
   const searchText = searchContext?.searchText ?? '';
-  const categorySelected = categoryContext?.categorySelected ?? CATEGORIES.CURRENCIES;
+  const categorySelected = categoryContext?.categorySelected ?? DEFAULT_CATEGORY;
 
   const memoizedIcons = useCallback(
     () => getIcons(searchText, categorySelected),
