@@ -17,7 +17,7 @@ const IconEntry = ({ iconName, Icon }: TIconEntry) => {
       className={classNames(
         'flex cursor-pointer flex-col justify-between overflow-hidden rounded-xl border-2 p-4 shadow-md',
         isIconSelected
-          ? 'border-rose-500 bg-rose-50'
+          ? 'cursor-default border-rose-500 bg-rose-50'
           : 'border-transparent hover:border-slate-400 hover:bg-slate-50',
       )}
     >
