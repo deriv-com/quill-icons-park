@@ -7,13 +7,13 @@ type TPredefinedIconSelection = {
 };
 
 const PredefinedIconSizeSelection = ({ iconSize, setIconSize }: TPredefinedIconSelection) => (
-  <div className='flex gap-4'>
+  <div className='flex gap-2'>
     {Object.keys(sizes).map((size) => (
       <span
         key={size}
         onClick={() => setIconSize(size as IconSize)}
         className={classNames(
-          'flex w-full cursor-pointer items-center justify-center rounded-md border-2 shadow-md',
+          'flex min-w-[4rem] cursor-pointer items-center justify-center rounded-md border-2 px-2 py-1 shadow-md',
           iconSize === size
             ? 'cursor-default border-rose-500'
             : 'border-slate-50 hover:border-slate-300',
