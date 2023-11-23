@@ -2,6 +2,10 @@ import classNames from 'classnames';
 import { useContext } from 'react';
 import { IconContext } from '../../../../context/icon_context';
 import { TIconEntry } from '../../../../types/icon_types';
+import {
+  ICON_GRID_DISPLAY_HEIGHT,
+  ICON_GRID_DISPLAY_WIDTH,
+} from '../../../../constants/icon_constants';
 
 const IconEntry = ({ iconName, Icon }: TIconEntry) => {
   const iconContext = useContext(IconContext);
@@ -23,7 +27,7 @@ const IconEntry = ({ iconName, Icon }: TIconEntry) => {
     >
       <span />
       <span className='flex justify-center'>
-        <Icon />
+        <Icon height={ICON_GRID_DISPLAY_HEIGHT} width={ICON_GRID_DISPLAY_WIDTH} />
       </span>
       <span className='mt-2 text-xs sm:text-sm'>{iconName}</span>
     </div>
