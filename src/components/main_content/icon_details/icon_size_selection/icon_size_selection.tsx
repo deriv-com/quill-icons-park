@@ -28,8 +28,8 @@ const IconSizeSelection = ({ predefinedIconSize, setPredefinedIconSize }: TIconS
       )}
       {PREDEFINED_ICON_SIZE_SELECTION_CATEGORIES.includes(categorySelected as string) && (
         <PredefinedIconSizeSelection
-          iconSize={predefinedIconSize}
-          setIconSize={setPredefinedIconSize}
+          predefinedIconSize={predefinedIconSize}
+          setPredefinedIconSize={setPredefinedIconSize}
         />
       )}
     </div>
