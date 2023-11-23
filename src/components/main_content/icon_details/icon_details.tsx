@@ -22,6 +22,8 @@ const IconDetails = () => {
 
   const categorySelected = categoryContext?.categorySelected;
 
+  const iconProps = { iconSize: predefinedIconSize };
+
   useEffect(() => setIconSelected?.(undefined), [categorySelected, setIconSelected]);
 
   const downloadSvg = () => {
@@ -41,7 +43,7 @@ const IconDetails = () => {
         <div>Icon Details</div>
         <div className='flex w-full flex-col items-center justify-center gap-4'>
           <span className='flex min-h-[6rem] w-full items-center justify-center'>
-            {Icon && <Icon id={SELECTED__DOWNLOADABLE_ICON_ID} iconSize={predefinedIconSize} />}
+            {Icon && <Icon id={SELECTED__DOWNLOADABLE_ICON_ID} {...iconProps} />}
           </span>
           <div>{getSplitIconName(iconName).join(' ')}</div>
         </div>
