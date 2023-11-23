@@ -1,3 +1,5 @@
+import { TCategoryType } from '../types/category_types';
+
 export const CATEGORIES = Object.freeze({
   ALL: 'All',
   CURRENCIES: 'Currencies',
@@ -10,4 +12,4 @@ export const CATEGORIES = Object.freeze({
   STANDALONE: 'Standalone',
 });
 
-export const DEFAULT_CATEGORY = CATEGORIES.CURRENCIES;
+export const DEFAULT_CATEGORY: TCategoryType = CATEGORIES.CURRENCIES;
