@@ -9,11 +9,20 @@ import ActionButton from './action_button/action_button';
 import { SELECTED__DOWNLOADABLE_ICON_ID } from '../../../constants/icon_constants';
 import { IconSize } from '@deriv/quill-icons';
 import IconSizeSelection from './icon_size_selection/icon_size_selection';
+import { TCustomIconSize } from '../../../types/icon_types';
+import {
+  CUSTOM_ICON_SIZE_SELECTION_CATEGORIES,
+  PREDEFINED_ICON_SIZE_SELECTION_CATEGORIES,
+} from '../../../constants/category_constants';
 
 const IconDetails = () => {
   const iconContext = useContext(IconContext);
   const categoryContext = useContext(CategoryContext);
-  const [iconSize, setIconSize] = useState<IconSize>('2xl');
+  const [customIconSize, setCustomIconSize] = useState<TCustomIconSize>({
+    height: '120px',
+    width: '120px',
+  });
+  const [predefinedIconSize, setPredefinedIconSize] = useState<IconSize>('2xl');
 
   const iconSelected = iconContext?.iconSelected;
   const setIconSelected = iconContext?.setIconSelected;
@@ -21,6 +30,23 @@ const IconDetails = () => {
   const Icon = iconSelected?.Icon;
 
   const categorySelected = categoryContext?.categorySelected;
+
+  const customIconSizeProps = CUSTOM_ICON_SIZE_SELECTION_CATEGORIES.includes(
+    categorySelected as string,
+  )
+    ? {
+        height: customIconSize.height,
+        width: customIconSize.width,
+      }
+    : {};
+  const predefinedIconSizeProps = PREDEFINED_ICON_SIZE_SELECTION_CATEGORIES.includes(
+    categorySelected as string,
+  )
+    ? {
+        iconSize: predefinedIconSize,
+      }
+    : {};
+  const iconProps = { ...customIconSizeProps, ...predefinedIconSizeProps };
 
   useEffect(() => setIconSelected?.(undefined), [categorySelected, setIconSelected]);
 
@@ -38,14 +64,21 @@ const IconDetails = () => {
           Icon ? 'opacity-1 translate-y-0' : 'translate-y-96 opacity-0',
         )}
       >
-        <div>Icon Details</div>
-        <div className='flex w-full flex-col items-center justify-center gap-4'>
-          <span className='flex min-h-[6rem] w-full items-center justify-center'>
-            {Icon && <Icon id={SELECTED__DOWNLOADABLE_ICON_ID} iconSize={iconSize} />}
-          </span>
-          <div>{getSplitIconName(iconName).join(' ')}</div>
+        <div className='flex flex-col gap-2'>
+          <div className='font-bold text-slate-400'>Selected Icon</div>
+          <div className='flex flex-col items-center justify-center gap-2'>
+            <span className='flex h-32 w-full items-center justify-center'>
+              {Icon && <Icon id={SELECTED__DOWNLOADABLE_ICON_ID} {...iconProps} />}
+            </span>
+            <div>{getSplitIconName(iconName).join(' ')}</div>
+          </div>
         </div>
-        <IconSizeSelection iconSize={iconSize} setIconSize={setIconSize} />
+        <IconSizeSelection
+          customIconSize={customIconSize}
+          setCustomIconSize={setCustomIconSize}
+          predefinedIconSize={predefinedIconSize}
+          setPredefinedIconSize={setPredefinedIconSize}
+        />
         <ActionButton primary label='Download SVG' onClick={downloadSvg} disabled={!iconSelected} />
       </div>
       <NoIconSelected isVisible={!Icon} />
