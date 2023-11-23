@@ -9,11 +9,11 @@ import {
 } from '../../../../constants/category_constants';
 
 type TIconSizeSelection = {
-  iconSize: IconSize;
-  setIconSize: React.Dispatch<React.SetStateAction<IconSize>>;
+  predefinedIconSize: IconSize;
+  setPredefinedIconSize: React.Dispatch<React.SetStateAction<IconSize>>;
 };
 
-const IconSizeSelection = ({ iconSize, setIconSize }: TIconSizeSelection) => {
+const IconSizeSelection = ({ predefinedIconSize, setPredefinedIconSize }: TIconSizeSelection) => {
   const categoryContext = useContext(CategoryContext);
   const categorySelected = categoryContext?.categorySelected;
 
@@ -21,10 +21,16 @@ const IconSizeSelection = ({ iconSize, setIconSize }: TIconSizeSelection) => {
     <div className='flex flex-col gap-2'>
       <span className='font-bold'>Icon Size</span>
       {CUSTOM_ICON_SIZE_SELECTION_CATEGORIES.includes(categorySelected as string) && (
-        <CustomIconSizeSelection iconSize={iconSize} setIconSize={setIconSize} />
+        <CustomIconSizeSelection
+          iconSize={predefinedIconSize}
+          setIconSize={setPredefinedIconSize}
+        />
       )}
       {PREDEFINED_ICON_SIZE_SELECTION_CATEGORIES.includes(categorySelected as string) && (
-        <PredefinedIconSizeSelection iconSize={iconSize} setIconSize={setIconSize} />
+        <PredefinedIconSizeSelection
+          iconSize={predefinedIconSize}
+          setIconSize={setPredefinedIconSize}
+        />
       )}
     </div>
   );

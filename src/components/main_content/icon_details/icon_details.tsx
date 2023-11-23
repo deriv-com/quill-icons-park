@@ -13,7 +13,7 @@ import IconSizeSelection from './icon_size_selection/icon_size_selection';
 const IconDetails = () => {
   const iconContext = useContext(IconContext);
   const categoryContext = useContext(CategoryContext);
-  const [iconSize, setIconSize] = useState<IconSize>('2xl');
+  const [predefinedIconSize, setPredefinedIconSize] = useState<IconSize>('2xl');
 
   const iconSelected = iconContext?.iconSelected;
   const setIconSelected = iconContext?.setIconSelected;
@@ -41,11 +41,14 @@ const IconDetails = () => {
         <div>Icon Details</div>
         <div className='flex w-full flex-col items-center justify-center gap-4'>
           <span className='flex min-h-[6rem] w-full items-center justify-center'>
-            {Icon && <Icon id={SELECTED__DOWNLOADABLE_ICON_ID} iconSize={iconSize} />}
+            {Icon && <Icon id={SELECTED__DOWNLOADABLE_ICON_ID} iconSize={predefinedIconSize} />}
           </span>
           <div>{getSplitIconName(iconName).join(' ')}</div>
         </div>
-        <IconSizeSelection iconSize={iconSize} setIconSize={setIconSize} />
+        <IconSizeSelection
+          predefinedIconSize={predefinedIconSize}
+          setPredefinedIconSize={setPredefinedIconSize}
+        />
         <ActionButton primary label='Download SVG' onClick={downloadSvg} disabled={!iconSelected} />
       </div>
       <NoIconSelected isVisible={!Icon} />
