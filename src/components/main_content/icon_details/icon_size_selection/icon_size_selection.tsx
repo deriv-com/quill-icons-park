@@ -27,19 +27,21 @@ const IconSizeSelection = ({
 
   return (
     <div className='flex flex-col gap-2'>
-      <span className='font-bold'>Icon Size</span>
-      {CUSTOM_ICON_SIZE_SELECTION_CATEGORIES.includes(categorySelected as string) && (
-        <CustomIconSizeSelection
-          customIconSize={customIconSize}
-          setCustomIconSize={setCustomIconSize}
-        />
-      )}
-      {PREDEFINED_ICON_SIZE_SELECTION_CATEGORIES.includes(categorySelected as string) && (
-        <PredefinedIconSizeSelection
-          predefinedIconSize={predefinedIconSize}
-          setPredefinedIconSize={setPredefinedIconSize}
-        />
-      )}
+      <span className='font-bold text-slate-400'>Icon Size</span>
+      <div className='flex flex-col gap-4'>
+        {CUSTOM_ICON_SIZE_SELECTION_CATEGORIES.includes(categorySelected as string) && (
+          <CustomIconSizeSelection
+            customIconSize={customIconSize}
+            setCustomIconSize={setCustomIconSize}
+          />
+        )}
+        {PREDEFINED_ICON_SIZE_SELECTION_CATEGORIES.includes(categorySelected as string) && (
+          <PredefinedIconSizeSelection
+            predefinedIconSize={predefinedIconSize}
+            setPredefinedIconSize={setPredefinedIconSize}
+          />
+        )}
+      </div>
     </div>
   );
 };

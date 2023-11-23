@@ -64,12 +64,14 @@ const IconDetails = () => {
           Icon ? 'opacity-1 translate-y-0' : 'translate-y-96 opacity-0',
         )}
       >
-        <div>Icon Details</div>
-        <div className='flex w-full flex-col items-center justify-center gap-4'>
-          <span className='flex min-h-[6rem] w-full items-center justify-center'>
-            {Icon && <Icon id={SELECTED__DOWNLOADABLE_ICON_ID} {...iconProps} />}
-          </span>
-          <div>{getSplitIconName(iconName).join(' ')}</div>
+        <div className='flex flex-col gap-2'>
+          <div className='font-bold text-slate-400'>Selected Icon</div>
+          <div className='flex flex-col items-center justify-center gap-2'>
+            <span className='flex h-32 w-full items-center justify-center'>
+              {Icon && <Icon id={SELECTED__DOWNLOADABLE_ICON_ID} {...iconProps} />}
+            </span>
+            <div>{getSplitIconName(iconName).join(' ')}</div>
+          </div>
         </div>
         <IconSizeSelection
           customIconSize={customIconSize}
