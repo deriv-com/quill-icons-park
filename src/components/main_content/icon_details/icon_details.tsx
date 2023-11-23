@@ -9,10 +9,19 @@ import ActionButton from './action_button/action_button';
 import { SELECTED__DOWNLOADABLE_ICON_ID } from '../../../constants/icon_constants';
 import { IconSize } from '@deriv/quill-icons';
 import IconSizeSelection from './icon_size_selection/icon_size_selection';
+import { TCustomIconSize } from '../../../types/icon_types';
+import {
+  CUSTOM_ICON_SIZE_SELECTION_CATEGORIES,
+  PREDEFINED_ICON_SIZE_SELECTION_CATEGORIES,
+} from '../../../constants/category_constants';
 
 const IconDetails = () => {
   const iconContext = useContext(IconContext);
   const categoryContext = useContext(CategoryContext);
+  const [customIconSize, setCustomIconSize] = useState<TCustomIconSize>({
+    height: '120px',
+    width: '120px',
+  });
   const [predefinedIconSize, setPredefinedIconSize] = useState<IconSize>('2xl');
 
   const iconSelected = iconContext?.iconSelected;
@@ -22,7 +31,22 @@ const IconDetails = () => {
 
   const categorySelected = categoryContext?.categorySelected;
 
-  const iconProps = { iconSize: predefinedIconSize };
+  const customIconSizeProps = CUSTOM_ICON_SIZE_SELECTION_CATEGORIES.includes(
+    categorySelected as string,
+  )
+    ? {
+        height: customIconSize.height,
+        width: customIconSize.width,
+      }
+    : {};
+  const predefinedIconSizeProps = PREDEFINED_ICON_SIZE_SELECTION_CATEGORIES.includes(
+    categorySelected as string,
+  )
+    ? {
+        iconSize: predefinedIconSize,
+      }
+    : {};
+  const iconProps = { ...customIconSizeProps, ...predefinedIconSizeProps };
 
   useEffect(() => setIconSelected?.(undefined), [categorySelected, setIconSelected]);
 
@@ -48,6 +72,8 @@ const IconDetails = () => {
           <div>{getSplitIconName(iconName).join(' ')}</div>
         </div>
         <IconSizeSelection
+          customIconSize={customIconSize}
+          setCustomIconSize={setCustomIconSize}
           predefinedIconSize={predefinedIconSize}
           setPredefinedIconSize={setPredefinedIconSize}
         />

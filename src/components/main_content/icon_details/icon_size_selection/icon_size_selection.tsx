@@ -7,13 +7,21 @@ import {
   CUSTOM_ICON_SIZE_SELECTION_CATEGORIES,
   PREDEFINED_ICON_SIZE_SELECTION_CATEGORIES,
 } from '../../../../constants/category_constants';
+import { TCustomIconSize } from '../../../../types/icon_types';
 
 type TIconSizeSelection = {
+  customIconSize: TCustomIconSize;
+  setCustomIconSize: React.Dispatch<React.SetStateAction<TCustomIconSize>>;
   predefinedIconSize: IconSize;
   setPredefinedIconSize: React.Dispatch<React.SetStateAction<IconSize>>;
 };
 
-const IconSizeSelection = ({ predefinedIconSize, setPredefinedIconSize }: TIconSizeSelection) => {
+const IconSizeSelection = ({
+  customIconSize,
+  setCustomIconSize,
+  predefinedIconSize,
+  setPredefinedIconSize,
+}: TIconSizeSelection) => {
   const categoryContext = useContext(CategoryContext);
   const categorySelected = categoryContext?.categorySelected;
 
@@ -22,8 +30,8 @@ const IconSizeSelection = ({ predefinedIconSize, setPredefinedIconSize }: TIconS
       <span className='font-bold'>Icon Size</span>
       {CUSTOM_ICON_SIZE_SELECTION_CATEGORIES.includes(categorySelected as string) && (
         <CustomIconSizeSelection
-          iconSize={predefinedIconSize}
-          setIconSize={setPredefinedIconSize}
+          customIconSize={customIconSize}
+          setCustomIconSize={setCustomIconSize}
         />
       )}
       {PREDEFINED_ICON_SIZE_SELECTION_CATEGORIES.includes(categorySelected as string) && (
