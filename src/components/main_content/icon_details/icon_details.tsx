@@ -58,6 +58,7 @@ const IconDetails = () => {
 
   return (
     <div className='relative p-4'>
+      <NoIconSelected isVisible={!Icon} />
       <div
         className={classNames(
           'sticky top-36 flex flex-col gap-8 rounded-xl bg-white p-4 shadow-xl transition-all',
@@ -81,7 +82,6 @@ const IconDetails = () => {
         />
         <ActionButton primary label='Download SVG' onClick={downloadSvg} disabled={!iconSelected} />
       </div>
-      <NoIconSelected isVisible={!Icon} />
     </div>
   );
 };
