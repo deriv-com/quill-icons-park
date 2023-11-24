@@ -7,9 +7,12 @@ type TNoIconSelected = {
 
 const NoIconSelected = ({ isVisible }: TNoIconSelected) => (
   <span
-    className={classNames('absolute top-16 h-full w-full', isVisible ? 'opacity-100' : 'opacity-0')}
+    className={classNames(
+      'absolute left-0 right-0 h-full',
+      isVisible ? 'opacity-100' : 'opacity-0',
+    )}
   >
-    <div className='sticky transition-opacity'>
+    <div className='sticky top-48 transition-opacity'>
       <div className='flex flex-col items-center opacity-50'>
         <StandaloneComputerMouseScrollwheelBoldIcon />
         <span>Select an icon to see it's details!</span>

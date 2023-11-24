@@ -68,7 +68,7 @@ const IconDetails = () => {
         <div className='flex flex-col gap-2'>
           <div className='font-bold text-slate-400'>Selected Icon</div>
           <div className='flex flex-col items-center justify-center gap-2'>
-            <span className='flex h-32 w-full items-center justify-center'>
+            <span className='flex h-32 w-full max-w-[18rem] items-center justify-center overflow-scroll rounded-lg border-2'>
               {Icon && <Icon id={SELECTED__DOWNLOADABLE_ICON_ID} {...iconProps} />}
             </span>
             <div>{getSplitIconName(iconName).join(' ')}</div>
