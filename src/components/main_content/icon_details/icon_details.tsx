@@ -32,17 +32,20 @@ const IconDetails = () => {
 
   const categorySelected = categoryContext?.categorySelected;
 
-  const customIconSizeProps = CUSTOM_ICON_SIZE_SELECTION_CATEGORIES.includes(
+  const hasCustomIconSizeSupport = CUSTOM_ICON_SIZE_SELECTION_CATEGORIES.includes(
     categorySelected as string,
-  )
+  );
+  const hasPredefinedIconSizeSupport = PREDEFINED_ICON_SIZE_SELECTION_CATEGORIES.includes(
+    categorySelected as string,
+  );
+
+  const customIconSizeProps = hasCustomIconSizeSupport
     ? {
         height: customIconSize.height,
         width: customIconSize.width,
       }
     : {};
-  const predefinedIconSizeProps = PREDEFINED_ICON_SIZE_SELECTION_CATEGORIES.includes(
-    categorySelected as string,
-  )
+  const predefinedIconSizeProps = hasPredefinedIconSizeSupport
     ? {
         iconSize: predefinedIconSize,
       }
@@ -84,8 +87,8 @@ const IconDetails = () => {
         <ActionButton label='Download SVG' onClick={downloadSvg} disabled={!iconSelected} />
         <IconCodeView
           iconName={iconName}
-          customIconSize={customIconSize}
-          predefinedIconSize={predefinedIconSize}
+          customIconSize={hasCustomIconSizeSupport ? customIconSize : undefined}
+          predefinedIconSize={hasPredefinedIconSizeSupport ? predefinedIconSize : undefined}
         />
       </div>
     </div>

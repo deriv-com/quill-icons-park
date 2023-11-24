@@ -4,13 +4,15 @@ import ActionButton from '../action_button/action_button';
 
 type TIconCodeView = {
   iconName: string;
-  customIconSize: TCustomIconSize;
-  predefinedIconSize: IconSize;
+  customIconSize?: TCustomIconSize;
+  predefinedIconSize?: IconSize;
 };
 
 const IconCodeView = ({ iconName, customIconSize, predefinedIconSize }: TIconCodeView) => {
-  const customIconSizeHeightProp = customIconSize.height ? `height='${customIconSize.height}'` : '';
-  const customIconSizeWidthProp = customIconSize.width ? `width='${customIconSize.width}'` : '';
+  const customIconSizeHeightProp = customIconSize?.height
+    ? `height='${customIconSize.height}'`
+    : '';
+  const customIconSizeWidthProp = customIconSize?.width ? `width='${customIconSize.width}'` : '';
   const customIconSizeProp = [customIconSizeHeightProp, customIconSizeWidthProp].join(' ');
 
   const predefinedIconSizeProp = predefinedIconSize ? `iconSize='${predefinedIconSize}'` : '';
