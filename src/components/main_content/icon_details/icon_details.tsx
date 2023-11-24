@@ -14,6 +14,7 @@ import {
   CUSTOM_ICON_SIZE_SELECTION_CATEGORIES,
   PREDEFINED_ICON_SIZE_SELECTION_CATEGORIES,
 } from '../../../constants/category_constants';
+import IconCodeView from './icon-code-view/icon-code-view';
 
 const IconDetails = () => {
   const iconContext = useContext(IconContext);
@@ -31,17 +32,20 @@ const IconDetails = () => {
 
   const categorySelected = categoryContext?.categorySelected;
 
-  const customIconSizeProps = CUSTOM_ICON_SIZE_SELECTION_CATEGORIES.includes(
+  const hasCustomIconSizeSupport = CUSTOM_ICON_SIZE_SELECTION_CATEGORIES.includes(
     categorySelected as string,
-  )
+  );
+  const hasPredefinedIconSizeSupport = PREDEFINED_ICON_SIZE_SELECTION_CATEGORIES.includes(
+    categorySelected as string,
+  );
+
+  const customIconSizeProps = hasCustomIconSizeSupport
     ? {
         height: customIconSize.height,
         width: customIconSize.width,
       }
     : {};
-  const predefinedIconSizeProps = PREDEFINED_ICON_SIZE_SELECTION_CATEGORIES.includes(
-    categorySelected as string,
-  )
+  const predefinedIconSizeProps = hasPredefinedIconSizeSupport
     ? {
         iconSize: predefinedIconSize,
       }
@@ -58,18 +62,19 @@ const IconDetails = () => {
 
   return (
     <div className='relative p-4'>
+      <NoIconSelected isVisible={!Icon} />
       <div
         className={classNames(
-          'sticky top-36 flex flex-col gap-8 rounded-xl bg-white p-4 shadow-xl transition-all',
+          'sticky top-36 flex flex-col gap-6 rounded-xl bg-white p-4 shadow-xl transition-all',
           Icon ? 'opacity-1 translate-y-0' : 'translate-y-96 opacity-0',
         )}
       >
         <div className='flex flex-col gap-2'>
           <div className='font-bold text-slate-400'>Selected Icon</div>
           <div className='flex flex-col items-center justify-center gap-2'>
-            <span className='flex h-32 w-full items-center justify-center'>
+            <div className='h-32 w-full max-w-[20rem] overflow-scroll rounded-lg border-2'>
               {Icon && <Icon id={SELECTED__DOWNLOADABLE_ICON_ID} {...iconProps} />}
-            </span>
+            </div>
             <div>{getSplitIconName(iconName).join(' ')}</div>
           </div>
         </div>
@@ -79,9 +84,13 @@ const IconDetails = () => {
           predefinedIconSize={predefinedIconSize}
           setPredefinedIconSize={setPredefinedIconSize}
         />
-        <ActionButton primary label='Download SVG' onClick={downloadSvg} disabled={!iconSelected} />
+        <ActionButton label='Download SVG' onClick={downloadSvg} disabled={!iconSelected} />
+        <IconCodeView
+          iconName={iconName}
+          customIconSize={hasCustomIconSizeSupport ? customIconSize : undefined}
+          predefinedIconSize={hasPredefinedIconSizeSupport ? predefinedIconSize : undefined}
+        />
       </div>
-      <NoIconSelected isVisible={!Icon} />
     </div>
   );
 };
