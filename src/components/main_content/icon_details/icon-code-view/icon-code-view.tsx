@@ -1,6 +1,7 @@
 import { IconSize } from '@deriv/quill-icons';
 import { TCustomIconSize } from '../../../../types/icon_types';
 import ActionButton from '../action_button/action_button';
+import { useState } from 'react';
 
 type TIconCodeView = {
   iconName: string;
@@ -9,6 +10,8 @@ type TIconCodeView = {
 };
 
 const IconCodeView = ({ iconName, customIconSize, predefinedIconSize }: TIconCodeView) => {
+  const [copyButtonLabel, setCopyButtonLabel] = useState('Copy Code');
+
   const customIconSizeHeightProp = customIconSize?.height
     ? `height='${customIconSize.height}'`
     : '';
@@ -24,16 +27,25 @@ const IconCodeView = ({ iconName, customIconSize, predefinedIconSize }: TIconCod
     predefinedIconSizeProp,
     '/>',
   ];
-  const iconNameComponent = iconNameComponentElements.join(' ').trim();
+  const iconNameComponentUsageCode = iconNameComponentElements.join(' ').trim();
 
   const copyCode = () => {
-    console.log('Copied to clipboard');
+    navigator.clipboard.writeText(iconNameComponentUsageCode);
+    setCopyButtonLabel('Copied!');
+    setTimeout(() => {
+      setCopyButtonLabel('Copy Code');
+    }, 1000);
   };
 
   return (
     <div className='flex flex-col gap-4'>
-      <div className='rounded-lg border-2 p-2'>{iconNameComponent}</div>
-      <ActionButton primary label='Copy Code' onClick={copyCode} disabled={!iconNameComponent} />
+      <div className='rounded-lg border-2 p-2'>{iconNameComponentUsageCode}</div>
+      <ActionButton
+        primary
+        label={copyButtonLabel}
+        onClick={copyCode}
+        disabled={!iconNameComponentUsageCode}
+      />
     </div>
   );
 };
