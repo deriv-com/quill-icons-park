@@ -13,7 +13,7 @@ const MainContent = () => {
 
   return (
     <IconContext.Provider value={iconContextValue}>
-      <div className='grid w-full sm:grid-cols-[1fr_1fr] md:grid-cols-[3fr_1fr]'>
+      <div className='grid w-full sm:grid-cols-[1fr_1fr] md:grid-cols-[auto_min-content]'>
         <IconsGrid />
         <IconDetails />
       </div>
