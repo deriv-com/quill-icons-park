@@ -39,7 +39,7 @@ const IconCodeView = ({ iconName, customIconSize, predefinedIconSize }: TIconCod
 
   return (
     <div className='flex flex-col gap-4'>
-      <div className='rounded-lg border-2 p-2'>{iconNameComponentUsageCode}</div>
+      <div className='overflow-scroll rounded-lg border-2 p-2'>{iconNameComponentUsageCode}</div>
       <ActionButton
         primary
         label={copyButtonLabel}
