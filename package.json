@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@deriv/quill-icons": "latest",
+    "@tanstack/react-query": "^5.9.0",
     "classnames": "^2.3.2",
     "file-saver": "^2.0.5",
     "react": "^18.2.0",
