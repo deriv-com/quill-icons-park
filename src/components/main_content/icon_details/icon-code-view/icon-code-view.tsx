@@ -21,11 +21,9 @@ const IconCodeView = ({ iconName, customIconSize, predefinedIconSize }: TIconCod
   const predefinedIconSizeProp = predefinedIconSize ? `iconSize='${predefinedIconSize}'` : '';
 
   const iconNameComponentElements = [
-    '<',
-    iconName,
+    '<'.concat(iconName),
     customIconSizeProp,
-    predefinedIconSizeProp,
-    '/>',
+    predefinedIconSizeProp.concat('/>'),
   ];
   const iconNameComponentUsageCode = iconNameComponentElements.join(' ').trim();
 
