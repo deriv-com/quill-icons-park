@@ -8,7 +8,7 @@ type TNoIconSelected = {
 const NoIconSelected = ({ isVisible }: TNoIconSelected) => (
   <span
     className={classNames(
-      'absolute left-0 right-0 h-full',
+      'absolute left-0 right-0 h-full w-96',
       isVisible ? 'opacity-100' : 'opacity-0',
     )}
   >

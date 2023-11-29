@@ -65,7 +65,7 @@ const IconDetails = () => {
       <NoIconSelected isVisible={!Icon} />
       <div
         className={classNames(
-          'sticky top-36 flex flex-col gap-6 rounded-xl bg-white p-4 shadow-xl transition-all',
+          'sticky top-36 flex w-96 flex-col gap-6 rounded-xl bg-white p-4 shadow-xl transition-all',
           Icon ? 'opacity-1 translate-y-0' : 'translate-y-96 opacity-0',
         )}
       >

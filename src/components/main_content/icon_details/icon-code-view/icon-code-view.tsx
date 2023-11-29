@@ -21,11 +21,9 @@ const IconCodeView = ({ iconName, customIconSize, predefinedIconSize }: TIconCod
   const predefinedIconSizeProp = predefinedIconSize ? `iconSize='${predefinedIconSize}'` : '';
 
   const iconNameComponentElements = [
-    '<',
-    iconName,
+    '<'.concat(iconName),
     customIconSizeProp,
-    predefinedIconSizeProp,
-    '/>',
+    predefinedIconSizeProp.concat('/>'),
   ];
   const iconNameComponentUsageCode = iconNameComponentElements.join(' ').trim();
 
@@ -39,7 +37,7 @@ const IconCodeView = ({ iconName, customIconSize, predefinedIconSize }: TIconCod
 
   return (
     <div className='flex flex-col gap-4'>
-      <div className='rounded-lg border-2 p-2'>{iconNameComponentUsageCode}</div>
+      <div className='overflow-scroll rounded-lg border-2 p-2'>{iconNameComponentUsageCode}</div>
       <ActionButton
         primary
         label={copyButtonLabel}

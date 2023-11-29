@@ -20,7 +20,7 @@ const IconsGrid = () => {
   )();
 
   return memoizedIcons.length ? (
-    <div className='grid grid-cols-3 gap-4 p-4 md:grid-cols-6'>
+    <div className='grid grid-cols-3 gap-4 p-4 lg:grid-cols-4 xl:grid-cols-6'>
       {memoizedIcons.map(([iconName, icon]) => (
         <IconEntry
           key={iconName}
