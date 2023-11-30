@@ -11,7 +11,7 @@ const CustomIconSizeSelection = ({ customIconSize, setCustomIconSize }: TCustomI
   return (
     <div className='flex flex-col gap-2'>
       {sizeFields.map((fieldName) => (
-        <div className='flex items-center justify-between'>
+        <div key={fieldName} className='flex items-center justify-between'>
           <span>{fieldName.substring(0, 1).toUpperCase().concat(fieldName.substring(1))}</span>
           <input
             className='w-20 rounded-xl border-2 border-transparent px-4 py-2 shadow-xl outline-none transition-all focus:border-rose-500'
