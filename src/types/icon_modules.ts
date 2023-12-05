@@ -1,4 +1,4 @@
-type TQuillIconsModuleEntry = {
+export type TQuillIconsModuleEntry = {
   category: string;
   icon: unknown;
   iconName: string;

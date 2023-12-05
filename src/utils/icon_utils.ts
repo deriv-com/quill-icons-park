@@ -20,7 +20,11 @@ export const getQuillIconsModules = async (searchText: string) => {
         quillIconsModules.push({
           category,
           quillIconsModule: Object.entries(importedQuillIconsModule)
-            .filter(([iconName]) => RegExp(new RegExp(searchText, 'i')).exec(iconName)?.length)
+            .filter(
+              ([iconName]) =>
+                iconName !== 'default' &&
+                RegExp(new RegExp(searchText, 'i')).exec(iconName)?.length,
+            )
             .map(([iconName, icon]) => ({
               category,
               icon,
