@@ -1,11 +1,9 @@
 import { useContext, useEffect, useState } from 'react';
-import { saveAs } from 'file-saver';
 import { IconContext } from '../../../context/icon_context';
 import { CategoryContext } from '../../../context/category_context';
 import classNames from 'classnames';
 import NoIconSelected from './no_icon_selected/no_icon_selected';
 import { getSplitIconName } from '../../../utils/text_utils';
-import ActionButton from './action_button/action_button';
 import { SELECTED__DOWNLOADABLE_ICON_ID } from '../../../constants/icon_constants';
 import { IconSize } from '@deriv/quill-icons';
 import IconSizeSelection from './icon_size_selection/icon_size_selection';
@@ -15,7 +13,6 @@ import {
   PREDEFINED_ICON_SIZE_SELECTION_CATEGORIES,
 } from '../../../constants/category_constants';
 import IconCodeView from './icon-code-view/icon-code-view';
-import { LabelPairedArrowDownToBracketRegularIcon } from '@deriv/quill-icons/LabelPaired';
 
 const IconDetails = () => {
   const iconContext = useContext(IconContext);
@@ -55,12 +52,6 @@ const IconDetails = () => {
 
   useEffect(() => setIconSelected?.(undefined), [categorySelected, setIconSelected]);
 
-  const downloadSvg = () => {
-    const downloadableIcon = document.querySelector(`#${SELECTED__DOWNLOADABLE_ICON_ID}`);
-    const svgBlob = new Blob([downloadableIcon?.outerHTML ?? ''], { type: 'image/svg+xml' });
-    saveAs(svgBlob, iconName.concat('.svg'));
-  };
-
   return (
     <div className='relative p-4'>
       <NoIconSelected isVisible={!Icon} />
@@ -84,12 +75,6 @@ const IconDetails = () => {
           setCustomIconSize={setCustomIconSize}
           predefinedIconSize={predefinedIconSize}
           setPredefinedIconSize={setPredefinedIconSize}
-        />
-        <ActionButton
-          label='Download SVG'
-          onClick={downloadSvg}
-          disabled={!iconSelected}
-          Icon={LabelPairedArrowDownToBracketRegularIcon}
         />
         <IconCodeView
           iconName={iconName}
