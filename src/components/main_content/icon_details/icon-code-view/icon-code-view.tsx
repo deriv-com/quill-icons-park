@@ -2,6 +2,7 @@ import { IconSize } from '@deriv/quill-icons';
 import { TCustomIconSize } from '../../../../types/icon_types';
 import ActionButton from '../action_button/action_button';
 import { useState } from 'react';
+import { IllustrativeEtfIcon } from '@deriv/quill-icons/Illustrative';
 
 type TIconCodeView = {
   iconName: string;
@@ -43,6 +44,7 @@ const IconCodeView = ({ iconName, customIconSize, predefinedIconSize }: TIconCod
         label={copyButtonLabel}
         onClick={copyCode}
         disabled={!iconNameComponentUsageCode}
+        Icon={IllustrativeEtfIcon}
       />
     </div>
   );

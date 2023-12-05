@@ -15,6 +15,7 @@ import {
   PREDEFINED_ICON_SIZE_SELECTION_CATEGORIES,
 } from '../../../constants/category_constants';
 import IconCodeView from './icon-code-view/icon-code-view';
+import { LabelPairedArrowDownToBracketRegularIcon } from '@deriv/quill-icons/LabelPaired';
 
 const IconDetails = () => {
   const iconContext = useContext(IconContext);
@@ -84,7 +85,12 @@ const IconDetails = () => {
           predefinedIconSize={predefinedIconSize}
           setPredefinedIconSize={setPredefinedIconSize}
         />
-        <ActionButton label='Download SVG' onClick={downloadSvg} disabled={!iconSelected} />
+        <ActionButton
+          label='Download SVG'
+          onClick={downloadSvg}
+          disabled={!iconSelected}
+          Icon={LabelPairedArrowDownToBracketRegularIcon}
+        />
         <IconCodeView
           iconName={iconName}
           customIconSize={hasCustomIconSizeSupport ? customIconSize : undefined}
