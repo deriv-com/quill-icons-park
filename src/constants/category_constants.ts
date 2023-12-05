@@ -1,4 +1,4 @@
-import { TCategoryType } from '../types/category_types';
+import { TCategoriesType } from '../types/category_types';
 
 export const CATEGORIES = Object.freeze({
   ALL: 'All',
@@ -12,7 +12,7 @@ export const CATEGORIES = Object.freeze({
   STANDALONE: 'Standalone',
 });
 
-export const DEFAULT_CATEGORY: TCategoryType = CATEGORIES.CURRENCIES;
+export const DEFAULT_CATEGORY: TCategoriesType = CATEGORIES.CURRENCIES;
 
 export const CUSTOM_ICON_SIZE_SELECTION_CATEGORIES: string[] = [CATEGORIES.ALL, CATEGORIES.LOGO];
 
