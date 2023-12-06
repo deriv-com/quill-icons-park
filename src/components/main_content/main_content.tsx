@@ -1,23 +1,19 @@
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import IconDetails from './icon_details/icon_details';
 import IconsGrid from './icons_grid/icons_grid';
 import { TIconEntry } from '../../types/icon_types';
-import { IconContext } from '../../context_provider/icon_context';
+import IconProvider from '../../context_provider/icon_provider';
 
 const MainContent = () => {
-  const [iconSelected, setIconSelected] = useState<TIconEntry>();
-  const iconContextValue = useMemo(
-    () => ({ iconSelected, setIconSelected }),
-    [iconSelected, setIconSelected],
-  );
+  const [icon, setIcon] = useState<TIconEntry>();
 
   return (
-    <IconContext.Provider value={iconContextValue}>
+    <IconProvider icon={icon} setIcon={setIcon}>
       <div className='grid w-full sm:grid-cols-[1fr_1fr] md:grid-cols-[auto_min-content]'>
         <IconsGrid />
         <IconDetails />
       </div>
-    </IconContext.Provider>
+    </IconProvider>
   );
 };
 
