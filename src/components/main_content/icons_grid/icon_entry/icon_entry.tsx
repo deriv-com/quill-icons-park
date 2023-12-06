@@ -7,7 +7,7 @@ import {
   ICON_GRID_DISPLAY_WIDTH,
 } from '../../../../constants/icon_constants';
 
-const IconEntry = ({ iconName, Icon }: TIconEntry) => {
+const IconEntry = ({ category, iconName, Icon }: TIconEntry) => {
   const iconContext = useContext(IconContext);
   const iconSelected = iconContext?.iconSelected;
   const setIconSelected = iconContext?.setIconSelected;
@@ -17,7 +17,7 @@ const IconEntry = ({ iconName, Icon }: TIconEntry) => {
   return (
     <div
       onKeyDown={undefined}
-      onClick={() => setIconSelected?.({ Icon, iconName })}
+      onClick={() => setIconSelected?.({ category, Icon, iconName })}
       className={classNames(
         'flex h-40 flex-col justify-between overflow-hidden rounded-xl border-2 p-4 shadow-md',
         isIconSelected

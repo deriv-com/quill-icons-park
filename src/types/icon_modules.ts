@@ -1,10 +1,12 @@
+import { TIconEntryCategory } from './icon_types';
+
 export type TQuillIconsModuleEntry = {
-  category: string;
+  category: TIconEntryCategory;
   icon: unknown;
   iconName: string;
 };
 
 export type TQuillIconsModules = {
-  category: string;
+  category: TIconEntryCategory;
   quillIconsModule: TQuillIconsModuleEntry[];
 };

@@ -28,7 +28,7 @@ const IconsGrid = () => {
     <div className='flex flex-col gap-4'>
       {quillIcons.map(({ category, quillIconsModule }) => (
         <IconCategory
-          key={category}
+          key={category.toString()}
           category={category}
           quillIconsModule={quillIconsModule}
           shouldDisplayCategory={categorySelected === CATEGORIES.ALL}
