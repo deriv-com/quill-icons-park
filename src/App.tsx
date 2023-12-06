@@ -3,10 +3,10 @@ import './App.scss';
 import Header from './components/header/header';
 import MainContent from './components/main_content/main_content';
 import { DEFAULT_CATEGORY } from './constants/category_constants';
-import { SearchContext } from './context/search_context';
+import { SearchContext } from './context_provider/search_context';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { TCategoriesType } from './types/category_types';
-import CategoryProvider from './context/category_provider';
+import CategoryProvider from './context_provider/category_provider';
 
 const queryClient = new QueryClient();
 

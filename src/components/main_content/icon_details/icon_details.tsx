@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
-import { IconContext } from '../../../context/icon_context';
-import { CategoryContext } from '../../../context/category_context';
+import { IconContext } from '../../../context_provider/icon_context';
+import { CategoryContext } from '../../../context_provider/category_context';
 import classNames from 'classnames';
 import NoIconSelected from './no_icon_selected/no_icon_selected';
 import { getSplitIconName } from '../../../utils/text_utils';

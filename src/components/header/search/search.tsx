@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { SearchContext } from '../../../context/search_context';
+import { SearchContext } from '../../../context_provider/search_context';
 import { StandaloneSearchBoldIcon } from '@deriv/quill-icons';
 import { debouncedStateUpdater } from '../../../utils/text_utils';
 

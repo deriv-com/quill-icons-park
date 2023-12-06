@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react';
 import IconDetails from './icon_details/icon_details';
 import IconsGrid from './icons_grid/icons_grid';
 import { TIconEntry } from '../../types/icon_types';
-import { IconContext } from '../../context/icon_context';
+import { IconContext } from '../../context_provider/icon_context';
 
 const MainContent = () => {
   const [iconSelected, setIconSelected] = useState<TIconEntry>();

@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { useContext } from 'react';
-import { IconContext } from '../../../../context/icon_context';
+import { IconContext } from '../../../../context_provider/icon_context';
 import { TIconEntry } from '../../../../types/icon_types';
 import {
   ICON_GRID_DISPLAY_HEIGHT,

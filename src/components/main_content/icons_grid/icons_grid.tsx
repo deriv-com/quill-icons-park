@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { CATEGORIES, DEFAULT_CATEGORY } from '../../../constants/category_constants';
-import { CategoryContext } from '../../../context/category_context';
-import { SearchContext } from '../../../context/search_context';
+import { CategoryContext } from '../../../context_provider/category_context';
+import { SearchContext } from '../../../context_provider/search_context';
 import NoIconsFound from './no_icons_found/no_icons_found';
 import useQuillIcons from '../../../hooks/quill_icons_hook/useQuillIcons';
 import Loading from '../../shared/loading/loading';

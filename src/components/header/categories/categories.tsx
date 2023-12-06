@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { CATEGORIES } from '../../../constants/category_constants';
 import './categories.scss';
 import classNames from 'classnames';
-import { CategoryContext } from '../../../context/category_context';
+import { CategoryContext } from '../../../context_provider/category_context';
 
 const Categories = () => {
   const categoryContext = useContext(CategoryContext);

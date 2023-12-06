@@ -2,7 +2,7 @@ import { IconSize } from '@deriv/quill-icons';
 import PredefinedIconSizeSelection from './predefined-icon-size-selection/predefined-icon-size-selection';
 import CustomIconSizeSelection from './custom-icon-size-selection/custom-icon-size-selection';
 import { useContext } from 'react';
-import { CategoryContext } from '../../../../context/category_context';
+import { CategoryContext } from '../../../../context_provider/category_context';
 import {
   CUSTOM_ICON_SIZE_SELECTION_CATEGORIES,
   PREDEFINED_ICON_SIZE_SELECTION_CATEGORIES,
