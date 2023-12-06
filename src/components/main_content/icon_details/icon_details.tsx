@@ -1,6 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
-import { IconContext } from '../../../context_provider/icon_context';
-import { CategoryContext } from '../../../context_provider/category_context';
+import { useState } from 'react';
 import classNames from 'classnames';
 import NoIconSelected from './no_icon_selected/no_icon_selected';
 import { getSplitIconName } from '../../../utils/text_utils';
@@ -8,34 +6,16 @@ import { SELECTED__DOWNLOADABLE_ICON_ID } from '../../../constants/icon_constant
 import { IconSize } from '@deriv/quill-icons';
 import IconSizeSelection from './icon_size_selection/icon_size_selection';
 import { TCustomIconSize } from '../../../types/icon_types';
-import {
-  CUSTOM_ICON_SIZE_SELECTION_CATEGORIES,
-  PREDEFINED_ICON_SIZE_SELECTION_CATEGORIES,
-} from '../../../constants/category_constants';
 import IconCodeView from './icon-code-view/icon-code-view';
+import useIcon from '../../../hooks/icon/useIcon';
 
 const IconDetails = () => {
-  const iconContext = useContext(IconContext);
-  const categoryContext = useContext(CategoryContext);
+  const { Icon, iconName, hasCustomIconSizeSupport, hasPredefinedIconSizeSupport } = useIcon();
   const [customIconSize, setCustomIconSize] = useState<TCustomIconSize>({
     height: '120px',
     width: '120px',
   });
   const [predefinedIconSize, setPredefinedIconSize] = useState<IconSize>('2xl');
-
-  const iconSelected = iconContext?.iconSelected;
-  const setIconSelected = iconContext?.setIconSelected;
-  const iconName = iconSelected?.iconName ?? '';
-  const Icon = iconSelected?.Icon;
-
-  const categorySelected = categoryContext?.categorySelected;
-
-  const hasCustomIconSizeSupport = CUSTOM_ICON_SIZE_SELECTION_CATEGORIES.includes(
-    categorySelected as string,
-  );
-  const hasPredefinedIconSizeSupport = PREDEFINED_ICON_SIZE_SELECTION_CATEGORIES.includes(
-    categorySelected as string,
-  );
 
   const customIconSizeProps = hasCustomIconSizeSupport
     ? {
@@ -49,8 +29,6 @@ const IconDetails = () => {
       }
     : {};
   const iconProps = { ...customIconSizeProps, ...predefinedIconSizeProps };
-
-  useEffect(() => setIconSelected?.(undefined), [categorySelected, setIconSelected]);
 
   return (
     <div className='relative p-4'>

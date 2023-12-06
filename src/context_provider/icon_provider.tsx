@@ -8,9 +8,7 @@ type TIconProvider = {
 };
 
 const IconProvider = ({ children, icon, setIcon }: PropsWithChildren<TIconProvider>) => (
-  <IconContext.Provider
-    value={useMemo(() => ({ iconSelected: icon, setIconSelected: setIcon }), [icon, setIcon])}
-  >
+  <IconContext.Provider value={useMemo(() => ({ icon, setIcon }), [icon, setIcon])}>
     {children}
   </IconContext.Provider>
 );

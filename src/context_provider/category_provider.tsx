@@ -9,14 +9,11 @@ type TCategoryProvider = {
 
 const CategoryProvider = ({
   children,
-  category: selectedCategory,
-  setCategory: setSelectedCategory,
+  category,
+  setCategory,
 }: PropsWithChildren<TCategoryProvider>) => (
   <CategoryContext.Provider
-    value={useMemo(
-      () => ({ categorySelected: selectedCategory, setCategorySelected: setSelectedCategory }),
-      [selectedCategory, setSelectedCategory],
-    )}
+    value={useMemo(() => ({ category, setCategory }), [category, setCategory])}
   >
     {children}
   </CategoryContext.Provider>

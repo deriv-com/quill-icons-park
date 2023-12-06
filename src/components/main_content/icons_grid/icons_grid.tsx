@@ -11,8 +11,8 @@ const IconsGrid = () => {
   const searchContext = useContext(SearchContext);
   const categoryContext = useContext(CategoryContext);
 
-  const searchText = searchContext?.searchText ?? '';
-  const categorySelected = categoryContext?.categorySelected ?? DEFAULT_CATEGORY;
+  const searchText = searchContext?.search ?? '';
+  const categorySelected = categoryContext?.category ?? DEFAULT_CATEGORY;
 
   const {
     data: quillIcons,

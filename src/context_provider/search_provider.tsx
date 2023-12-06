@@ -7,9 +7,7 @@ type TSearchProvider = {
 };
 
 const SearchProvider = ({ children, search, setSearch }: PropsWithChildren<TSearchProvider>) => (
-  <SearchContext.Provider
-    value={useMemo(() => ({ searchText: search, setSearchText: setSearch }), [search, setSearch])}
-  >
+  <SearchContext.Provider value={useMemo(() => ({ search, setSearch }), [search, setSearch])}>
     {children}
   </SearchContext.Provider>
 );

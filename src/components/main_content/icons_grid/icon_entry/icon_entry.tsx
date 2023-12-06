@@ -1,23 +1,18 @@
 import classNames from 'classnames';
-import { useContext } from 'react';
-import { IconContext } from '../../../../context_provider/icon_context';
 import { TIconEntry } from '../../../../types/icon_types';
 import {
   ICON_GRID_DISPLAY_HEIGHT,
   ICON_GRID_DISPLAY_WIDTH,
 } from '../../../../constants/icon_constants';
+import useIcon from '../../../../hooks/icon/useIcon';
 
 const IconEntry = ({ category, iconName, Icon }: TIconEntry) => {
-  const iconContext = useContext(IconContext);
-  const iconSelected = iconContext?.iconSelected;
-  const setIconSelected = iconContext?.setIconSelected;
-
-  const isIconSelected = iconSelected?.iconName === iconName;
+  const { setIcon, isIconSelected } = useIcon(iconName);
 
   return (
     <div
       onKeyDown={undefined}
-      onClick={() => setIconSelected?.({ category, Icon, iconName })}
+      onClick={() => setIcon?.({ category, Icon, iconName })}
       className={classNames(
         'flex h-40 flex-col justify-between overflow-hidden rounded-xl border-2 p-4 shadow-md',
         isIconSelected
