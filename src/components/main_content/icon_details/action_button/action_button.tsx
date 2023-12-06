@@ -1,13 +1,16 @@
+import { QuillSvgProps } from '@deriv/quill-icons';
 import classNames from 'classnames';
+import { COLORS } from '../../../../constants/color_constants';
 
 type TActionButton = {
+  Icon?: React.ForwardRefExoticComponent<Omit<QuillSvgProps, 'ref'>>;
   label: string;
   onClick: () => void;
   disabled?: boolean;
   primary?: boolean;
 };
 
-const ActionButton = ({ label, onClick, disabled, primary }: TActionButton) => (
+const ActionButton = ({ Icon, label, onClick, disabled, primary }: TActionButton) => (
   <button
     disabled={disabled}
     className={classNames(
@@ -15,11 +18,12 @@ const ActionButton = ({ label, onClick, disabled, primary }: TActionButton) => (
       disabled
         ? 'bg-slate-100 text-slate-300 hover:bg-slate-100 hover:shadow-md'
         : primary
-        ? 'border-rose-500 bg-rose-500 text-white hover:border-rose-600 hover:bg-rose-600'
-        : ' border-rose-500 bg-white text-rose-500 hover:bg-rose-50',
+          ? 'border-rose-500 bg-rose-500 text-white hover:border-rose-600 hover:bg-rose-600'
+          : ' border-rose-500 bg-white text-rose-500 hover:bg-rose-50',
     )}
     onClick={onClick}
   >
+    {Icon && <Icon iconSize='sm' fill={primary ? COLORS.WHITE : COLORS.PRIMARY} />}
     {label}
   </button>
 );

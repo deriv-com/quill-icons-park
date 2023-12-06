@@ -2,6 +2,10 @@ import { IconSize } from '@deriv/quill-icons';
 import { TCustomIconSize } from '../../../../types/icon_types';
 import ActionButton from '../action_button/action_button';
 import { useState } from 'react';
+import { IllustrativeEtfIcon } from '@deriv/quill-icons/Illustrative';
+import { LabelPairedArrowDownToBracketRegularIcon } from '@deriv/quill-icons/LabelPaired';
+import { SELECTED__DOWNLOADABLE_ICON_ID } from '../../../../constants/icon_constants';
+import { saveAs } from 'file-saver';
 
 type TIconCodeView = {
   iconName: string;
@@ -27,6 +31,12 @@ const IconCodeView = ({ iconName, customIconSize, predefinedIconSize }: TIconCod
   ];
   const iconNameComponentUsageCode = iconNameComponentElements.join(' ').trim();
 
+  const downloadSvg = () => {
+    const downloadableIcon = document.querySelector(`#${SELECTED__DOWNLOADABLE_ICON_ID}`);
+    const svgBlob = new Blob([downloadableIcon?.outerHTML ?? ''], { type: 'image/svg+xml' });
+    saveAs(svgBlob, iconName.concat('.svg'));
+  };
+
   const copyCode = () => {
     navigator.clipboard.writeText(iconNameComponentUsageCode);
     setCopyButtonLabel('Copied!');
@@ -38,12 +48,20 @@ const IconCodeView = ({ iconName, customIconSize, predefinedIconSize }: TIconCod
   return (
     <div className='flex flex-col gap-4'>
       <div className='overflow-scroll rounded-lg border-2 p-2'>{iconNameComponentUsageCode}</div>
-      <ActionButton
-        primary
-        label={copyButtonLabel}
-        onClick={copyCode}
-        disabled={!iconNameComponentUsageCode}
-      />
+      <div className='grid grid-cols-2 gap-4'>
+        <ActionButton
+          label='Download SVG'
+          onClick={downloadSvg}
+          Icon={LabelPairedArrowDownToBracketRegularIcon}
+        />
+        <ActionButton
+          primary
+          label={copyButtonLabel}
+          onClick={copyCode}
+          disabled={!iconNameComponentUsageCode}
+          Icon={IllustrativeEtfIcon}
+        />
+      </div>
     </div>
   );
 };

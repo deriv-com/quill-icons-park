@@ -1,10 +1,13 @@
+import { QuillSvgProps } from '@deriv/quill-icons';
+import { TIconEntryCategory } from './icon_types';
+
 export type TQuillIconsModuleEntry = {
-  category: string;
-  icon: unknown;
+  category: TIconEntryCategory;
+  icon: React.ForwardRefExoticComponent<Omit<QuillSvgProps, 'ref'>>;
   iconName: string;
 };
 
 export type TQuillIconsModules = {
-  category: string;
+  category: TIconEntryCategory;
   quillIconsModule: TQuillIconsModuleEntry[];
 };

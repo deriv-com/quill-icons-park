@@ -1,13 +1,8 @@
 import { IconSize } from '@deriv/quill-icons';
 import PredefinedIconSizeSelection from './predefined-icon-size-selection/predefined-icon-size-selection';
 import CustomIconSizeSelection from './custom-icon-size-selection/custom-icon-size-selection';
-import { useContext } from 'react';
-import { CategoryContext } from '../../../../context/category_context';
-import {
-  CUSTOM_ICON_SIZE_SELECTION_CATEGORIES,
-  PREDEFINED_ICON_SIZE_SELECTION_CATEGORIES,
-} from '../../../../constants/category_constants';
 import { TCustomIconSize } from '../../../../types/icon_types';
+import useIcon from '../../../../hooks/icon/useIcon';
 
 type TIconSizeSelection = {
   customIconSize: TCustomIconSize;
@@ -22,20 +17,19 @@ const IconSizeSelection = ({
   predefinedIconSize,
   setPredefinedIconSize,
 }: TIconSizeSelection) => {
-  const categoryContext = useContext(CategoryContext);
-  const categorySelected = categoryContext?.categorySelected;
+  const { hasCustomIconSizeSupport, hasPredefinedIconSizeSupport } = useIcon();
 
   return (
     <div className='flex flex-col gap-2'>
       <span className='font-bold text-slate-400'>Icon Size</span>
       <div className='flex flex-col gap-4'>
-        {CUSTOM_ICON_SIZE_SELECTION_CATEGORIES.includes(categorySelected as string) && (
+        {hasCustomIconSizeSupport && (
           <CustomIconSizeSelection
             customIconSize={customIconSize}
             setCustomIconSize={setCustomIconSize}
           />
         )}
-        {PREDEFINED_ICON_SIZE_SELECTION_CATEGORIES.includes(categorySelected as string) && (
+        {hasPredefinedIconSizeSupport && (
           <PredefinedIconSizeSelection
             predefinedIconSize={predefinedIconSize}
             setPredefinedIconSize={setPredefinedIconSize}
