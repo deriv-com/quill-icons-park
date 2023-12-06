@@ -2,36 +2,32 @@ import { useMemo, useState } from 'react';
 import './App.scss';
 import Header from './components/header/header';
 import MainContent from './components/main_content/main_content';
-import { CategoryContext } from './context/category_context';
 import { DEFAULT_CATEGORY } from './constants/category_constants';
 import { SearchContext } from './context/search_context';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { TCategoriesType } from './types/category_types';
+import CategoryProvider from './context/category_provider';
 
 const queryClient = new QueryClient();
 
 const App = () => {
   const [searchText, setSearchText] = useState('');
-  const [categorySelected, setCategorySelected] = useState(DEFAULT_CATEGORY);
+  const [category, setCategory] = useState<TCategoriesType>(DEFAULT_CATEGORY);
 
   const searchContextValue = useMemo(
     () => ({ searchText, setSearchText }),
     [searchText, setSearchText],
   );
 
-  const categoryContextValue = useMemo(
-    () => ({ categorySelected, setCategorySelected }),
-    [categorySelected, setCategorySelected],
-  );
-
   return (
     <QueryClientProvider client={queryClient}>
       <SearchContext.Provider value={searchContextValue}>
-        <CategoryContext.Provider value={categoryContextValue}>
+        <CategoryProvider category={category} setCategory={setCategory}>
           <div className='flex flex-col text-gray-700'>
             <Header />
             <MainContent />
           </div>
-        </CategoryContext.Provider>
+        </CategoryProvider>
       </SearchContext.Provider>
     </QueryClientProvider>
   );
