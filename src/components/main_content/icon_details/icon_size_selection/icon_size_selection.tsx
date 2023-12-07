@@ -2,7 +2,7 @@ import { IconSize } from '@deriv/quill-icons';
 import PredefinedIconSizeSelection from './predefined-icon-size-selection/predefined-icon-size-selection';
 import CustomIconSizeSelection from './custom-icon-size-selection/custom-icon-size-selection';
 import { TCustomIconSize } from '../../../../types/icon_types';
-import useIcon from '../../../../hooks/icon/useIcon';
+import { useIcon } from '@deriv/hooks';
 
 type TIconSizeSelection = {
   customIconSize: TCustomIconSize;

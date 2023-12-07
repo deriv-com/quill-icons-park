@@ -16,15 +16,11 @@ export const getQuillIconsModules = async (searchText: string) => {
   const quillIconsModules: TQuillIconsModules[] = [];
   for await (const [category, categoryPromise] of Object.entries(CATEGORY_PROMISES)) {
     await categoryPromise
-      .then((importedQuillIconsModule) => {
+      .then(({ default: importedQuillIconsModule }) => {
         quillIconsModules.push({
           category,
           quillIconsModule: Object.entries(importedQuillIconsModule)
-            .filter(
-              ([iconName]) =>
-                iconName !== 'default' &&
-                RegExp(new RegExp(searchText, 'i')).exec(iconName)?.length,
-            )
+            .filter(([iconName]) => RegExp(new RegExp(searchText, 'i')).exec(iconName)?.length)
             .map(([iconName, icon]) => ({
               category,
               icon,

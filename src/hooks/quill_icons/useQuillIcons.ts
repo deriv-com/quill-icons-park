@@ -1,9 +1,9 @@
 import { useMemo } from 'react';
 import { CATEGORIES } from '../../constants/category_constants';
 import { TCategoriesType } from '../../types/category_types';
-import useQuillIconsModules from './useQuillIconsModules';
+import { useQuillIconsModules } from './useQuillIconsModules';
 
-const useQuillIcons = (searchText: string, categorySelected: TCategoriesType) => {
+export const useQuillIcons = (searchText: string, categorySelected: TCategoriesType) => {
   const { data: quillIconsArray, ...rest } = useQuillIconsModules(searchText);
 
   const memoizedQuillIcons = useMemo(() => {
@@ -30,5 +30,3 @@ const useQuillIcons = (searchText: string, categorySelected: TCategoriesType) =>
     ...rest,
   };
 };
-
-export default useQuillIcons;

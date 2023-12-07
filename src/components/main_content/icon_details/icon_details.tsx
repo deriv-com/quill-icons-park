@@ -7,7 +7,7 @@ import { IconSize } from '@deriv/quill-icons';
 import IconSizeSelection from './icon_size_selection/icon_size_selection';
 import { TCustomIconSize } from '../../../types/icon_types';
 import IconCodeView from './icon-code-view/icon-code-view';
-import useIcon from '../../../hooks/icon/useIcon';
+import { useIcon } from '@deriv/hooks';
 
 const IconDetails = () => {
   const { Icon, iconName, hasCustomIconSizeSupport, hasPredefinedIconSizeSupport } = useIcon();

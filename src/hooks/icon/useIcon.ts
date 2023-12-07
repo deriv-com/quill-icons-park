@@ -6,7 +6,7 @@ import {
   PREDEFINED_ICON_SIZE_SELECTION_CATEGORIES,
 } from '../../constants/category_constants';
 
-const useIcon = (iconNameToCompare?: string) => {
+export const useIcon = (iconNameToCompare?: string) => {
   const iconContext = useContext(IconContext);
   const icon = iconContext?.icon;
   const isIconSelected = icon?.iconName === iconNameToCompare;
@@ -27,5 +27,3 @@ const useIcon = (iconNameToCompare?: string) => {
     setIcon: iconContext?.setIcon,
   };
 };
-
-export default useIcon;
