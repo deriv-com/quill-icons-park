@@ -47,7 +47,10 @@ const IconCodeView = ({ iconName, customIconSize, predefinedIconSize }: TIconCod
 
   return (
     <div className='flex flex-col gap-4'>
-      <div className='overflow-scroll rounded-lg border-2 p-2'>{iconNameComponentUsageCode}</div>
+      <div className='flex flex-col gap-2'>
+        <span className='font-bold text-slate-400'>Code Usage</span>
+        <div className='overflow-scroll rounded-lg border-2 p-2'>{iconNameComponentUsageCode}</div>
+      </div>
       <div className='grid grid-cols-2 gap-4'>
         <ActionButton
           label='Download SVG'
