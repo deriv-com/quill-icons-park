@@ -6,7 +6,7 @@ import { SELECTED__DOWNLOADABLE_ICON_ID } from '../../../constants/icon_constant
 import { IconSize } from '@deriv/quill-icons';
 import IconSizeSelection from './icon_size_selection/icon_size_selection';
 import { TCustomIconSize } from '../../../types/icon_types';
-import IconCodeView from './icon-code-view/icon-code-view';
+import IconCodeView from './icon_code_view/icon_code_view';
 import { useIcon } from '@deriv/hooks';
 
 const IconDetails = () => {
