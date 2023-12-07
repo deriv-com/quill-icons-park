@@ -6,7 +6,7 @@ import {
   PREDEFINED_ICON_SIZE_SELECTION_CATEGORIES,
 } from '../../constants/category_constants';
 
-const useIcon = (iconNameToCompare?: string) => {
+export const useIcon = (iconNameToCompare?: string) => {
   const iconContext = useContext(IconContext);
   const icon = iconContext?.icon;
   const isIconSelected = icon?.iconName === iconNameToCompare;
@@ -16,16 +16,16 @@ const useIcon = (iconNameToCompare?: string) => {
   const hasPredefinedIconSizeSupport = PREDEFINED_ICON_SIZE_SELECTION_CATEGORIES.includes(
     icon?.category as string,
   );
+  const hasFillColorSupport = hasPredefinedIconSizeSupport;
 
   return {
-    iconName: icon?.iconName ?? '',
-    Icon: icon?.Icon,
     category: icon?.category ?? DEFAULT_CATEGORY,
-    isIconSelected,
     hasCustomIconSizeSupport,
+    hasFillColorSupport,
     hasPredefinedIconSizeSupport,
     setIcon: iconContext?.setIcon,
+    Icon: icon?.Icon,
+    iconName: icon?.iconName ?? '',
+    isIconSelected,
   };
 };
-
-export default useIcon;

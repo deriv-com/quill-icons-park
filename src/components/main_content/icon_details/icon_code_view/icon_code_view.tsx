@@ -10,10 +10,16 @@ import { saveAs } from 'file-saver';
 type TIconCodeView = {
   iconName: string;
   customIconSize?: TCustomIconSize;
+  fillColor?: string;
   predefinedIconSize?: IconSize;
 };
 
-const IconCodeView = ({ iconName, customIconSize, predefinedIconSize }: TIconCodeView) => {
+const IconCodeView = ({
+  iconName,
+  customIconSize,
+  fillColor,
+  predefinedIconSize,
+}: TIconCodeView) => {
   const [copyButtonLabel, setCopyButtonLabel] = useState('Copy Code');
 
   const customIconSizeHeightProp = customIconSize?.height
@@ -22,11 +28,14 @@ const IconCodeView = ({ iconName, customIconSize, predefinedIconSize }: TIconCod
   const customIconSizeWidthProp = customIconSize?.width ? `width='${customIconSize.width}'` : '';
   const customIconSizeProp = [customIconSizeHeightProp, customIconSizeWidthProp].join(' ');
 
+  const fillColorProp = fillColor ? `fill='${fillColor}'` : '';
+
   const predefinedIconSizeProp = predefinedIconSize ? `iconSize='${predefinedIconSize}'` : '';
 
   const iconNameComponentElements = [
     '<'.concat(iconName),
     customIconSizeProp,
+    fillColorProp,
     predefinedIconSizeProp.concat('/>'),
   ];
   const iconNameComponentUsageCode = iconNameComponentElements.join(' ').trim();
@@ -46,23 +55,29 @@ const IconCodeView = ({ iconName, customIconSize, predefinedIconSize }: TIconCod
   };
 
   return (
-    <div className='flex flex-col gap-4'>
-      <div className='overflow-scroll rounded-lg border-2 p-2'>{iconNameComponentUsageCode}</div>
-      <div className='grid grid-cols-2 gap-4'>
-        <ActionButton
-          label='Download SVG'
-          onClick={downloadSvg}
-          Icon={LabelPairedArrowDownToBracketRegularIcon}
-        />
-        <ActionButton
-          primary
-          label={copyButtonLabel}
-          onClick={copyCode}
-          disabled={!iconNameComponentUsageCode}
-          Icon={IllustrativeEtfIcon}
-        />
+    !!iconNameComponentUsageCode && (
+      <div className='flex flex-col gap-4'>
+        <div className='flex flex-col gap-2'>
+          <span className='font-bold text-slate-400'>Code Usage</span>
+          <div className='overflow-scroll rounded-lg border-2 p-2'>
+            {iconNameComponentUsageCode}
+          </div>
+        </div>
+        <div className='grid grid-cols-2 gap-4'>
+          <ActionButton
+            label='Download SVG'
+            onClick={downloadSvg}
+            Icon={LabelPairedArrowDownToBracketRegularIcon}
+          />
+          <ActionButton
+            primary
+            label={copyButtonLabel}
+            onClick={copyCode}
+            Icon={IllustrativeEtfIcon}
+          />
+        </div>
       </div>
-    </div>
+    )
   );
 };
 

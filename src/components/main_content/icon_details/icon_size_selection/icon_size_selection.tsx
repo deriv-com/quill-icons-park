@@ -1,8 +1,8 @@
 import { IconSize } from '@deriv/quill-icons';
-import PredefinedIconSizeSelection from './predefined-icon-size-selection/predefined-icon-size-selection';
-import CustomIconSizeSelection from './custom-icon-size-selection/custom-icon-size-selection';
+import PredefinedIconSizeSelection from './predefined_icon_size_selection/predefined_icon_size_selection';
+import CustomIconSizeSelection from './custom_icon_size_selection/custom_icon_size_selection';
 import { TCustomIconSize } from '../../../../types/icon_types';
-import useIcon from '../../../../hooks/icon/useIcon';
+import { useIcon } from '@deriv/hooks';
 
 type TIconSizeSelection = {
   customIconSize: TCustomIconSize;
@@ -22,20 +22,18 @@ const IconSizeSelection = ({
   return (
     <div className='flex flex-col gap-2'>
       <span className='font-bold text-slate-400'>Icon Size</span>
-      <div className='flex flex-col gap-4'>
-        {hasCustomIconSizeSupport && (
-          <CustomIconSizeSelection
-            customIconSize={customIconSize}
-            setCustomIconSize={setCustomIconSize}
-          />
-        )}
-        {hasPredefinedIconSizeSupport && (
-          <PredefinedIconSizeSelection
-            predefinedIconSize={predefinedIconSize}
-            setPredefinedIconSize={setPredefinedIconSize}
-          />
-        )}
-      </div>
+      {hasCustomIconSizeSupport && (
+        <CustomIconSizeSelection
+          customIconSize={customIconSize}
+          setCustomIconSize={setCustomIconSize}
+        />
+      )}
+      {hasPredefinedIconSizeSupport && (
+        <PredefinedIconSizeSelection
+          predefinedIconSize={predefinedIconSize}
+          setPredefinedIconSize={setPredefinedIconSize}
+        />
+      )}
     </div>
   );
 };

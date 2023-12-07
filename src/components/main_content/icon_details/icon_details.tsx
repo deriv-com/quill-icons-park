@@ -6,17 +6,30 @@ import { SELECTED__DOWNLOADABLE_ICON_ID } from '../../../constants/icon_constant
 import { IconSize } from '@deriv/quill-icons';
 import IconSizeSelection from './icon_size_selection/icon_size_selection';
 import { TCustomIconSize } from '../../../types/icon_types';
-import IconCodeView from './icon-code-view/icon-code-view';
-import useIcon from '../../../hooks/icon/useIcon';
+import IconCodeView from './icon_code_view/icon_code_view';
+import { useIcon } from '@deriv/hooks';
+import IconFill from './icon_fill/icon_fill';
 
 const IconDetails = () => {
-  const { Icon, iconName, hasCustomIconSizeSupport, hasPredefinedIconSizeSupport } = useIcon();
+  const {
+    Icon,
+    iconName,
+    hasFillColorSupport,
+    hasCustomIconSizeSupport,
+    hasPredefinedIconSizeSupport,
+  } = useIcon();
+  const [fillColor, setFillColor] = useState('#ffffff');
   const [customIconSize, setCustomIconSize] = useState<TCustomIconSize>({
     height: '120px',
     width: '120px',
   });
   const [predefinedIconSize, setPredefinedIconSize] = useState<IconSize>('2xl');
 
+  const fillColorProps = hasFillColorSupport
+    ? {
+        fill: fillColor,
+      }
+    : {};
   const customIconSizeProps = hasCustomIconSizeSupport
     ? {
         height: customIconSize.height,
@@ -28,7 +41,8 @@ const IconDetails = () => {
         iconSize: predefinedIconSize,
       }
     : {};
-  const iconProps = { ...customIconSizeProps, ...predefinedIconSizeProps };
+  const iconProps = { ...fillColorProps, ...customIconSizeProps, ...predefinedIconSizeProps };
+  console.log('>>>', iconProps);
 
   return (
     <div className='relative p-4'>
@@ -48,6 +62,7 @@ const IconDetails = () => {
             <div>{getSplitIconName(iconName).join(' ')}</div>
           </div>
         </div>
+        <IconFill fillColor={fillColor} setFillColor={setFillColor} />
         <IconSizeSelection
           customIconSize={customIconSize}
           setCustomIconSize={setCustomIconSize}
@@ -56,6 +71,7 @@ const IconDetails = () => {
         />
         <IconCodeView
           iconName={iconName}
+          fillColor={hasFillColorSupport ? fillColor : undefined}
           customIconSize={hasCustomIconSizeSupport ? customIconSize : undefined}
           predefinedIconSize={hasPredefinedIconSizeSupport ? predefinedIconSize : undefined}
         />

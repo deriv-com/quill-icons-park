@@ -4,7 +4,7 @@ import {
   ICON_GRID_DISPLAY_HEIGHT,
   ICON_GRID_DISPLAY_WIDTH,
 } from '../../../../constants/icon_constants';
-import useIcon from '../../../../hooks/icon/useIcon';
+import { useIcon } from '@deriv/hooks';
 
 const IconEntry = ({ category, iconName, Icon }: TIconEntry) => {
   const { setIcon, isIconSelected } = useIcon(iconName);
