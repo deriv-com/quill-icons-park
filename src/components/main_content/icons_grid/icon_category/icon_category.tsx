@@ -9,15 +9,15 @@ type TIconCategory = {
   shouldDisplayCategory?: boolean;
 };
 
-const IconCategory = ({
-  category,
-  quillIconsModule,
-  shouldDisplayCategory = true,
-}: TIconCategory) => {
+const IconCategory = ({ category, quillIconsModule, shouldDisplayCategory }: TIconCategory) => {
   return (
-    quillIconsModule.length > 0 && (
+    !!quillIconsModule.length && (
       <div className='flex flex-col gap-2'>
-        {shouldDisplayCategory && <span className='ml-4 mt-2 font-bold'>{category}</span>}
+        {shouldDisplayCategory && (
+          <div className='mt-2 flex justify-center'>
+            <span className='rounded-lg border px-2 py-1 font-bold'>{category}</span>
+          </div>
+        )}
         <div className='grid grid-cols-3 gap-4 p-4 lg:grid-cols-4 xl:grid-cols-6'>
           {quillIconsModule.map(({ category, icon, iconName }) => (
             <IconEntry
