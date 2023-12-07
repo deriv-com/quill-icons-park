@@ -18,7 +18,7 @@ const IconDetails = () => {
     hasCustomIconSizeSupport,
     hasPredefinedIconSizeSupport,
   } = useIcon();
-  const [fillColor, setFillColor] = useState('#ffffff');
+  const [fillColor, setFillColor] = useState('#000000');
   const [customIconSize, setCustomIconSize] = useState<TCustomIconSize>({
     height: '120px',
     width: '120px',
@@ -42,7 +42,6 @@ const IconDetails = () => {
       }
     : {};
   const iconProps = { ...fillColorProps, ...customIconSizeProps, ...predefinedIconSizeProps };
-  console.log('>>>', iconProps);
 
   return (
     <div className='relative p-4'>
