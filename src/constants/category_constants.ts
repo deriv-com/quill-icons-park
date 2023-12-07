@@ -4,6 +4,7 @@ export const CATEGORIES = Object.freeze({
   ALL: 'All',
   CURRENCIES: 'Currencies',
   FLAGS: 'Flags',
+  ILLUSTRATIONS: 'Illustrations',
   ILLUSTRATIVE: 'Illustrative',
   LABEL_PAIRED: 'Label Paired',
   LOGO: 'Logo',
@@ -14,7 +15,11 @@ export const CATEGORIES = Object.freeze({
 
 export const DEFAULT_CATEGORY: TCategoriesType = CATEGORIES.CURRENCIES;
 
-export const CUSTOM_ICON_SIZE_SELECTION_CATEGORIES: string[] = [CATEGORIES.ALL, CATEGORIES.LOGO];
+export const CUSTOM_ICON_SIZE_SELECTION_CATEGORIES: string[] = [
+  CATEGORIES.ALL,
+  CATEGORIES.LOGO,
+  CATEGORIES.ILLUSTRATIONS,
+];
 
 export const PREDEFINED_ICON_SIZE_SELECTION_CATEGORIES: string[] = [
   CATEGORIES.ALL,

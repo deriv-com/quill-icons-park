@@ -4,6 +4,7 @@ import { TQuillIconsModules } from '../types/icon_modules';
 const CATEGORY_PROMISES = {
   [CATEGORIES.CURRENCIES]: import('@deriv/quill-icons/Currencies'),
   [CATEGORIES.FLAGS]: import('@deriv/quill-icons/Flags'),
+  [CATEGORIES.ILLUSTRATIONS]: import('@deriv/quill-icons/Illustration'),
   [CATEGORIES.ILLUSTRATIVE]: import('@deriv/quill-icons/Illustrative'),
   [CATEGORIES.LABEL_PAIRED]: import('@deriv/quill-icons/LabelPaired'),
   [CATEGORIES.LOGO]: import('@deriv/quill-icons/Logo'),
