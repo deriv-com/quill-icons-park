@@ -4,8 +4,8 @@ import ActionButton from '../action_button/action_button';
 import { useState } from 'react';
 import { IllustrativeEtfIcon } from '@deriv/quill-icons/Illustrative';
 import { LabelPairedArrowDownToBracketRegularIcon } from '@deriv/quill-icons/LabelPaired';
-import { SELECTED__DOWNLOADABLE_ICON_ID } from '../../../../constants/icon_constants';
 import { saveAs } from 'file-saver';
+import { SELECTED__DOWNLOADABLE_ICON_ID } from '@deriv/constants';
 
 type TIconCodeView = {
   iconName: string;

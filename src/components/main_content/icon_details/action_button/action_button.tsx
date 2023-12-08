@@ -1,6 +1,6 @@
+import { COLORS } from '@deriv/constants';
 import { QuillSvgProps } from '@deriv/quill-icons';
 import classNames from 'classnames';
-import { COLORS } from '../../../../constants/color_constants';
 
 type TActionButton = {
   Icon?: React.ForwardRefExoticComponent<Omit<QuillSvgProps, 'ref'>>;
