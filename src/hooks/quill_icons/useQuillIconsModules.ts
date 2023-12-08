@@ -1,8 +1,12 @@
 import { getQuillIconsModules } from '@deriv/utils';
 import { useQuery } from '@tanstack/react-query';
+import { useSearch } from '@deriv/hooks';
 
-export const useQuillIconsModules = (searchText: string) =>
-  useQuery({
-    queryKey: ['getQuillIconsModules', searchText],
-    queryFn: () => getQuillIconsModules(searchText),
+export const useQuillIconsModules = () => {
+  const { search } = useSearch();
+
+  return useQuery({
+    queryKey: ['getQuillIconsModules', search],
+    queryFn: () => getQuillIconsModules(search),
   });
+};

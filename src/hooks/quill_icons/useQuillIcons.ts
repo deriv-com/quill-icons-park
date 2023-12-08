@@ -3,8 +3,8 @@ import { useQuillIconsModules } from '..';
 import { CATEGORIES } from '@deriv/constants';
 import { TCategoriesType } from '@deriv/types';
 
-export const useQuillIcons = (searchText: string, categorySelected: TCategoriesType) => {
-  const { data: quillIconsArray, ...rest } = useQuillIconsModules(searchText);
+export const useQuillIcons = (categorySelected: TCategoriesType) => {
+  const { data: quillIconsArray, ...rest } = useQuillIconsModules();
 
   const memoizedQuillIcons = useMemo(() => {
     let quillIcons;

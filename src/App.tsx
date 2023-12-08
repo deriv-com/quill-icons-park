@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import './App.scss';
-import Header from './components/header/header';
 import MainContent from './components/main_content/main_content';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { DEFAULT_CATEGORY } from '@deriv/constants';
 import { TCategoriesType, TIconEntry } from '@deriv/types';
 import { CategoryProvider, IconProvider, SearchProvider } from '@deriv/stores';
+import { Header } from './components/header/header';
 
 export const App = () => {
   const queryClient = new QueryClient();
