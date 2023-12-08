@@ -1,11 +1,8 @@
-import { useSearch } from '@deriv/hooks';
+import { useCategory, useSearch } from '@deriv/hooks';
 import { LabelPairedSearchBoldIcon } from '@deriv/quill-icons';
 
-type TNoIconsFound = {
-  categorySelected: string;
-};
-
-export const NoIconsFound = ({ categorySelected }: TNoIconsFound) => {
+export const NoIconsFound = () => {
+  const { category } = useCategory();
   const { search } = useSearch();
 
   return (
@@ -15,7 +12,7 @@ export const NoIconsFound = ({ categorySelected }: TNoIconsFound) => {
         <span className='opacity-50'>No result found for your search "</span>
         <span className='font-bold'>{search}</span>
         <span className='opacity-50'>" in </span>
-        <span className='font-bold'>{categorySelected}</span>
+        <span className='font-bold'>{category}</span>
         <span className='opacity-50'> category!</span>
       </span>
     </div>

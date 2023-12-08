@@ -1,13 +1,10 @@
-import { useContext } from 'react';
 import './categories.scss';
 import classNames from 'classnames';
 import { CATEGORIES } from '@deriv/constants';
-import { CategoryContext } from '@deriv/stores';
+import { useCategory } from '@deriv/hooks';
 
 export const Categories = () => {
-  const categoryContext = useContext(CategoryContext);
-  const category = categoryContext?.category;
-  const setCategory = categoryContext?.setCategory;
+  const { category, setCategory } = useCategory();
 
   return (
     <div className='categories mt-2 flex w-full items-center justify-start gap-2 overflow-scroll px-4 sm:mt-6 md:justify-center'>
@@ -28,4 +25,3 @@ export const Categories = () => {
     </div>
   );
 };
-

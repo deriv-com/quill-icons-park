@@ -1,18 +1,17 @@
 import { useMemo } from 'react';
-import { useQuillIconsModules } from '..';
-import { CATEGORIES } from '@deriv/constants';
-import { TCategoriesType } from '@deriv/types';
+import { useCategory, useQuillIconsModules } from '@deriv/hooks';
 
-export const useQuillIcons = (categorySelected: TCategoriesType) => {
+export const useQuillIcons = () => {
   const { data: quillIconsArray, ...rest } = useQuillIconsModules();
+  const { category, hasCategoryAllSelected } = useCategory();
 
   const memoizedQuillIcons = useMemo(() => {
     let quillIcons;
-    if (categorySelected === CATEGORIES.ALL && quillIconsArray?.length) {
+    if (hasCategoryAllSelected && quillIconsArray?.length) {
       quillIcons = quillIconsArray;
     } else {
       const quillIconsCategoryObject = quillIconsArray?.find(
-        (quillIconsModule) => quillIconsModule.category === categorySelected,
+        (quillIconsModule) => quillIconsModule.category === category,
       );
       quillIcons = quillIconsCategoryObject ? [quillIconsCategoryObject] : [];
     }
@@ -22,7 +21,7 @@ export const useQuillIcons = (categorySelected: TCategoriesType) => {
         .map((quillIconModule) => quillIconModule.quillIconsModule.length)
         .reduce((totalIconsLength, iconsLength) => totalIconsLength + iconsLength, 0),
     };
-  }, [categorySelected, quillIconsArray]);
+  }, [category, hasCategoryAllSelected, quillIconsArray]);
 
   return {
     data: memoizedQuillIcons.quillIcons,
