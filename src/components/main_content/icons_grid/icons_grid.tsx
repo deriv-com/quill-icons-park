@@ -1,6 +1,6 @@
 import { useContext } from 'react';
-import { CategoryContext } from '../../../context_provider/category_context';
-import { SearchContext } from '../../../context_provider/search_context';
+import { CategoryContext } from '../../../store/category_context';
+import { SearchContext } from '../../../store/search_context';
 import NoIconsFound from './no_icons_found/no_icons_found';
 import Loading from '../../shared/loading/loading';
 import IconCategory from './icon_category/icon_category';
