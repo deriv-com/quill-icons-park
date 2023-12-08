@@ -21,7 +21,7 @@
     "noFallthroughCasesInSwitch": true,
 
     "baseUrl": ".",
-    "paths": {"@deriv/hooks": ["src/hooks"], "@deriv/constants":["src/constants"]}
+    "paths": {"@deriv/hooks": ["src/hooks"], "@deriv/constants":["src/constants"],"@deriv/types":["src/types"]}
   },
   "include": ["src", "prettier.config.js"],
   "references": [{ "path": "./tsconfig.node.json" }]

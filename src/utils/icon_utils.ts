@@ -1,5 +1,5 @@
 import { CATEGORY_PROMISES } from '@deriv/constants';
-import { TQuillIconsModules } from '../types/icon_modules';
+import { TQuillIconsModules } from '@deriv/types';
 
 export const getQuillIconsModules = async (searchText: string) => {
   const quillIconsModules: TQuillIconsModules[] = [];

@@ -1,8 +1,8 @@
 import { IconSize } from '@deriv/quill-icons';
 import PredefinedIconSizeSelection from './predefined_icon_size_selection/predefined_icon_size_selection';
 import CustomIconSizeSelection from './custom_icon_size_selection/custom_icon_size_selection';
-import { TCustomIconSize } from '../../../../types/icon_types';
 import { useIcon } from '@deriv/hooks';
+import { TCustomIconSize } from '@deriv/types';
 
 type TIconSizeSelection = {
   customIconSize: TCustomIconSize;

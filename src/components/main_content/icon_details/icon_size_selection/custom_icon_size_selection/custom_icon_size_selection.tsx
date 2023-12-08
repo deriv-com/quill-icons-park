@@ -1,4 +1,4 @@
-import { TCustomIconSize } from '../../../../../types/icon_types';
+import { TCustomIconSize } from '@deriv/types';
 
 type TCustomIconSelection = {
   customIconSize: TCustomIconSize;

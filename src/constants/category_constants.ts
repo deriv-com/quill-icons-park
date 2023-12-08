@@ -1,4 +1,4 @@
-import { TCategoriesType } from '../types/category_types';
+import { TCategoriesType } from '@deriv/types';
 
 export const CATEGORIES = Object.freeze({
   ALL: 'All',

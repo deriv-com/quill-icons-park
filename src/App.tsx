@@ -3,12 +3,11 @@ import './App.scss';
 import Header from './components/header/header';
 import MainContent from './components/main_content/main_content';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { TCategoriesType } from './types/category_types';
 import CategoryProvider from './context_provider/category_provider';
 import SearchProvider from './context_provider/search_provider';
-import { TIconEntry } from './types/icon_types';
 import IconProvider from './context_provider/icon_provider';
 import { DEFAULT_CATEGORY } from '@deriv/constants';
+import { TCategoriesType, TIconEntry } from '@deriv/types';
 
 export const App = () => {
   const queryClient = new QueryClient();

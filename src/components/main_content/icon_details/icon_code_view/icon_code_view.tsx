@@ -1,11 +1,11 @@
 import { IconSize } from '@deriv/quill-icons';
-import { TCustomIconSize } from '../../../../types/icon_types';
 import ActionButton from '../action_button/action_button';
 import { useState } from 'react';
 import { IllustrativeEtfIcon } from '@deriv/quill-icons/Illustrative';
 import { LabelPairedArrowDownToBracketRegularIcon } from '@deriv/quill-icons/LabelPaired';
 import { saveAs } from 'file-saver';
 import { SELECTED__DOWNLOADABLE_ICON_ID } from '@deriv/constants';
+import { TCustomIconSize } from '@deriv/types';
 
 type TIconCodeView = {
   iconName: string;

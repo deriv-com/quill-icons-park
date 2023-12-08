@@ -1,6 +1,6 @@
 import { PropsWithChildren, useMemo } from 'react';
-import { TCategoriesType } from '../types/category_types';
 import { CategoryContext } from './category_context';
+import { TCategoriesType } from '@deriv/types';
 
 type TCategoryProvider = {
   category: TCategoriesType;

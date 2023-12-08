@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
-import { TCategoriesType } from '../../types/category_types';
 import { useQuillIconsModules } from '..';
 import { CATEGORIES } from '@deriv/constants';
+import { TCategoriesType } from '@deriv/types';
 
 export const useQuillIcons = (searchText: string, categorySelected: TCategoriesType) => {
   const { data: quillIconsArray, ...rest } = useQuillIconsModules(searchText);

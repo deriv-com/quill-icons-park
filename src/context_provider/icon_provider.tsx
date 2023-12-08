@@ -1,6 +1,6 @@
 import { PropsWithChildren, useMemo } from 'react';
-import { TIconEntry } from '../types/icon_types';
 import { IconContext } from './icon_context';
+import { TIconEntry } from '@deriv/types';
 
 type TIconProvider = {
   icon?: TIconEntry;
