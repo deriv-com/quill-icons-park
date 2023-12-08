@@ -8,20 +8,20 @@ export default defineConfig({
   resolve: {
     alias: [
       {
-        find: '@deriv/hooks',
-        replacement: fileURLToPath(new URL('./src/hooks', import.meta.url)),
-      },
-      {
         find: '@deriv/constants',
         replacement: fileURLToPath(new URL('./src/constants', import.meta.url)),
       },
       {
-        find: '@deriv/types',
-        replacement: fileURLToPath(new URL('./src/types', import.meta.url)),
+        find: '@deriv/hooks',
+        replacement: fileURLToPath(new URL('./src/hooks', import.meta.url)),
       },
       {
         find: '@deriv/stores',
         replacement: fileURLToPath(new URL('./src/stores', import.meta.url)),
+      },
+      {
+        find: '@deriv/types',
+        replacement: fileURLToPath(new URL('./src/types', import.meta.url)),
       },
       {
         find: '@deriv/utils',

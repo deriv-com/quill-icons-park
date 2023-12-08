@@ -22,10 +22,10 @@
 
     "baseUrl": ".",
     "paths": {
-      "@deriv/hooks": ["src/hooks"],
       "@deriv/constants":["src/constants"],
-      "@deriv/types":["src/types"],
+      "@deriv/hooks": ["src/hooks"],
       "@deriv/stores":["src/stores"],
+      "@deriv/types":["src/types"],
       "@deriv/utils":["src/utils"],
     }
   },
