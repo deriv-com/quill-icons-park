@@ -7,7 +7,7 @@ type TCategoryProvider = {
   setCategory: React.Dispatch<React.SetStateAction<TCategoriesType>>;
 };
 
-const CategoryProvider = ({
+export const CategoryProvider = ({
   children,
   category,
   setCategory,
@@ -18,5 +18,3 @@ const CategoryProvider = ({
     {children}
   </CategoryContext.Provider>
 );
-
-export default CategoryProvider;

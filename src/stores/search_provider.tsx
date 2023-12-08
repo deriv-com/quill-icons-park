@@ -6,10 +6,12 @@ type TSearchProvider = {
   setSearch: React.Dispatch<React.SetStateAction<string>>;
 };
 
-const SearchProvider = ({ children, search, setSearch }: PropsWithChildren<TSearchProvider>) => (
+export const SearchProvider = ({
+  children,
+  search,
+  setSearch,
+}: PropsWithChildren<TSearchProvider>) => (
   <SearchContext.Provider value={useMemo(() => ({ search, setSearch }), [search, setSearch])}>
     {children}
   </SearchContext.Provider>
 );
-
-export default SearchProvider;

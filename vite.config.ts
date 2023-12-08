@@ -19,6 +19,10 @@ export default defineConfig({
         find: '@deriv/types',
         replacement: fileURLToPath(new URL('./src/types', import.meta.url)),
       },
+      {
+        find: '@deriv/stores',
+        replacement: fileURLToPath(new URL('./src/stores', import.meta.url)),
+      },
     ],
   },
 });

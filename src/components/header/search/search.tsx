@@ -1,7 +1,7 @@
 import { useContext } from 'react';
-import { SearchContext } from '../../../store/search_context';
 import { StandaloneSearchBoldIcon } from '@deriv/quill-icons';
 import { debouncedStateUpdater } from '../../../utils/text_utils';
+import { SearchContext } from '@deriv/stores';
 
 const Search = () => {
   const searchContext = useContext(SearchContext);

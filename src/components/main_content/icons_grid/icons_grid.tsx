@@ -1,11 +1,10 @@
 import { useContext } from 'react';
-import { CategoryContext } from '../../../store/category_context';
-import { SearchContext } from '../../../store/search_context';
 import NoIconsFound from './no_icons_found/no_icons_found';
 import Loading from '../../shared/loading/loading';
 import IconCategory from './icon_category/icon_category';
 import { useQuillIcons } from '@deriv/hooks';
 import { CATEGORIES, DEFAULT_CATEGORY } from '@deriv/constants';
+import { CategoryContext, SearchContext } from '@deriv/stores';
 
 const IconsGrid = () => {
   const searchContext = useContext(SearchContext);
