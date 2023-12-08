@@ -1,22 +1,20 @@
 import { useContext } from 'react';
 import { IconContext } from '../../context_provider/icon_context';
 import {
-  CUSTOM_ICON_SIZE_SELECTION_CATEGORIES,
+  CATEGORIES_TYPE_A,
   DEFAULT_CATEGORY,
-  PREDEFINED_ICON_SIZE_SELECTION_CATEGORIES,
+  CATEGORIES_TYPE_B,
 } from '../../constants/category_constants';
 
 export const useIcon = (iconNameToCompare?: string) => {
   const iconContext = useContext(IconContext);
   const icon = iconContext?.icon;
   const isIconSelected = icon?.iconName === iconNameToCompare;
-  const hasCustomIconSizeSupport = CUSTOM_ICON_SIZE_SELECTION_CATEGORIES.includes(
-    icon?.category as string,
-  );
-  const hasPredefinedIconSizeSupport = PREDEFINED_ICON_SIZE_SELECTION_CATEGORIES.includes(
-    icon?.category as string,
-  );
-  const hasFillColorSupport = hasPredefinedIconSizeSupport;
+  const isCategoryA = CATEGORIES_TYPE_A.includes(icon?.category as string);
+  const isCategoryB = CATEGORIES_TYPE_B.includes(icon?.category as string);
+  const hasCustomIconSizeSupport = isCategoryA;
+  const hasPredefinedIconSizeSupport = isCategoryB;
+  const hasFillColorSupport = isCategoryB;
 
   return {
     category: icon?.category ?? DEFAULT_CATEGORY,
