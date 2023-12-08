@@ -5,7 +5,7 @@ type TNoIconSelected = {
   isVisible: boolean;
 };
 
-const NoIconSelected = ({ isVisible }: TNoIconSelected) => (
+export const NoIconSelected = ({ isVisible }: TNoIconSelected) => (
   <span
     className={classNames(
       'absolute left-0 right-0 h-full w-96',
@@ -20,5 +20,3 @@ const NoIconSelected = ({ isVisible }: TNoIconSelected) => (
     </div>
   </span>
 );
-
-export default NoIconSelected;

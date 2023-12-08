@@ -6,7 +6,7 @@ type TPredefinedIconSelection = {
   setPredefinedIconSize: React.Dispatch<React.SetStateAction<IconSize>>;
 };
 
-const PredefinedIconSizeSelection = ({
+export const PredefinedIconSizeSelection = ({
   predefinedIconSize,
   setPredefinedIconSize,
 }: TPredefinedIconSelection) => {
@@ -32,5 +32,3 @@ const PredefinedIconSizeSelection = ({
     </div>
   );
 };
-
-export default PredefinedIconSizeSelection;

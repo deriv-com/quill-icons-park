@@ -1,12 +1,9 @@
 import classNames from 'classnames';
-import { TIconEntry } from '../../../../types/icon_types';
-import {
-  ICON_GRID_DISPLAY_HEIGHT,
-  ICON_GRID_DISPLAY_WIDTH,
-} from '../../../../constants/icon_constants';
 import { useIcon } from '@deriv/hooks';
+import { ICON_GRID_DISPLAY_SIZE } from '@deriv/constants';
+import { TIconEntry } from '@deriv/types';
 
-const IconEntry = ({ category, iconName, Icon }: TIconEntry) => {
+export const IconEntry = ({ category, iconName, Icon }: TIconEntry) => {
   const { setIcon, isIconSelected } = useIcon(iconName);
 
   return (
@@ -22,11 +19,9 @@ const IconEntry = ({ category, iconName, Icon }: TIconEntry) => {
     >
       <span />
       <span className='flex justify-center'>
-        <Icon height={ICON_GRID_DISPLAY_HEIGHT} width={ICON_GRID_DISPLAY_WIDTH} />
+        <Icon height={ICON_GRID_DISPLAY_SIZE.HEIGHT} width={ICON_GRID_DISPLAY_SIZE.WIDTH} />
       </span>
       <span className='mt-2 text-xs sm:text-sm'>{iconName}</span>
     </div>
   );
 };
-
-export default IconEntry;

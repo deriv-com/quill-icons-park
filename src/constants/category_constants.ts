@@ -1,4 +1,4 @@
-import { TCategoriesType } from '../types/category_types';
+import { TCategoriesType } from '@deriv/types';
 
 export const CATEGORIES = Object.freeze({
   ALL: 'All',
@@ -15,13 +15,13 @@ export const CATEGORIES = Object.freeze({
 
 export const DEFAULT_CATEGORY: TCategoriesType = CATEGORIES.CURRENCIES;
 
-export const CUSTOM_ICON_SIZE_SELECTION_CATEGORIES: string[] = [
+export const CATEGORIES_TYPE_A: string[] = [
   CATEGORIES.ALL,
   CATEGORIES.LOGO,
   CATEGORIES.ILLUSTRATIONS,
 ];
 
-export const PREDEFINED_ICON_SIZE_SELECTION_CATEGORIES: string[] = [
+export const CATEGORIES_TYPE_B: string[] = [
   CATEGORIES.ALL,
   CATEGORIES.CURRENCIES,
   CATEGORIES.FLAGS,
@@ -31,3 +31,15 @@ export const PREDEFINED_ICON_SIZE_SELECTION_CATEGORIES: string[] = [
   CATEGORIES.SOCIAL,
   CATEGORIES.STANDALONE,
 ];
+
+export const CATEGORY_PROMISES = {
+  [CATEGORIES.CURRENCIES]: import('@deriv/quill-icons/Currencies'),
+  [CATEGORIES.FLAGS]: import('@deriv/quill-icons/Flags'),
+  [CATEGORIES.ILLUSTRATIONS]: import('@deriv/quill-icons/Illustration'),
+  [CATEGORIES.ILLUSTRATIVE]: import('@deriv/quill-icons/Illustrative'),
+  [CATEGORIES.LABEL_PAIRED]: import('@deriv/quill-icons/LabelPaired'),
+  [CATEGORIES.LOGO]: import('@deriv/quill-icons/Logo'),
+  [CATEGORIES.MARKETS]: import('@deriv/quill-icons/Markets'),
+  [CATEGORIES.SOCIAL]: import('@deriv/quill-icons/Social'),
+  [CATEGORIES.STANDALONE]: import('@deriv/quill-icons/Standalone'),
+};

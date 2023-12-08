@@ -1,4 +1,4 @@
+import { TSearchContext } from '@deriv/types';
 import { createContext } from 'react';
-import { TSearchContext } from '../types/context_types';
 
 export const SearchContext = createContext<TSearchContext>({});

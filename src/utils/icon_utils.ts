@@ -1,17 +1,5 @@
-import { CATEGORIES } from '../constants/category_constants';
-import { TQuillIconsModules } from '../types/icon_modules';
-
-const CATEGORY_PROMISES = {
-  [CATEGORIES.CURRENCIES]: import('@deriv/quill-icons/Currencies'),
-  [CATEGORIES.FLAGS]: import('@deriv/quill-icons/Flags'),
-  [CATEGORIES.ILLUSTRATIONS]: import('@deriv/quill-icons/Illustration'),
-  [CATEGORIES.ILLUSTRATIVE]: import('@deriv/quill-icons/Illustrative'),
-  [CATEGORIES.LABEL_PAIRED]: import('@deriv/quill-icons/LabelPaired'),
-  [CATEGORIES.LOGO]: import('@deriv/quill-icons/Logo'),
-  [CATEGORIES.MARKETS]: import('@deriv/quill-icons/Markets'),
-  [CATEGORIES.SOCIAL]: import('@deriv/quill-icons/Social'),
-  [CATEGORIES.STANDALONE]: import('@deriv/quill-icons/Standalone'),
-};
+import { CATEGORY_PROMISES } from '@deriv/constants';
+import { TQuillIconsModules } from '@deriv/types';
 
 export const getQuillIconsModules = async (searchText: string) => {
   const quillIconsModules: TQuillIconsModules[] = [];

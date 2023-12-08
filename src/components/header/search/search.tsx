@@ -1,11 +1,9 @@
-import { useContext } from 'react';
-import { SearchContext } from '../../../context_provider/search_context';
+import { useSearch } from '@deriv/hooks';
 import { StandaloneSearchBoldIcon } from '@deriv/quill-icons';
-import { debouncedStateUpdater } from '../../../utils/text_utils';
+import { debouncedStateUpdater } from '@deriv/utils';
 
-const Search = () => {
-  const searchContext = useContext(SearchContext);
-  const setSearch = searchContext?.setSearch;
+export const Search = () => {
+  const { setSearch } = useSearch();
 
   return (
     <div className='flex w-full items-center justify-center'>
@@ -23,5 +21,3 @@ const Search = () => {
     </div>
   );
 };
-
-export default Search;

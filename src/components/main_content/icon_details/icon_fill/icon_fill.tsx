@@ -5,7 +5,7 @@ type TIconFill = {
   setFillColor: React.Dispatch<React.SetStateAction<string>>;
 };
 
-const IconFill = ({ fillColor, setFillColor }: TIconFill) => {
+export const IconFill = ({ fillColor, setFillColor }: TIconFill) => {
   const { hasFillColorSupport } = useIcon();
 
   return (
@@ -31,5 +31,3 @@ const IconFill = ({ fillColor, setFillColor }: TIconFill) => {
     )
   );
 };
-
-export default IconFill;

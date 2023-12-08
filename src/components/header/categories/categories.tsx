@@ -1,13 +1,10 @@
-import { useContext } from 'react';
-import { CATEGORIES } from '../../../constants/category_constants';
 import './categories.scss';
 import classNames from 'classnames';
-import { CategoryContext } from '../../../context_provider/category_context';
+import { CATEGORIES } from '@deriv/constants';
+import { useCategory } from '@deriv/hooks';
 
-const Categories = () => {
-  const categoryContext = useContext(CategoryContext);
-  const category = categoryContext?.category;
-  const setCategory = categoryContext?.setCategory;
+export const Categories = () => {
+  const { category, setCategory } = useCategory();
 
   return (
     <div className='categories mt-2 flex w-full items-center justify-start gap-2 overflow-scroll px-4 sm:mt-6 md:justify-center'>
@@ -28,5 +25,3 @@ const Categories = () => {
     </div>
   );
 };
-
-export default Categories;

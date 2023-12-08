@@ -1,4 +1,4 @@
-import { SEARCH_TEXT_DEBOUNCE_DELAY } from '../constants/text_constants';
+import { SEARCH_TEXT_DEBOUNCE_DELAY } from '@deriv/constants';
 
 export const debouncedStateUpdater = (
   stateUpdater?: React.Dispatch<React.SetStateAction<string>>,
@@ -16,12 +16,12 @@ export const getSplitIconName = (iconName: string) => {
   const splitIconName: string[] = [];
 
   let runningString: string[] = [];
-  for (let i = 0; i < iconName.length; i++) {
-    if (iconName[i] === iconName[i].toUpperCase() && runningString.length) {
+  for (const element of iconName) {
+    if (element === element.toUpperCase() && runningString.length) {
       splitIconName.push(runningString.join(''));
       runningString = [];
     }
-    runningString.push(iconName[i]);
+    runningString.push(element);
   }
 
   if (runningString.length) splitIconName.push(runningString.join(''));

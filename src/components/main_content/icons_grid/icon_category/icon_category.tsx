@@ -1,19 +1,20 @@
 import { QuillSvgProps } from '@deriv/quill-icons';
-import { TQuillIconsModuleEntry } from '../../../../types/icon_modules';
-import IconEntry from '../icon_entry/icon_entry';
-import { TIconEntryCategory } from '../../../../types/icon_types';
+import { IconEntry } from '../icon_entry/icon_entry';
+import { TIconEntryCategory, TQuillIconsModuleEntry } from '@deriv/types';
+import { useCategory } from '@deriv/hooks';
 
 type TIconCategory = {
   category: TIconEntryCategory;
   quillIconsModule: TQuillIconsModuleEntry[];
-  shouldDisplayCategory?: boolean;
 };
 
-const IconCategory = ({ category, quillIconsModule, shouldDisplayCategory }: TIconCategory) => {
+export const IconCategory = ({ category, quillIconsModule }: TIconCategory) => {
+  const { hasCategoryAllSelected } = useCategory();
+
   return (
     !!quillIconsModule.length && (
       <div className='flex flex-col gap-2'>
-        {shouldDisplayCategory && (
+        {hasCategoryAllSelected && (
           <div className='mt-2 flex justify-center'>
             <span className='rounded-lg border px-2 py-1 font-bold'>{category}</span>
           </div>
@@ -32,5 +33,3 @@ const IconCategory = ({ category, quillIconsModule, shouldDisplayCategory }: TIc
     )
   );
 };
-
-export default IconCategory;
