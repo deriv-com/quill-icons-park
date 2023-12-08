@@ -2,9 +2,11 @@ import IconDetails from './icon_details/icon_details';
 import IconsGrid from './icons_grid/icons_grid';
 
 const MainContent = () => (
-  <div className='grid w-full sm:grid-cols-[1fr_1fr] md:grid-cols-[auto_min-content]'>
-    <IconsGrid />
-    <IconDetails />
+  <div className='flex justify-center'>
+    <div className='grid w-full max-w-[84rem] sm:grid-cols-[1fr_1fr] md:grid-cols-[auto_min-content]'>
+      <IconsGrid />
+      <IconDetails />
+    </div>
   </div>
 );
 
