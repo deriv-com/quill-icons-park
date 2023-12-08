@@ -1,17 +1,12 @@
-import { PropsWithChildren, useMemo } from 'react';
-import { SearchContext } from './search_context';
+import { SearchContext } from '@deriv/stores';
+import { PropsWithChildren, useMemo, useState } from 'react';
 
-type TSearchProvider = {
-  search: string;
-  setSearch: React.Dispatch<React.SetStateAction<string>>;
+export const SearchProvider = ({ children }: PropsWithChildren) => {
+  const [search, setSearch] = useState('');
+
+  return (
+    <SearchContext.Provider value={useMemo(() => ({ search, setSearch }), [search, setSearch])}>
+      {children}
+    </SearchContext.Provider>
+  );
 };
-
-export const SearchProvider = ({
-  children,
-  search,
-  setSearch,
-}: PropsWithChildren<TSearchProvider>) => (
-  <SearchContext.Provider value={useMemo(() => ({ search, setSearch }), [search, setSearch])}>
-    {children}
-  </SearchContext.Provider>
-);

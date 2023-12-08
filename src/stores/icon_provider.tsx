@@ -1,14 +1,13 @@
-import { PropsWithChildren, useMemo } from 'react';
-import { IconContext } from './icon_context';
+import { IconContext } from '@deriv/stores';
 import { TIconEntry } from '@deriv/types';
+import { PropsWithChildren, useMemo, useState } from 'react';
 
-type TIconProvider = {
-  icon?: TIconEntry;
-  setIcon: React.Dispatch<React.SetStateAction<TIconEntry | undefined>>;
+export const IconProvider = ({ children }: PropsWithChildren) => {
+  const [icon, setIcon] = useState<TIconEntry>();
+
+  return (
+    <IconContext.Provider value={useMemo(() => ({ icon, setIcon }), [icon, setIcon])}>
+      {children}
+    </IconContext.Provider>
+  );
 };
-
-export const IconProvider = ({ children, icon, setIcon }: PropsWithChildren<TIconProvider>) => (
-  <IconContext.Provider value={useMemo(() => ({ icon, setIcon }), [icon, setIcon])}>
-    {children}
-  </IconContext.Provider>
-);

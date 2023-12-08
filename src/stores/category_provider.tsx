@@ -1,20 +1,16 @@
-import { PropsWithChildren, useMemo } from 'react';
-import { CategoryContext } from './category_context';
+import { DEFAULT_CATEGORY } from '@deriv/constants';
+import { CategoryContext } from '@deriv/stores';
 import { TCategoriesType } from '@deriv/types';
+import { PropsWithChildren, useMemo, useState } from 'react';
 
-type TCategoryProvider = {
-  category: TCategoriesType;
-  setCategory: React.Dispatch<React.SetStateAction<TCategoriesType>>;
+export const CategoryProvider = ({ children }: PropsWithChildren) => {
+  const [category, setCategory] = useState<TCategoriesType>(DEFAULT_CATEGORY);
+
+  return (
+    <CategoryContext.Provider
+      value={useMemo(() => ({ category, setCategory }), [category, setCategory])}
+    >
+      {children}
+    </CategoryContext.Provider>
+  );
 };
-
-export const CategoryProvider = ({
-  children,
-  category,
-  setCategory,
-}: PropsWithChildren<TCategoryProvider>) => (
-  <CategoryContext.Provider
-    value={useMemo(() => ({ category, setCategory }), [category, setCategory])}
-  >
-    {children}
-  </CategoryContext.Provider>
-);
