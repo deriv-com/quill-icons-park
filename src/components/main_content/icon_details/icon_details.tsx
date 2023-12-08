@@ -5,12 +5,12 @@ import { TCustomIconSize } from '@deriv/types';
 import { getSplitIconName } from '@deriv/utils';
 import classNames from 'classnames';
 import { useState } from 'react';
-import IconCodeView from './icon_code_view/icon_code_view';
-import IconFill from './icon_fill/icon_fill';
-import IconSizeSelection from './icon_size_selection/icon_size_selection';
-import NoIconSelected from './no_icon_selected/no_icon_selected';
+import { IconCodeView } from './icon_code_view/icon_code_view';
+import { IconFill } from './icon_fill/icon_fill';
+import { IconSizeSelection } from './icon_size_selection/icon_size_selection';
+import { NoIconSelected } from './no_icon_selected/no_icon_selected';
 
-const IconDetails = () => {
+export const IconDetails = () => {
   const {
     Icon,
     iconName,
@@ -78,5 +78,3 @@ const IconDetails = () => {
     </div>
   );
 };
-
-export default IconDetails;

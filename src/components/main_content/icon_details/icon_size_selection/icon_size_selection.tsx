@@ -1,6 +1,6 @@
 import { IconSize } from '@deriv/quill-icons';
-import PredefinedIconSizeSelection from './predefined_icon_size_selection/predefined_icon_size_selection';
-import CustomIconSizeSelection from './custom_icon_size_selection/custom_icon_size_selection';
+import { PredefinedIconSizeSelection } from './predefined_icon_size_selection/predefined_icon_size_selection';
+import { CustomIconSizeSelection } from './custom_icon_size_selection/custom_icon_size_selection';
 import { useIcon } from '@deriv/hooks';
 import { TCustomIconSize } from '@deriv/types';
 
@@ -11,7 +11,7 @@ type TIconSizeSelection = {
   setPredefinedIconSize: React.Dispatch<React.SetStateAction<IconSize>>;
 };
 
-const IconSizeSelection = ({
+export const IconSizeSelection = ({
   customIconSize,
   setCustomIconSize,
   predefinedIconSize,
@@ -37,5 +37,3 @@ const IconSizeSelection = ({
     </div>
   );
 };
-
-export default IconSizeSelection;

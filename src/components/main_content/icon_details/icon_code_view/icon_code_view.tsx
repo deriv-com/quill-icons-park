@@ -1,5 +1,5 @@
 import { IconSize } from '@deriv/quill-icons';
-import ActionButton from '../action_button/action_button';
+import { ActionButton } from '../action_button/action_button';
 import { useState } from 'react';
 import { IllustrativeEtfIcon } from '@deriv/quill-icons/Illustrative';
 import { LabelPairedArrowDownToBracketRegularIcon } from '@deriv/quill-icons/LabelPaired';
@@ -14,7 +14,7 @@ type TIconCodeView = {
   predefinedIconSize?: IconSize;
 };
 
-const IconCodeView = ({
+export const IconCodeView = ({
   iconName,
   customIconSize,
   fillColor,
@@ -80,5 +80,3 @@ const IconCodeView = ({
     )
   );
 };
-
-export default IconCodeView;

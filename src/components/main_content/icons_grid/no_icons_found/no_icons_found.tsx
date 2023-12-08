@@ -5,7 +5,7 @@ type TNoIconsFound = {
   categorySelected: string;
 };
 
-const NoIconsFound = ({ categorySelected }: TNoIconsFound) => {
+export const NoIconsFound = ({ categorySelected }: TNoIconsFound) => {
   const { search } = useSearch();
 
   return (
@@ -21,5 +21,3 @@ const NoIconsFound = ({ categorySelected }: TNoIconsFound) => {
     </div>
   );
 };
-
-export default NoIconsFound;

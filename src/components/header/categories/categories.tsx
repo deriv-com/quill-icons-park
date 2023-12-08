@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { CATEGORIES } from '@deriv/constants';
 import { CategoryContext } from '@deriv/stores';
 
-const Categories = () => {
+export const Categories = () => {
   const categoryContext = useContext(CategoryContext);
   const category = categoryContext?.category;
   const setCategory = categoryContext?.setCategory;
@@ -29,4 +29,3 @@ const Categories = () => {
   );
 };
 
-export default Categories;

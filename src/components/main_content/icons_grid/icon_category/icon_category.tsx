@@ -1,5 +1,5 @@
 import { QuillSvgProps } from '@deriv/quill-icons';
-import IconEntry from '../icon_entry/icon_entry';
+import { IconEntry } from '../icon_entry/icon_entry';
 import { TIconEntryCategory, TQuillIconsModuleEntry } from '@deriv/types';
 
 type TIconCategory = {
@@ -8,7 +8,11 @@ type TIconCategory = {
   shouldDisplayCategory?: boolean;
 };
 
-const IconCategory = ({ category, quillIconsModule, shouldDisplayCategory }: TIconCategory) => {
+export const IconCategory = ({
+  category,
+  quillIconsModule,
+  shouldDisplayCategory,
+}: TIconCategory) => {
   return (
     !!quillIconsModule.length && (
       <div className='flex flex-col gap-2'>
@@ -31,5 +35,3 @@ const IconCategory = ({ category, quillIconsModule, shouldDisplayCategory }: TIc
     )
   );
 };
-
-export default IconCategory;

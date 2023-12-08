@@ -1,12 +1,12 @@
 import { useContext } from 'react';
-import NoIconsFound from './no_icons_found/no_icons_found';
-import Loading from '../../shared/loading/loading';
-import IconCategory from './icon_category/icon_category';
+import { Loading } from '../../shared/loading/loading';
+import { IconCategory } from './icon_category/icon_category';
 import { useQuillIcons } from '@deriv/hooks';
 import { CATEGORIES, DEFAULT_CATEGORY } from '@deriv/constants';
 import { CategoryContext } from '@deriv/stores';
+import { NoIconsFound } from './no_icons_found/no_icons_found';
 
-const IconsGrid = () => {
+export const IconsGrid = () => {
   const categoryContext = useContext(CategoryContext);
   const categorySelected = categoryContext?.category ?? DEFAULT_CATEGORY;
   const { data: quillIcons, isEmptyResult, isLoading } = useQuillIcons(categorySelected);
@@ -27,5 +27,3 @@ const IconsGrid = () => {
     </div>
   );
 };
-
-export default IconsGrid;

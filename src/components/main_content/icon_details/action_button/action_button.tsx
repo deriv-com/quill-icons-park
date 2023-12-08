@@ -10,7 +10,7 @@ type TActionButton = {
   primary?: boolean;
 };
 
-const ActionButton = ({ Icon, label, onClick, disabled, primary }: TActionButton) => (
+export const ActionButton = ({ Icon, label, onClick, disabled, primary }: TActionButton) => (
   <button
     disabled={disabled}
     className={classNames(
@@ -27,5 +27,3 @@ const ActionButton = ({ Icon, label, onClick, disabled, primary }: TActionButton
     {label}
   </button>
 );
-
-export default ActionButton;

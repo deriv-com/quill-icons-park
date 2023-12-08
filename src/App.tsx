@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './App.scss';
-import MainContent from './components/main_content/main_content';
+import { MainContent } from './components/main_content/main_content';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { DEFAULT_CATEGORY } from '@deriv/constants';
 import { TCategoriesType, TIconEntry } from '@deriv/types';

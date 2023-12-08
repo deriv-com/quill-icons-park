@@ -5,7 +5,10 @@ type TCustomIconSelection = {
   setCustomIconSize: React.Dispatch<React.SetStateAction<TCustomIconSize>>;
 };
 
-const CustomIconSizeSelection = ({ customIconSize, setCustomIconSize }: TCustomIconSelection) => {
+export const CustomIconSizeSelection = ({
+  customIconSize,
+  setCustomIconSize,
+}: TCustomIconSelection) => {
   const sizeFields = ['height', 'width'] as const;
 
   return (
@@ -26,5 +29,3 @@ const CustomIconSizeSelection = ({ customIconSize, setCustomIconSize }: TCustomI
     </div>
   );
 };
-
-export default CustomIconSizeSelection;

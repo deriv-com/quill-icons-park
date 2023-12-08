@@ -1,5 +1,5 @@
 import { BrandDerivLogoCoralIcon } from '@deriv/quill-icons/Logo';
-import Categories from './categories/categories';
+import { Categories } from './categories/categories';
 import { Search } from './search/search';
 
 export const Header = () => (

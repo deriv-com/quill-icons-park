@@ -3,7 +3,7 @@ import { useIcon } from '@deriv/hooks';
 import { ICON_GRID_DISPLAY_SIZE } from '@deriv/constants';
 import { TIconEntry } from '@deriv/types';
 
-const IconEntry = ({ category, iconName, Icon }: TIconEntry) => {
+export const IconEntry = ({ category, iconName, Icon }: TIconEntry) => {
   const { setIcon, isIconSelected } = useIcon(iconName);
 
   return (
@@ -25,5 +25,3 @@ const IconEntry = ({ category, iconName, Icon }: TIconEntry) => {
     </div>
   );
 };
-
-export default IconEntry;
