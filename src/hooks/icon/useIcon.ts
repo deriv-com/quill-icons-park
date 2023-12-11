@@ -1,6 +1,6 @@
-import { useContext } from 'react';
 import { CATEGORIES_TYPE_A, CATEGORIES_TYPE_B, DEFAULT_CATEGORY } from '@deriv/constants';
 import { IconContext } from '@deriv/stores';
+import { useContext } from 'react';
 
 export const useIcon = (iconNameToCompare?: string) => {
   const iconContext = useContext(IconContext);
