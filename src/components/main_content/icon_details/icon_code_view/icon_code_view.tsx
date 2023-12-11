@@ -7,7 +7,7 @@ import {
 } from '@deriv/quill-icons';
 import { TCustomIconSize } from '@deriv/types';
 import { saveAs } from 'file-saver';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 type TIconCodeView = {
   iconName: string;
@@ -23,6 +23,9 @@ export const IconCodeView = ({
   predefinedIconSize,
 }: TIconCodeView) => {
   const [copyButtonLabel, setCopyButtonLabel] = useState('Copy Code');
+
+  let timeOut = 0;
+  useEffect(() => clearTimeout(timeOut), [timeOut]);
 
   const customIconSizeHeightProp = customIconSize?.height
     ? `height='${customIconSize.height}'`
@@ -51,7 +54,7 @@ export const IconCodeView = ({
   const copyCode = () => {
     navigator.clipboard.writeText(iconNameComponentUsageCode);
     setCopyButtonLabel('Copied!');
-    setTimeout(() => {
+    timeOut = setTimeout(() => {
       setCopyButtonLabel('Copy Code');
     }, 1000);
   };
