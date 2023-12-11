@@ -1,8 +1,10 @@
 import { ActionButton } from '@deriv/components';
 import { SELECTED__DOWNLOADABLE_ICON_ID } from '@deriv/constants';
-import { IconSize } from '@deriv/quill-icons';
-import { IllustrativeEtfIcon } from '@deriv/quill-icons/Illustrative';
-import { LabelPairedArrowDownToBracketRegularIcon } from '@deriv/quill-icons/LabelPaired';
+import {
+  IconSize,
+  IllustrativeEtfIcon,
+  LabelPairedArrowDownToBracketRegularIcon,
+} from '@deriv/quill-icons';
 import { TCustomIconSize } from '@deriv/types';
 import { saveAs } from 'file-saver';
 import { useState } from 'react';

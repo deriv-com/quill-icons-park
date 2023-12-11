@@ -1,4 +1,4 @@
-import { StandaloneComputerMouseScrollwheelBoldIcon } from '@deriv/quill-icons/Standalone';
+import { StandaloneComputerMouseScrollwheelBoldIcon } from '@deriv/quill-icons';
 import classNames from 'classnames';
 
 type TNoIconSelected = {
