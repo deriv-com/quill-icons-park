@@ -1,5 +1,4 @@
-import { IconDetails } from './icon_details/icon_details';
-import { IconsGrid } from './icons_grid/icons_grid';
+import { IconDetails, IconsGrid } from '@deriv/components';
 
 export const MainContent = () => (
   <div className='flex justify-center'>

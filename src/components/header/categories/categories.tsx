@@ -1,7 +1,7 @@
-import './categories.scss';
-import classNames from 'classnames';
 import { CATEGORIES } from '@deriv/constants';
 import { useCategory } from '@deriv/hooks';
+import classNames from 'classnames';
+import './categories.scss';
 
 export const Categories = () => {
   const { category, setCategory } = useCategory();

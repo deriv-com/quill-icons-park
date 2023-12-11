@@ -1,6 +1,5 @@
+import { Categories, Search } from '@deriv/components';
 import { BrandDerivLogoCoralIcon } from '@deriv/quill-icons/Logo';
-import { Categories } from './categories/categories';
-import { Search } from './search/search';
 
 export const Header = () => (
   <div className='sticky top-0 z-50 flex h-44 flex-col items-center justify-center bg-white shadow-md sm:h-32 md:shadow-lg'>

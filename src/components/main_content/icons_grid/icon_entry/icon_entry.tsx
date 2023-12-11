@@ -1,7 +1,7 @@
-import classNames from 'classnames';
-import { useIcon } from '@deriv/hooks';
 import { ICON_GRID_DISPLAY_SIZE } from '@deriv/constants';
+import { useIcon } from '@deriv/hooks';
 import { TIconEntry } from '@deriv/types';
+import classNames from 'classnames';
 
 export const IconEntry = ({ category, iconName, Icon }: TIconEntry) => {
   const { setIcon, isIconSelected } = useIcon(iconName);

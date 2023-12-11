@@ -1,5 +1,5 @@
-import classNames from 'classnames';
 import { StandaloneComputerMouseScrollwheelBoldIcon } from '@deriv/quill-icons/Standalone';
+import classNames from 'classnames';
 
 type TNoIconSelected = {
   isVisible: boolean;

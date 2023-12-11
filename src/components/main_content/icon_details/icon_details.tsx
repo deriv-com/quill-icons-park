@@ -1,3 +1,4 @@
+import { IconCodeView, IconFill, IconSizeSelection, NoIconSelected } from '@deriv/components';
 import { SELECTED__DOWNLOADABLE_ICON_ID } from '@deriv/constants';
 import { useIcon } from '@deriv/hooks';
 import { IconSize } from '@deriv/quill-icons';
@@ -5,10 +6,6 @@ import { TCustomIconSize } from '@deriv/types';
 import { getSplitIconName } from '@deriv/utils';
 import classNames from 'classnames';
 import { useState } from 'react';
-import { IconCodeView } from './icon_code_view/icon_code_view';
-import { IconFill } from './icon_fill/icon_fill';
-import { IconSizeSelection } from './icon_size_selection/icon_size_selection';
-import { NoIconSelected } from './no_icon_selected/no_icon_selected';
 
 export const IconDetails = () => {
   const {

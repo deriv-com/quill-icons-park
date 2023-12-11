@@ -8,6 +8,10 @@ export default defineConfig({
   resolve: {
     alias: [
       {
+        find: '@deriv/components',
+        replacement: fileURLToPath(new URL('./src/components', import.meta.url)),
+      },
+      {
         find: '@deriv/constants',
         replacement: fileURLToPath(new URL('./src/constants', import.meta.url)),
       },
