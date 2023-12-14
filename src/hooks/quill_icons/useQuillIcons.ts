@@ -1,5 +1,5 @@
-import { useMemo } from 'react';
 import { useCategory, useQuillIconsModules } from '@deriv/hooks';
+import { useMemo } from 'react';
 
 export const useQuillIcons = () => {
   const { data: quillIconsArray, ...rest } = useQuillIconsModules();

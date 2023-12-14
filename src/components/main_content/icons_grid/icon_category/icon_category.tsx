@@ -1,7 +1,7 @@
-import { QuillSvgProps } from '@deriv/quill-icons';
-import { IconEntry } from '../icon_entry/icon_entry';
-import { TIconEntryCategory, TQuillIconsModuleEntry } from '@deriv/types';
+import { IconEntry } from '@deriv/components';
 import { useCategory } from '@deriv/hooks';
+import { QuillSvgProps } from '@deriv/quill-icons';
+import { TIconEntryCategory, TQuillIconsModuleEntry } from '@deriv/types';
 
 type TIconCategory = {
   category: TIconEntryCategory;

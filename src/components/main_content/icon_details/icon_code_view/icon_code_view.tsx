@@ -1,11 +1,13 @@
-import { IconSize } from '@deriv/quill-icons';
-import { ActionButton } from '../action_button/action_button';
-import { useState } from 'react';
-import { IllustrativeEtfIcon } from '@deriv/quill-icons/Illustrative';
-import { LabelPairedArrowDownToBracketRegularIcon } from '@deriv/quill-icons/LabelPaired';
-import { saveAs } from 'file-saver';
+import { ActionButton } from '@deriv/components';
 import { SELECTED__DOWNLOADABLE_ICON_ID } from '@deriv/constants';
+import {
+  IconSize,
+  IllustrativeEtfIcon,
+  LabelPairedArrowDownToBracketRegularIcon,
+} from '@deriv/quill-icons';
 import { TCustomIconSize } from '@deriv/types';
+import { saveAs } from 'file-saver';
+import { useEffect, useState } from 'react';
 
 type TIconCodeView = {
   iconName: string;
@@ -21,6 +23,9 @@ export const IconCodeView = ({
   predefinedIconSize,
 }: TIconCodeView) => {
   const [copyButtonLabel, setCopyButtonLabel] = useState('Copy Code');
+
+  let timeOut = 0;
+  useEffect(() => clearTimeout(timeOut), [timeOut]);
 
   const customIconSizeHeightProp = customIconSize?.height
     ? `height='${customIconSize.height}'`
@@ -49,7 +54,7 @@ export const IconCodeView = ({
   const copyCode = () => {
     navigator.clipboard.writeText(iconNameComponentUsageCode);
     setCopyButtonLabel('Copied!');
-    setTimeout(() => {
+    timeOut = setTimeout(() => {
       setCopyButtonLabel('Copy Code');
     }, 1000);
   };

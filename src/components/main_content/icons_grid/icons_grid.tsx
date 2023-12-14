@@ -1,7 +1,5 @@
-import { Loading } from '../../shared/loading/loading';
-import { IconCategory } from './icon_category/icon_category';
+import { IconCategory, Loading, NoIconsFound } from '@deriv/components';
 import { useQuillIcons } from '@deriv/hooks';
-import { NoIconsFound } from './no_icons_found/no_icons_found';
 
 export const IconsGrid = () => {
   const { data: quillIcons, isEmptyResult, isLoading } = useQuillIcons();

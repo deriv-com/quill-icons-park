@@ -1,5 +1,4 @@
-import { TCategoriesType } from './category_types';
-import { TIconEntry } from './icon_types';
+import { TCategoriesType, TIconEntry } from '@deriv/types';
 import { Dispatch, SetStateAction } from 'react';
 
 export type TIconContext = {
