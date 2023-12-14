@@ -52,10 +52,15 @@ export const IconDetails = () => {
         <div className='flex flex-col gap-2'>
           <div className='font-bold text-slate-400'>Selected Icon</div>
           <div className='flex flex-col items-center justify-center gap-2'>
-            <div className='h-32 w-full max-w-[20rem] overflow-scroll rounded-lg border-2'>
+            <div className='h-32 w-full overflow-scroll rounded-lg border-2'>
               {Icon && <Icon id={SELECTED__DOWNLOADABLE_ICON_ID} {...iconProps} />}
             </div>
-            <div>{getSplitIconName(iconName).join(' ')}</div>
+            <div className='grid w-full grid-cols-[1fr_max-content] gap-2'>
+              <div>{getSplitIconName(iconName).join(' ')}</div>
+              <div className='h-min cursor-pointer rounded-md border-2 border-slate-50 px-2 py-1 shadow-md hover:border-slate-300'>
+                Copy Name
+              </div>
+            </div>
           </div>
         </div>
         <IconFill fillColor={fillColor} setFillColor={setFillColor} />

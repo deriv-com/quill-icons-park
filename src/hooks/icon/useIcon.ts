@@ -5,6 +5,8 @@ import { useContext } from 'react';
 export const useIcon = (iconNameToCompare?: string) => {
   const iconContext = useContext(IconContext);
   const icon = iconContext?.icon;
+  const setIcon = iconContext?.setIcon;
+  const clearIcon = () => setIcon?.(undefined);
   const isIconSelected = icon?.iconName === iconNameToCompare;
   const isCategoryA = CATEGORIES_TYPE_A.includes(icon?.category as string);
   const isCategoryB = CATEGORIES_TYPE_B.includes(icon?.category as string);
@@ -17,7 +19,8 @@ export const useIcon = (iconNameToCompare?: string) => {
     hasCustomIconSizeSupport,
     hasFillColorSupport,
     hasPredefinedIconSizeSupport,
-    setIcon: iconContext?.setIcon,
+    setIcon,
+    clearIcon,
     Icon: icon?.Icon,
     iconName: icon?.iconName ?? '',
     isIconSelected,
