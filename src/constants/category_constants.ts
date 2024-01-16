@@ -16,12 +16,17 @@ export const CATEGORIES = Object.freeze({
 
 export const DEFAULT_CATEGORY: TCategoriesType = CATEGORIES.CURRENCIES;
 
+// Supported options:
+// 1. Custom icon size like w:120px, h:120px
 export const CATEGORIES_TYPE_A: string[] = [
   CATEGORIES.ALL,
   CATEGORIES.LOGO,
   CATEGORIES.ILLUSTRATIONS,
 ];
 
+// Supported options:
+// 1. Icon Fill color
+// 2. Predefined icon size like sm, md, lg etc.
 export const CATEGORIES_TYPE_B: string[] = [
   CATEGORIES.ALL,
   CATEGORIES.CURRENCIES,
