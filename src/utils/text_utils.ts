@@ -1,4 +1,4 @@
-import { SEARCH_TEXT_DEBOUNCE_DELAY } from '@deriv/constants';
+import { COLOR_SELECTION_THROTTLE_DELAY, SEARCH_TEXT_DEBOUNCE_DELAY } from '@deriv/constants';
 
 export const debouncedStateUpdater = (
   stateUpdater?: React.Dispatch<React.SetStateAction<string>>,
@@ -12,9 +12,30 @@ export const debouncedStateUpdater = (
   };
 };
 
+export const throttledStateUpdater = (
+  fillColorStateUpdater?: React.Dispatch<React.SetStateAction<string>>,
+  fillColorsStateUpdater?: React.Dispatch<React.SetStateAction<string[]>>,
+) => {
+  let throttleFinished = true;
+  let lastSelectedFillColor = '';
+  return function (changeEvent: React.ChangeEvent<HTMLInputElement>) {
+    const fillColor = changeEvent.target.value;
+    lastSelectedFillColor = fillColor;
+    fillColorStateUpdater?.(fillColor);
+    if (throttleFinished) {
+      throttleFinished = false;
+      setTimeout(() => {
+        fillColorsStateUpdater?.((fillColors) =>
+          [lastSelectedFillColor, ...fillColors].filter((_, index) => index <= 3),
+        );
+        throttleFinished = true;
+      }, COLOR_SELECTION_THROTTLE_DELAY);
+    }
+  };
+};
+
 export const getSplitIconName = (iconName: string) => {
   const splitIconName: string[] = [];
-
   let runningString: string[] = [];
   for (const element of iconName) {
     if (element === element.toUpperCase() && runningString.length) {
@@ -23,8 +44,6 @@ export const getSplitIconName = (iconName: string) => {
     }
     runningString.push(element);
   }
-
   if (runningString.length) splitIconName.push(runningString.join(''));
-
   return splitIconName;
 };
