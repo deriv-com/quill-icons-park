@@ -3,7 +3,7 @@ import { SELECTED__DOWNLOADABLE_ICON_ID } from '@deriv/constants';
 import {
   IconSize,
   IllustrativeEtfIcon,
-  LabelPairedArrowDownToBracketRegularIcon,
+  LabelPairedArrowDownToBracketMdRegularIcon,
 } from '@deriv/quill-icons';
 import { TCustomIconSize } from '@deriv/types';
 import { saveAs } from 'file-saver';
@@ -72,7 +72,7 @@ export const IconCodeView = ({
           <ActionButton
             label='Download SVG'
             onClick={downloadSvg}
-            Icon={LabelPairedArrowDownToBracketRegularIcon}
+            Icon={LabelPairedArrowDownToBracketMdRegularIcon}
           />
           <ActionButton
             primary

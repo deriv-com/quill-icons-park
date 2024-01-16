@@ -1,5 +1,5 @@
 import { useCategory, useSearch } from '@deriv/hooks';
-import { LabelPairedSearchBoldIcon } from '@deriv/quill-icons';
+import { LabelPairedSearchMdBoldIcon } from '@deriv/quill-icons';
 
 export const NoIconsFound = () => {
   const { category } = useCategory();
@@ -7,7 +7,7 @@ export const NoIconsFound = () => {
 
   return (
     <div className='mt-24 flex flex-col items-center'>
-      <LabelPairedSearchBoldIcon className='opacity-50' />
+      <LabelPairedSearchMdBoldIcon className='opacity-50' />
       <span>
         <span className='opacity-50'>No result found for your search "</span>
         <span className='font-bold'>{search}</span>
