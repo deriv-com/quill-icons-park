@@ -37,6 +37,7 @@ export const IconFill = ({ fillColor, setFillColor }: TIconFill) => {
           {fillColors.map((fillColor, index) => (
             <div
               key={index}
+              onClick={() => setFillColor(fillColor)}
               className='h-full w-8 cursor-pointer rounded-md border-2 border-slate-50 p-1 shadow-md hover:border-slate-300'
             >
               <div className='h-full w-full' style={{ background: fillColor }} />
