@@ -9,18 +9,23 @@ permissions:
 jobs:
   Create-PR:
     runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      REPO_FULL_NAME: ${{ github.repository }}
+      REPO_NAME: ${{ github.event.repository.name }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4.1.1
         with:
-          repository: ${{ github.repository }}
-          token: ${{ secrets.GITHUB_TOKEN }}
-          path: ${{github.event.repository.name}}
+          repository: ${{env.REPO_FULL_NAME}}
+          token: ${{env.GITHUB_TOKEN}}
+          path: ${{env.REPO_NAME}}
 
       - name: Commit to quill-icons-update branch
         if: success()
         run: |
-          cd ${{github.event.repository.name}}
+          echo "${{env.REPO_NAME}} : "
+          cd "${{env.REPO_NAME}}"
           git config --global user.email "quill-icons-no-reply@deriv.com"
           git config --global user.name "Quill Icons"
           git checkout -b quill-icons-update
