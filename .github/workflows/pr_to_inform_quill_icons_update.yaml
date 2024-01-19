@@ -1,0 +1,31 @@
+name: PR to inform @quill-icons update
+
+on:
+  workflow_dispatch:
+
+jobs:
+  create_pr:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up git identity
+        run: |
+          git config --global user.email "quill-icons-no-reply@deriv.com"
+          git config --global user.name "Quill Icons"
+
+      - name: Commit to quill-icons-update branch
+        run: |
+          git checkout -B quill-icons-update origin/quill-icons-update
+          npm version patch -m "build: 🚀 %s installs latest quill icons"
+          git push -f origin quill-icons-update
+
+      - name: Create Pull Request
+        run: |
+          title: "Create PR from quill-icons-update to master"
+          body: "This pull request is automatically created since a new version of [**@quill-icons**](https://github.com/deriv-com/quill-icons) is available.
+          Please review and merge if everything looks good, so that @quill-icons-park can build and deploy.\n
+          Generated at $(date)."
+          gh pr create --base master --head quill-icons-update --title "$title" --body "$body" --label "Latest @quill-icons"
