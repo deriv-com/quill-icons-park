@@ -17,8 +17,9 @@ jobs:
       - name: Set up git identity
         if: success()
         run: |
-          echo "values: ${{ github.repository }} : ${{ secrets.GITHUB_TOKEN }} : ${{github.event.repository.name}}"
-          echo ls
+          cd ${{github.event.repository.name}}
+          echo "values: ${{ github.repository }} : ${{github.event.repository.name}}"
+          ls -la
           git config --global user.email "quill-icons-no-reply@deriv.com"
           git config --global user.name "Quill Icons"
 
