@@ -3,6 +3,9 @@ name: PR to inform @quill-icons update
 on:
   workflow_dispatch:
 
+permissions:
+  actions: write
+
 jobs:
   Create-PR:
     runs-on: ubuntu-latest
