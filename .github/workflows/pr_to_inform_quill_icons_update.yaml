@@ -25,11 +25,11 @@ jobs:
         run: |
           git checkout -b quill-icons-update
           npm version patch -m "build: 🚀 %s installs latest quill icons"
-          git push -f origin quill-icons-update
 
       - name: Create Pull Request
         if: success()
         run: |
+          git push --set-upstream -f origin quill-icons-update
           title: "Create PR from quill-icons-update to master"
           body: "This pull request is automatically created since a new version of [**@quill-icons**](https://github.com/deriv-com/quill-icons) is available.
           Please review and merge if everything looks good, so that @quill-icons-park can build and deploy.\n
