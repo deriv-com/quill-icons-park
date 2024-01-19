@@ -12,7 +12,7 @@ jobs:
         with:
           repository: ${{ github.repository }}
           token: ${{ secrets.GITHUB_TOKEN }}
-          path: ${{ github.repository }}
+          path: ${{github.event.repository.name}}
 
       - name: Set up git identity
         run: |
