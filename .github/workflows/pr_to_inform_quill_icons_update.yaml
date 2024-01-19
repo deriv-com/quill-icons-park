@@ -14,25 +14,19 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           path: ${{github.event.repository.name}}
 
-      - name: Set up git identity
-        if: success()
-        run: |
-          cd ${{github.event.repository.name}}
-          echo "values: ${{ github.repository }} : ${{github.event.repository.name}}"
-          ls -la
-          git config --global user.email "quill-icons-no-reply@deriv.com"
-          git config --global user.name "Quill Icons"
-
       - name: Commit to quill-icons-update branch
         if: success()
         run: |
+          cd ${{github.event.repository.name}}
+          git config --global user.email "quill-icons-no-reply@deriv.com"
+          git config --global user.name "Quill Icons"
           git checkout -b quill-icons-update
           npm version patch -m "build: 🚀 %s installs latest quill icons"
+          git push --set-upstream -f origin quill-icons-update
 
       - name: Create Pull Request
         if: success()
         run: |
-          git push --set-upstream -f origin quill-icons-update
           title: "Create PR from quill-icons-update to master"
           body: "This pull request is automatically created since a new version of [**@quill-icons**](https://github.com/deriv-com/quill-icons) is available.
           Please review and merge if everything looks good, so that @quill-icons-park can build and deploy.\n
