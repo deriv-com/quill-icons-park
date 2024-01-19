@@ -9,7 +9,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4.1.1
 
       - name: Set up git identity
         run: |
@@ -18,7 +18,7 @@ jobs:
 
       - name: Commit to quill-icons-update branch
         run: |
-          git checkout -B quill-icons-update origin/quill-icons-update
+          git checkout -b quill-icons-update
           npm version patch -m "build: 🚀 %s installs latest quill icons"
           git push -f origin quill-icons-update
 
