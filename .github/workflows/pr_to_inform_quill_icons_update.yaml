@@ -6,17 +6,19 @@ on:
 permissions:
   contents: write
   actions: write
+  pull-requests: write
 
 env:
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   REPO_FULL_NAME: ${{ github.repository }}
   REPO_NAME: ${{ github.event.repository.name }}
-  pr_title: '[Quill-Icons] 🗂️ New version available!'
-  pr_body:
+  PR_BRANCH: 'quill-icons-update'
+  PR_TITLE: '[Quill-Icons] 🗂️ New version available!'
+  PR_BODY:
     'This pull request was automatically created since a new version of [**@quill-icons**](https://github.com/deriv-com/quill-icons) is available.
     Please merge this PR if everything looks good, so that @quill-icons-park can deploy the latest build to https://quill-icons-park.pages.dev/.
     [Generated on $(date)]'
-  pr_label: 'dependencies'
+  PR_LABEL: 'dependencies'
 
 jobs:
   Create-PR:
@@ -38,13 +40,14 @@ jobs:
         if: success()
         run: |
           cd "${{env.REPO_NAME}}"
-          git checkout -b quill-icons-update
+          git checkout -b "${{env.PR_BRANCH}}"
           git pull origin master
           npm version patch -m "build: 🚀 %s installs latest quill icons"
-          git push --set-upstream -f origin quill-icons-update
+          git push --set-upstream -f origin "${{env.PR_BRANCH}}"
 
       - name: Create Pull Request
         if: success()
         run: |
           cd "${{env.REPO_NAME}}"
-          gh pr create --base master --head quill-icons-update --title "${{env.pr_title}}" --body "${{env.pr_body}}" --label "${{env.pr_label}}"
+          gh pr close "${{env.PR_BRANCH}}" || true
+          gh pr create --base master --head "${{env.PR_BRANCH}}" --title "${{env.PR_TITLE}}" --body "${{env.PR_BODY}}" --label "${{env.PR_LABEL}}"
