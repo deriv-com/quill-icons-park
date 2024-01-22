@@ -11,7 +11,7 @@ jobs:
   Create-PR:
     runs-on: ubuntu-latest
     env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       REPO_FULL_NAME: ${{ github.repository }}
       REPO_NAME: ${{ github.event.repository.name }}
     steps:
@@ -19,7 +19,7 @@ jobs:
         uses: actions/checkout@v4.1.1
         with:
           repository: ${{env.REPO_FULL_NAME}}
-          token: ${{env.GITHUB_TOKEN}}
+          token: ${{env.GH_TOKEN}}
           path: ${{env.REPO_NAME}}
 
       - name: Set up Git identity
@@ -46,9 +46,5 @@ jobs:
             Generated at $(date).'
           pr_label: '@quill-icons update available'
         run: |
-          echo "${{env.pr_title}}"
-          echo "${{env.pr_body}}"
-          echo "${{env.pr_label}}"
-          gh auth login --with-token "${{env.GITHUB_TOKEN}}"
           ls
           gh pr create --base master --head quill-icons-update --title "${{env.pr_title}}" --body "${{env.pr_body}}" --label "{{env.pr_label}}"
