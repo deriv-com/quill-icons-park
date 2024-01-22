@@ -41,10 +41,10 @@ jobs:
         env:
           pr_title: 'Create PR from quill-icons-update to master. $(date)'
           pr_body: |
-            "This pull request is automatically created since a new version of [**@quill-icons**](https://github.com/deriv-com/quill-icons) is available.
+            'This pull request is automatically created since a new version of [**@quill-icons**](https://github.com/deriv-com/quill-icons) is available.
             Please review and merge if everything looks good, so that @quill-icons-park can build and deploy.
-            Generated at $(date)."
-          pr_label: 'quill-icons update available'
+            Generated at $(date).'
+          pr_label: '@quill-icons update available'
         run: |
           echo "${{env.pr_title}}"
           echo "${{env.pr_body}}"
