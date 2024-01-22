@@ -47,4 +47,4 @@ jobs:
         if: success()
         run: |
           cd "${{env.REPO_NAME}}"
-          gh pr create --base master --head quill-icons-update --title "${{env.pr_title}}" --body "${{env.pr_body}}" --label "{{env.pr_label}}"
+          gh pr create --base master --head quill-icons-update --title "${{env.pr_title}}" --body "${{env.pr_body}}" --label "${{env.pr_label}}"
