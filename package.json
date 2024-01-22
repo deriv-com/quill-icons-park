@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@deriv/quill-icons": "latest",
-    "@tanstack/react-query": "^5.9.0",
+    "@tanstack/react-query": "^5.17.19",
     "classnames": "^2.3.2",
     "file-saver": "^2.0.5",
     "react": "^18.2.0",
@@ -35,6 +35,6 @@
     "sass": "^1.69.5",
     "tailwindcss": "^3.3.5",
     "typescript": "^5.0.2",
-    "vite": "^4.4.5"
+    "vite": "^5.0.12"
   }
 }

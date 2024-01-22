@@ -5,7 +5,7 @@ export const getQuillIconsModules = async (searchText: string) => {
   const quillIconsModules: TQuillIconsModules[] = [];
   for await (const [category, categoryPromise] of Object.entries(CATEGORY_PROMISES)) {
     await categoryPromise
-      .then(({ default: importedQuillIconsModule }) => {
+      .then((importedQuillIconsModule) => {
         quillIconsModules.push({
           category,
           quillIconsModule: Object.entries(importedQuillIconsModule)
