@@ -7,13 +7,20 @@ permissions:
   contents: write
   actions: write
 
+env:
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  REPO_FULL_NAME: ${{ github.repository }}
+  REPO_NAME: ${{ github.event.repository.name }}
+  pr_title: 'Create PR from quill-icons-update to master. $(date)'
+  pr_body:
+    'This pull request is automatically created since a new version of [**@quill-icons**](https://github.com/deriv-com/quill-icons) is available.
+    Please review and merge if everything looks good, so that @quill-icons-park can build and deploy.
+    Generated at $(date).'
+  pr_label: '@quill-icons update available'
+
 jobs:
   Create-PR:
     runs-on: ubuntu-latest
-    env:
-      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      REPO_FULL_NAME: ${{ github.repository }}
-      REPO_NAME: ${{ github.event.repository.name }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4.1.1
@@ -38,13 +45,6 @@ jobs:
 
       - name: Create Pull Request
         if: success()
-        env:
-          pr_title: 'Create PR from quill-icons-update to master. $(date)'
-          pr_body:
-            'This pull request is automatically created since a new version of [**@quill-icons**](https://github.com/deriv-com/quill-icons) is available.
-            Please review and merge if everything looks good, so that @quill-icons-park can build and deploy.
-            Generated at $(date).'
-          pr_label: '@quill-icons update available'
         run: |
-          ls
+          cd "${{env.REPO_NAME}}"
           gh pr create --base master --head quill-icons-update --title "${{env.pr_title}}" --body "${{env.pr_body}}" --label "{{env.pr_label}}"
