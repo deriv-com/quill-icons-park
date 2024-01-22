@@ -40,7 +40,7 @@ jobs:
         if: success()
         env:
           pr_title: 'Create PR from quill-icons-update to master. $(date)'
-          pr_body: |
+          pr_body:
             'This pull request is automatically created since a new version of [**@quill-icons**](https://github.com/deriv-com/quill-icons) is available.
             Please review and merge if everything looks good, so that @quill-icons-park can build and deploy.
             Generated at $(date).'
@@ -50,5 +50,5 @@ jobs:
           echo "${{env.pr_body}}"
           echo "${{env.pr_label}}"
           gh auth login --with-token "${{env.GITHUB_TOKEN}}"
-          ls -la
+          ls
           gh pr create --base master --head quill-icons-update --title "${{env.pr_title}}" --body "${{env.pr_body}}" --label "{{env.pr_label}}"
