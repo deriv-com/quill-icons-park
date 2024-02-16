@@ -3,7 +3,7 @@ name: Send Slack Notifications
 on:
   pull_request:
     branches:
-      - quill-icons-update
+      - master
     types:
       - opened
 
@@ -12,7 +12,7 @@ jobs:
     name: Send New PR Slack notification
     runs-on: ubuntu-latest
     env:
-      PR_URL: ${{ github.event.pull_request.url }}
+      PR_URL: 'https://github.com/deriv-com/quill-icons-park/pull/${{ github.event.pull_request.number }}'
     steps:
       - name: Send Slack Notification
         shell: bash
