@@ -1,0 +1,26 @@
+name: Send Slack Notifications
+
+on:
+  pull_request:
+    branches:
+      - quill-icons-update
+
+jobs:
+  send_slack_notification:
+    name: Send New PR Slack notification
+    runs-on: ubuntu-latest
+    env:
+      PR_NUMBER: ${{ github.event.number }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
+      - name: Conclusion
+        uses: technote-space/workflow-conclusion-action@45ce8e0eb155657ab8ccf346ade734257fd196a5
+      - name: Send Slack Notification
+        shell: bash
+        run: |
+          curl \
+          -X POST \
+          -H 'Content-type: application/json' \
+          --data '{"text": "🗂️ New version of Quill Icons is now available. Kindly check if the PR testlink is working, and merge PR #${{env.PR_NUMBER}} to see the latest icons in Quill Icons Park."}' \
+          ${{ secrets.SLACK_WEBHOOK_URL }}
