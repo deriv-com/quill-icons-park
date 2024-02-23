@@ -1,0 +1,19 @@
+name: Release
+
+on:
+  check_suite:
+    types: completed
+
+jobs:
+  release:
+    name: Send Release Slack notification
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Slack Notification
+        shell: bash
+        run: |
+          curl \
+          -X POST \
+          -H 'Content-type: application/json' \
+          --data '{"text": "🗂️ Test: slack notification"}' \
+          ${{ secrets.SLACK_WEBHOOK_URL }}
