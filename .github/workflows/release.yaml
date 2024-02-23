@@ -9,14 +9,13 @@ jobs:
     name: Send release slack notification
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
+    #   - name: Checkout
+    #     uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
       - name: Fetch check suite status
         id: check_suite_status
         run: |
           CHECK_SUITE_CONCLUSION="${{ github.event.check_suite.conclusion }}"
-          echo "$CHECK_SUITE_CONCLUSION"
-          if [ "$CHECK_SUITE_CONCLUSION" == "success" ]; then
+          if [ "$CHECK_SUITE_CONCLUSION" == "succes" ]; then
             echo "SLACK_MESSAGE=✅ Quill Icons Park has been updated.\nYou can now browse the latest quill icons at https://quill-icons-park.pages.dev" >> "$GITHUB_OUTPUT"
           else
             echo "SLACK_MESSAGE=❌ Quill Icons Park could not be updated." >> "$GITHUB_OUTPUT"
@@ -24,9 +23,8 @@ jobs:
       - name: Send Slack Notification
         shell: bash
         run: |
-          echo "message: ${{steps.check_suite_status.outputs.SLACK_MESSAGE}}"
           curl \
           -X POST \
           -H 'Content-type: application/json' \
-          --data '{"text": "🗂️ Test ${{steps.check_suite_status.outputs.CHECK_SUITE_CONCLUSION}}: ${{steps.check_suite_status.outputs.SLACK_MESSAGE}}"}' \
+          --data '{"text": "${{steps.check_suite_status.outputs.SLACK_MESSAGE}}"}' \
           ${{ secrets.SLACK_WEBHOOK_URL_TEST }}
