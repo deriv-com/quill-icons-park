@@ -9,8 +9,6 @@ jobs:
     name: Send release slack notification
     runs-on: ubuntu-latest
     steps:
-    #   - name: Checkout
-    #     uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
       - name: Fetch check suite status
         id: check_suite_status
         run: |
@@ -18,7 +16,7 @@ jobs:
           if [ "$CHECK_SUITE_CONCLUSION" == "succes" ]; then
             echo "SLACK_MESSAGE=✅ Quill Icons Park has been updated.\nYou can now browse the latest quill icons at https://quill-icons-park.pages.dev" >> "$GITHUB_OUTPUT"
           else
-            echo "SLACK_MESSAGE=❌ Quill Icons Park could not be updated." >> "$GITHUB_OUTPUT"
+            echo "SLACK_MESSAGE=❌ Quill Icons Park could not be updated.\nPlease see the details at https://github.com/deriv-com/quill-icons-park/actions" >> "$GITHUB_OUTPUT"
           fi
       - name: Send Slack Notification
         shell: bash
