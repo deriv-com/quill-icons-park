@@ -14,11 +14,18 @@ jobs:
       - name: Fetch check suite status
         run: |
           echo "CHECK_SUITE_CONCLUSION=${{ github.event.check_suite.conclusion }}" >> $GITHUB_ENV
+          echo "conslusion: ${{env.CHECK_SUITE_CONCLUSION}}"
+          if [ "${{ env.CHECK_SUITE_CONCLUSION }}" == "success" ]; then
+            echo "SLACK_MESSAGE=✅ The release for @deriv/quill-icons was successful, and the new version (${{ needs.release.outputs.RELEASE_VERSION }}) is now available." >> $GITHUB_ENV
+          else
+            echo "SLACK_MESSAGE=🤨 The release attempt for @deriv/quill-icons with version ${{ needs.release.outputs.RELEASE_VERSION }} was unsuccessful." >> $GITHUB_ENV
+          fi
+          echo "message: ${{env.SLACK_MESSAGE}}"
       - name: Send Slack Notification
         shell: bash
         run: |
           curl \
           -X POST \
           -H 'Content-type: application/json' \
-          --data '{"text": "🗂️ Test $CHECK_SUITE_CONCLUSION: Quill Icons Park was updated. You can now browse the latest quill icons at https://quill-icons-park.pages.dev"}' \
-          ${{ secrets.SLACK_WEBHOOK_URL }}
+          --data '{"text": "🗂️ Test ${{env.CHECK_SUITE_CONCLUSION}}: ${{env.SLACK_MESSAGE}}' \
+          ${{ secrets.SLACK_WEBHOOK_URL_TEST }}
