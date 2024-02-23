@@ -13,7 +13,7 @@ jobs:
         id: check_suite_status
         run: |
           CHECK_SUITE_CONCLUSION="${{ github.event.check_suite.conclusion }}"
-          if [ "$CHECK_SUITE_CONCLUSION" == "succes" ]; then
+          if [ "$CHECK_SUITE_CONCLUSION" == "success" ]; then
             echo "SLACK_MESSAGE=✅ Quill Icons Park has been updated.\nYou can now browse the latest quill icons at https://quill-icons-park.pages.dev" >> "$GITHUB_OUTPUT"
           else
             echo "SLACK_MESSAGE=❌ Quill Icons Park could not be updated.\nPlease see the details at https://github.com/deriv-com/quill-icons-park/actions" >> "$GITHUB_OUTPUT"
