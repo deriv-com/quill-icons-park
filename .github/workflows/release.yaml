@@ -6,14 +6,23 @@ on:
 
 jobs:
   release:
-    name: Send Release Slack notification
+    name: Send release slack notification
     runs-on: ubuntu-latest
     steps:
+      - name: Fetch check suite status
+        id: check_suite_status
+        run: |
+          CHECK_SUITE_CONCLUSION="${{ github.event.check_suite.conclusion }}"
+          if [ "$CHECK_SUITE_CONCLUSION" == "success" ]; then
+            echo "SLACK_MESSAGE=✅ Quill Icons Park has been updated.\nYou can now browse the latest quill icons at https://quill-icons-park.pages.dev" >> "$GITHUB_OUTPUT"
+          else
+            echo "SLACK_MESSAGE=❌ Quill Icons Park could not be updated.\nPlease see the details at https://github.com/deriv-com/quill-icons-park/actions" >> "$GITHUB_OUTPUT"
+          fi
       - name: Send Slack Notification
         shell: bash
         run: |
           curl \
           -X POST \
           -H 'Content-type: application/json' \
-          --data '{"text": "🗂️ New version of Quill Icons is now available. Kindly check if the PR testlink is working, and merge PR to see the latest icons in Quill Icons Park."}' \
+          --data '{"text": "${{steps.check_suite_status.outputs.SLACK_MESSAGE}}"}' \
           ${{ secrets.SLACK_WEBHOOK_URL }}
