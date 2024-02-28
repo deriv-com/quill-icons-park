@@ -18,21 +18,20 @@ jobs:
           else
             echo "SLACK_MESSAGE=❌ Quill Icons Park could not be updated.\nPlease see the details at https://github.com/deriv-com/quill-icons-park/actions" >> "$GITHUB_OUTPUT"
           fi
-      - name: Check for open PRs in Quill Icons Park
+
+      - name: Check for blocking PRs in Quill Icons Park
         id: open_pull_requests
         run: |
           api_endpoint="https://api.github.com/repos/${{github.repository}}/pulls?state=open"
           open_pull_requests=$(curl -sSL -H "Accept: application/vnd.github.v3+json" "$api_endpoint")
           echo "blocking_pull_requests=$(echo "$open_pull_requests" | jq 'map(select(.title == "[Quill-Icons] 🗂️ New version available!")) | length')" >> "$GITHUB_OUTPUT"
-      - name: Send Slack Notification
-        run: |
-          echo "Blocking pull requests: ${{ steps.open_pull_requests.outputs.blocking_pull_requests }} - ${{ steps.open_pull_requests.outputs.blocking_pull_requests == 1 }}"
 
-      # - name: Send Slack Notification
-      #   shell: bash
-      #   run: |
-      #     curl \
-      #     -X POST \
-      #     -H 'Content-type: application/json' \
-      #     --data '{"text": "${{steps.check_suite_status.outputs.SLACK_MESSAGE}}"}' \
-      #     ${{ secrets.SLACK_WEBHOOK_URL }}
+      - name: Send Slack Notification
+        if: steps.open_pull_requests.outputs.blocking_pull_requests == 0
+        shell: bash
+        run: |
+          curl \
+          -X POST \
+          -H 'Content-type: application/json' \
+          --data '{"text": "${{steps.check_suite_status.outputs.SLACK_MESSAGE}}"}' \
+          ${{ secrets.SLACK_WEBHOOK_URL }}
