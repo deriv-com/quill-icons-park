@@ -29,12 +29,11 @@ jobs:
           filterOutClosed: true
           # Only return if PR is not in draft state. (By default it returns PRs in any state.)
           filterOutDraft: true
-      - run: echo "PR ${prNumber} ${prTitle} at ${prUrl} is ${prJSON}"
-        if: steps.PR.outputs.pr_found == 'true'
+      - if: steps.PR.outputs.pr_found == 'true'
         env:
           # JSON object with the full PR object
           # toJSON(fromJSON(...pr)) parses it into memory and then format is with pretty-print.
-          prJSON: ${{ toJSON(fromJSON(steps.PR.outputs.pr)) }}
+          # prJSON: ${{ toJSON(fromJSON(steps.PR.outputs.pr)) }}
           # Direct access to common PR properties
           prNumber: ${{ steps.PR.outputs.number }}
           prUrl: ${{ steps.PR.outputs.pr_url }}
@@ -44,6 +43,15 @@ jobs:
           prMergedAt: ${{ steps.PR.outputs.pr_merged_at }}
           prClosedAt: ${{ steps.PR.outputs.pr_closed_at }}
           prLabel: ${{ steps.PR.outputs.pr_labels }}
+        run: |
+          echo "PR_NUMBER=${{ env.prNumber }}" >> "$GITHUB_ENV"
+          echo "PR_URL=${{ env.prUrl }}" >> "$GITHUB_ENV"
+          echo "PR_TITLE=${{ env.prTitle }}" >> "$GITHUB_ENV"
+          echo "PR_BODY=${{ env.prBody }}" >> "$GITHUB_ENV"
+          echo "PR_CREATED_AT=${{ env.prCreatedAt }}" >> "$GITHUB_ENV"
+          echo "PR_MERGED_AT=${{ env.prMergedAt }}" >> "$GITHUB_ENV"
+          echo "PR_CLOSED_AT=${{ env.prClosedAt }}" >> "$GITHUB_ENV"
+          echo "PR_LABEL=${{ env.prLabel }}" >> "$GITHUB_ENV"
       # - name: Send Slack Notification
       #   shell: bash
       #   run: |
