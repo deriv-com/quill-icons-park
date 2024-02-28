@@ -18,41 +18,15 @@ jobs:
           else
             echo "SLACK_MESSAGE=❌ Quill Icons Park could not be updated.\nPlease see the details at https://github.com/deriv-com/quill-icons-park/actions" >> "$GITHUB_OUTPUT"
           fi
-      - name: List Open PRs
-        uses: actions/github-script@v4
+      - name: List pull request titles
+        id: list
+        uses: jkisk/list-open-pulls@v1.0.1
         with:
-          script: |
-            const { owner, repo } = context.repo;
-            const { data: pullRequests } = await github.pulls.list({
-              owner,
-              repo,
-              state: 'open'
-            });
-            console.log(pullRequests);
-            echo pullRequests
-      - uses: 8BitJonny/gh-get-current-pr@3.0.0
-        id: PR
-        with:
-          filterOutClosed: true
-          filterOutDraft: true
-      - env:
-          prNumber: ${{ steps.PR.outputs.number }}
-          prUrl: ${{ steps.PR.outputs.pr_url }}
-          prTitle: ${{ steps.PR.outputs.pr_title }}
-          prBody: ${{ steps.PR.outputs.pr_body }}
-          prCreatedAt: ${{ steps.PR.outputs.pr_created_at }}
-          prMergedAt: ${{ steps.PR.outputs.pr_merged_at }}
-          prClosedAt: ${{ steps.PR.outputs.pr_closed_at }}
-          prLabel: ${{ steps.PR.outputs.pr_labels }}
-        run: |
-          echo "PR_NUMBER=${{ env.prNumber }}" >> "$GITHUB_ENV"
-          echo "PR_URL=${{ env.prUrl }}" >> "$GITHUB_ENV"
-          echo "PR_TITLE=${{ env.prTitle }}" >> "$GITHUB_ENV"
-          echo "PR_BODY=${{ env.prBody }}" >> "$GITHUB_ENV"
-          echo "PR_CREATED_AT=${{ env.prCreatedAt }}" >> "$GITHUB_ENV"
-          echo "PR_MERGED_AT=${{ env.prMergedAt }}" >> "$GITHUB_ENV"
-          echo "PR_CLOSED_AT=${{ env.prClosedAt }}" >> "$GITHUB_ENV"
-          echo "PR_LABEL=${{ env.prLabel }}" >> "$GITHUB_ENV"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          owner: jkisk
+          repo: list open pulls
+      - name: Check output
+        run: echo ${{ steps.list.outputs.titles }}
       # - name: Send Slack Notification
       #   shell: bash
       #   run: |
