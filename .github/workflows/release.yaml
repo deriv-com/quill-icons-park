@@ -23,11 +23,8 @@ jobs:
         run: |
           api_endpoint="https://api.github.com/repos/${{github.repository}}/pulls?state=open"
           pull_requests=$(curl -sSL -H "Accept: application/vnd.github.v3+json" "$api_endpoint")
-          titles=$(echo "$pull_requests" | jq 'map(.title)')
-          echo "titles: $titles"
-          for pr in $titles; do
-            echo ">: $pr"
-          done
+          blocking_pull_requests=$(echo "$pull_requests" | jq 'map(select(.title == "[Quill-Icons] 🗂️ New version available!")) | length')
+          echo "PRs: $blocking_pull_requests"
 
       # - name: Send Slack Notification
       #   shell: bash
