@@ -18,23 +18,24 @@ jobs:
           else
             echo "SLACK_MESSAGE=❌ Quill Icons Park could not be updated.\nPlease see the details at https://github.com/deriv-com/quill-icons-park/actions" >> "$GITHUB_OUTPUT"
           fi
+      - name: List Open PRs
+        uses: actions/github-script@v4
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const { data: pullRequests } = await github.pulls.list({
+              owner,
+              repo,
+              state: 'open'
+            });
+            console.log(pullRequests);
+            echo pullRequests
       - uses: 8BitJonny/gh-get-current-pr@3.0.0
         id: PR
         with:
-          # Authetication token to access GitHub APIs. (Can be omitted by default.)
-          # github-token: ${{ github.token }}
-          # Verbose setting SHA when using Pull_Request event trigger to fix #16. (For push even trigger this is not necessary.)
-          # sha: ${{ github.event.pull_request.head.sha }}
-          # Only return if PR is still open. (By default it returns PRs in any state.)
           filterOutClosed: true
-          # Only return if PR is not in draft state. (By default it returns PRs in any state.)
           filterOutDraft: true
-      - if: steps.PR.outputs.pr_found == 'true'
-        env:
-          # JSON object with the full PR object
-          # toJSON(fromJSON(...pr)) parses it into memory and then format is with pretty-print.
-          # prJSON: ${{ toJSON(fromJSON(steps.PR.outputs.pr)) }}
-          # Direct access to common PR properties
+      - env:
           prNumber: ${{ steps.PR.outputs.number }}
           prUrl: ${{ steps.PR.outputs.pr_url }}
           prTitle: ${{ steps.PR.outputs.pr_title }}
