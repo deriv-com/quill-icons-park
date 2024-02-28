@@ -18,15 +18,18 @@ jobs:
           else
             echo "SLACK_MESSAGE=❌ Quill Icons Park could not be updated.\nPlease see the details at https://github.com/deriv-com/quill-icons-park/actions" >> "$GITHUB_OUTPUT"
           fi
-      - name: List pull request titles
-        id: list
-        uses: jkisk/list-open-pulls@v1.0.1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          owner: jkisk
-          repo: list open pulls
-      - name: Check output
-        run: echo ${{ steps.list.outputs.titles }}
+      - name: Fetch Open PRs
+        run: |
+          # Set GitHub API endpoint
+          api_endpoint="https://api.github.com/repos/${{github.repository}}/pulls?state=open"
+
+          # Fetch open pull requests using curl
+          pull_requests=$(curl -sSL -H "Accept: application/vnd.github.v3+json" "$api_endpoint")
+
+          # Echo the result
+          echo "$pull_requests"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       # - name: Send Slack Notification
       #   shell: bash
       #   run: |
