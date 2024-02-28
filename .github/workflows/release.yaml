@@ -18,11 +18,11 @@ jobs:
           else
             echo "SLACK_MESSAGE=❌ Quill Icons Park could not be updated.\nPlease see the details at https://github.com/deriv-com/quill-icons-park/actions" >> "$GITHUB_OUTPUT"
           fi
-      - name: Send Slack Notification
-        shell: bash
-        run: |
-          curl \
-          -X POST \
-          -H 'Content-type: application/json' \
-          --data '{"text": "${{steps.check_suite_status.outputs.SLACK_MESSAGE}}"}' \
-          ${{ secrets.SLACK_WEBHOOK_URL }}
+      # - name: Send Slack Notification
+      #   shell: bash
+      #   run: |
+      #     curl \
+      #     -X POST \
+      #     -H 'Content-type: application/json' \
+      #     --data '{"text": "${{steps.check_suite_status.outputs.SLACK_MESSAGE}}"}' \
+      #     ${{ secrets.SLACK_WEBHOOK_URL }}
