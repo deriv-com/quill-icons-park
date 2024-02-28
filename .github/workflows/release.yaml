@@ -23,9 +23,12 @@ jobs:
         run: |
           api_endpoint="https://api.github.com/repos/${{github.repository}}/pulls?state=open"
           pull_requests=$(curl -sSL -H "Accept: application/vnd.github.v3+json" "$api_endpoint")
-          for pull_request in $pull_requests; do
-            echo "$pull_request.title"
+
+          for pr in $(echo "$pull_requests" | jq -r '.[] | @base64'); do
+            title=$(echo "$pr" | jq -r '.title')
+            echo "Title: $title"
           done
+
       # - name: Send Slack Notification
       #   shell: bash
       #   run: |
