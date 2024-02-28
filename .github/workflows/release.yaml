@@ -18,13 +18,15 @@ jobs:
           else
             echo "SLACK_MESSAGE=❌ Quill Icons Park could not be updated.\nPlease see the details at https://github.com/deriv-com/quill-icons-park/actions" >> "$GITHUB_OUTPUT"
           fi
-      - name: Fetch Open PRs
-        id: open_prs
+      - name: Check for open PRs in Quill Icons Park
+        id: open_pull_requests
         run: |
           api_endpoint="https://api.github.com/repos/${{github.repository}}/pulls?state=open"
           pull_requests=$(curl -sSL -H "Accept: application/vnd.github.v3+json" "$api_endpoint")
-          blocking_pull_requests=$(echo "$pull_requests" | jq 'map(select(.title == "[Quill-Icons] 🗂️ New version available!")) | length')
-          echo "PRs: $blocking_pull_requests"
+          echo "blocking_pull_requests=$(echo "$pull_requests" | jq 'map(select(.title == "[Quill-Icons] 🗂️ New version available!")) | length')" >> "$GITHUB_OUTPUT"
+      - name: Send Slack Notification
+        run: |
+          echo "Blocking pull requests: ${{ steps.open_pull_requests.outputs.blocking_pull_requests }} - ${{ steps.open_pull_requests.outputs.blocking_pull_requests == 0 }}"
 
       # - name: Send Slack Notification
       #   shell: bash
