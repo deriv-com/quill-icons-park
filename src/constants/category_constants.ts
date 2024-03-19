@@ -12,6 +12,7 @@ export const CATEGORIES = Object.freeze({
   MARKETS: 'Markets',
   SOCIAL: 'Social',
   STANDALONE: 'Standalone',
+  PAYMENTMETHODS: 'PaymentMethods',
 });
 
 export const CATEGORY_PROMISES = {
@@ -25,9 +26,10 @@ export const CATEGORY_PROMISES = {
   [CATEGORIES.MARKETS]: import('@deriv/quill-icons/Markets'),
   [CATEGORIES.SOCIAL]: import('@deriv/quill-icons/Social'),
   [CATEGORIES.STANDALONE]: import('@deriv/quill-icons/Standalone'),
+  [CATEGORIES.PAYMENTMETHODS]: import('@deriv/quill-icons/PaymentMethods'),
 };
 
-export const DEFAULT_CATEGORY: TCategoriesType = CATEGORIES.ACCOUNTS;
+export const DEFAULT_CATEGORY: TCategoriesType = CATEGORIES.ALL;
 
 // Supported options:
 // 1. Custom icon size like w:120px, h:120px
@@ -49,4 +51,5 @@ export const CATEGORIES_TYPE_B: string[] = [
   CATEGORIES.MARKETS,
   CATEGORIES.SOCIAL,
   CATEGORIES.STANDALONE,
+  CATEGORIES.PAYMENTMETHODS,
 ];
