@@ -21,7 +21,7 @@ export const IconEntry = ({ category, iconName, Icon }: TIconEntry) => {
       <span className='flex justify-center'>
         <Icon height={ICON_GRID_DISPLAY_SIZE.HEIGHT} width={ICON_GRID_DISPLAY_SIZE.WIDTH} />
       </span>
-      <span className='mt-2 text-xs sm:text-sm'>{iconName}</span>
+      <span className='mt-2 break-words text-xs sm:text-sm'>{`${iconName.slice(0, 20)}...`}</span>
     </div>
   );
 };
