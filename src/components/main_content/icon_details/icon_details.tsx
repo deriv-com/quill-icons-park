@@ -64,7 +64,7 @@ export const IconDetails = () => {
         <div className='flex flex-col gap-2'>
           <div className='font-bold text-slate-400'>Selected Icon</div>
           <div className='flex flex-col items-center justify-center gap-2'>
-            <div className='h-32 w-full overflow-scroll rounded-lg border-2'>
+            <div className='h-32 w-full overflow-scroll rounded-lg border-2 bg-gray-200'>
               {Icon && <Icon id={SELECTED__DOWNLOADABLE_ICON_ID} {...iconProps} />}
             </div>
             <div className='grid w-full grid-cols-[1fr_max-content] gap-2'>
