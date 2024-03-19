@@ -11,7 +11,7 @@ export const IconEntry = ({ category, iconName, Icon }: TIconEntry) => {
       onKeyDown={undefined}
       onClick={() => setIcon?.({ category, Icon, iconName })}
       className={classNames(
-        'flex h-40 flex-col justify-between overflow-hidden rounded-xl border-2 p-4 shadow-md',
+        'flex h-40 flex-col justify-between overflow-hidden rounded-xl border-2 bg-gray-200 p-4 shadow-md',
         isIconSelected
           ? 'cursor-default border-rose-500 bg-rose-50'
           : 'cursor-pointer border-transparent hover:border-slate-400 hover:bg-slate-50',
