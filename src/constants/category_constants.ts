@@ -29,7 +29,7 @@ export const CATEGORY_PROMISES = {
   [CATEGORIES.PAYMENTMETHODS]: import('@deriv/quill-icons/PaymentMethods'),
 };
 
-export const DEFAULT_CATEGORY: TCategoriesType = CATEGORIES.ALL;
+export const DEFAULT_CATEGORY: TCategoriesType = CATEGORIES.ACCOUNTS;
 
 // Supported options:
 // 1. Custom icon size like w:120px, h:120px
