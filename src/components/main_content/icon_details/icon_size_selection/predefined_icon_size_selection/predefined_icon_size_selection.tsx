@@ -1,4 +1,4 @@
-import { IconSize, sizes } from '@deriv/quill-icons';
+import { IconSize, IconSizeGuide } from '@deriv/quill-icons';
 import classNames from 'classnames';
 
 type TPredefinedIconSelection = {
@@ -13,20 +13,20 @@ export const PredefinedIconSizeSelection = ({
   const handleSizeSelection = (size: IconSize) => setPredefinedIconSize(size);
 
   return (
-    <div className='flex justify-between'>
-      {Object.keys(sizes).map((size) => (
+    <div className='flex flex-wrap justify-between'>
+      {IconSizeGuide.map(({ TShirtSize, size }) => (
         <span
-          key={size}
-          onKeyDown={() => handleSizeSelection(size as IconSize)}
-          onClick={() => handleSizeSelection(size as IconSize)}
+          key={TShirtSize}
+          onKeyDown={() => handleSizeSelection(TShirtSize as IconSize)}
+          onClick={() => handleSizeSelection(TShirtSize as IconSize)}
           className={classNames(
-            'flex min-w-[4rem] items-center justify-center rounded-md border-2 px-2 py-1 shadow-md',
-            predefinedIconSize === size
+            'mt-2 flex min-w-[4rem] items-center justify-center rounded-md border-2 px-2 py-1 shadow-md',
+            predefinedIconSize === TShirtSize
               ? 'cursor-default border-rose-500 bg-rose-500 text-white'
               : 'cursor-pointer border-slate-50 hover:border-slate-300',
           )}
         >
-          {size}
+          {`${TShirtSize} (${size})`}
         </span>
       ))}
     </div>
