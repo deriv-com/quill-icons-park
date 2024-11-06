@@ -14,6 +14,7 @@ export const CATEGORIES = Object.freeze({
   STANDALONE: 'Standalone',
   PAYMENTMETHODS: 'PaymentMethods',
   LEGACY: 'Legacy',
+  TRADETYPES: 'TradeTypes',
 });
 
 export const CATEGORY_PROMISES = {
@@ -29,6 +30,7 @@ export const CATEGORY_PROMISES = {
   [CATEGORIES.SOCIAL]: import('@deriv/quill-icons/Social'),
   [CATEGORIES.STANDALONE]: import('@deriv/quill-icons/Standalone'),
   [CATEGORIES.PAYMENTMETHODS]: import('@deriv/quill-icons/PaymentMethods'),
+  [CATEGORIES.TRADETYPES]: import('@deriv/quill-icons/TradeTypes'),
 };
 
 export const DEFAULT_CATEGORY: TCategoriesType = CATEGORIES.ACCOUNTS;
@@ -55,4 +57,5 @@ export const CATEGORIES_TYPE_B: string[] = [
   CATEGORIES.STANDALONE,
   CATEGORIES.PAYMENTMETHODS,
   CATEGORIES.LEGACY,
+  CATEGORIES.TRADETYPES,
 ];
