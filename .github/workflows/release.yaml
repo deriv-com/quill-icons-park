@@ -1,5 +1,9 @@
 name: Release
 
+permissions:
+  contents: read
+  pull-requests: read
+
 on:
   check_suite:
     types: completed
