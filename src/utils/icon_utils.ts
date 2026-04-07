@@ -1,5 +1,5 @@
 import { CATEGORY_PROMISES } from '@deriv/constants';
-import { TQuillIconsModules } from '@deriv/types';
+import { TQuillIconsModuleEntry, TQuillIconsModules } from '@deriv/types';
 
 export const getQuillIconsModules = async (searchText: string) => {
   const quillIconsModules: TQuillIconsModules[] = [];
@@ -12,7 +12,7 @@ export const getQuillIconsModules = async (searchText: string) => {
             .filter(([iconName]) => RegExp(new RegExp(searchText, 'i')).exec(iconName)?.length)
             .map(([iconName, icon]) => ({
               category,
-              icon,
+              icon: icon as TQuillIconsModuleEntry['icon'],
               iconName,
             })),
         });

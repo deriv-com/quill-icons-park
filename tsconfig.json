@@ -20,14 +20,13 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
 
-    "baseUrl": ".",
     "paths": {
-      "@deriv/components":["src/components"],
-      "@deriv/constants":["src/constants"],
-      "@deriv/hooks": ["src/hooks"],
-      "@deriv/stores":["src/stores"],
-      "@deriv/types":["src/types"],
-      "@deriv/utils":["src/utils"],
+      "@deriv/components":["./src/components"],
+      "@deriv/constants":["./src/constants"],
+      "@deriv/hooks": ["./src/hooks"],
+      "@deriv/stores":["./src/stores"],
+      "@deriv/types":["./src/types"],
+      "@deriv/utils":["./src/utils"],
     }
   },
   "include": ["src", "prettier.config.js"],

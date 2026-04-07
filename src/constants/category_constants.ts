@@ -21,7 +21,6 @@ export const CATEGORY_PROMISES = {
   [CATEGORIES.ACCOUNTS]: import('@deriv/quill-icons/Accounts'),
   [CATEGORIES.CURRENCIES]: import('@deriv/quill-icons/Currencies'),
   [CATEGORIES.FLAGS]: import('@deriv/quill-icons/Flags'),
-  [CATEGORIES.ILLUSTRATIONS]: import('@deriv/quill-icons/Illustration'),
   [CATEGORIES.ILLUSTRATIVE]: import('@deriv/quill-icons/Illustrative'),
   [CATEGORIES.LABEL_PAIRED]: import('@deriv/quill-icons/LabelPaired'),
   [CATEGORIES.LOGO]: import('@deriv/quill-icons/Logo'),

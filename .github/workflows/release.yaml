@@ -12,6 +12,7 @@ jobs:
   release:
     name: Send release slack notification
     runs-on: ubuntu-latest
+    if: github.event.check_suite.head_branch == 'master'
     steps:
       - name: Fetch check suite status
         id: check_suite_status
@@ -34,8 +35,9 @@ jobs:
         if: steps.open_pull_requests.outputs.blocking_pull_requests == 0
         shell: bash
         run: |
+          payload=$(jq -n --arg text "${{ steps.check_suite_status.outputs.SLACK_MESSAGE }}" '{"text": $text}')
           curl \
           -X POST \
           -H 'Content-type: application/json' \
-          --data '{"text": "${{steps.check_suite_status.outputs.SLACK_MESSAGE}}"}' \
-          ${{ secrets.SLACK_WEBHOOK_URL }}
+          --data "$payload" \
+          "${{ secrets.SLACK_WEBHOOK_URL }}"
