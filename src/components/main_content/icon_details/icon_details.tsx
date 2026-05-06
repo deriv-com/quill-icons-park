@@ -58,7 +58,7 @@ export const IconDetails = () => {
       <div
         className={classNames(
           'sticky top-36 flex w-96 flex-col gap-6 rounded-xl bg-white p-4 shadow-xl transition-all',
-          Icon ? 'opacity-1 translate-y-0' : 'translate-y-96 opacity-0',
+          Icon ? 'translate-y-0 opacity-100' : 'pointer-events-none translate-y-96 opacity-0',
         )}
       >
         <div className='flex flex-col gap-2'>
@@ -70,7 +70,7 @@ export const IconDetails = () => {
             <div className='grid w-full grid-cols-[1fr_max-content] gap-2'>
               <div>{getSplitIconName(iconName).join(' ')}</div>
               <div
-                className='flex h-min min-w-[8rem] cursor-pointer justify-center rounded-md border-2 border-slate-50 px-2 py-1 shadow-md hover:border-slate-300'
+                className='flex h-min min-w-32 cursor-pointer justify-center rounded-md border-2 border-slate-50 px-2 py-1 shadow-md hover:border-slate-300'
                 onClick={copyName}
               >
                 {copyButtonLabel}
