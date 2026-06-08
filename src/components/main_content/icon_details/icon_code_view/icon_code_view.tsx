@@ -11,6 +11,7 @@ import { useEffect, useState } from 'react';
 
 type TIconCodeView = {
   iconName: string;
+  hasPngDownloadSupport?: boolean;
   customIconSize?: TCustomIconSize;
   fillColor?: string;
   predefinedIconSize?: IconSize;
@@ -18,6 +19,7 @@ type TIconCodeView = {
 
 export const IconCodeView = ({
   iconName,
+  hasPngDownloadSupport,
   customIconSize,
   fillColor,
   predefinedIconSize,
@@ -51,6 +53,16 @@ export const IconCodeView = ({
     saveAs(svgBlob, iconName.concat('.svg'));
   };
 
+  const downloadPng = () => {
+    const downloadableIcon = document.querySelector(
+      `#${SELECTED__DOWNLOADABLE_ICON_ID}`,
+    ) as HTMLImageElement | null;
+
+    if (downloadableIcon?.tagName === 'IMG' && downloadableIcon.src) {
+      saveAs(downloadableIcon.src, iconName.concat('.png'));
+    }
+  };
+
   const copyCode = () => {
     navigator.clipboard.writeText(iconNameComponentUsageCode);
     setCopyButtonLabel('Copied!');
@@ -70,8 +82,8 @@ export const IconCodeView = ({
         </div>
         <div className='grid grid-cols-2 gap-4'>
           <ActionButton
-            label='Download SVG'
-            onClick={downloadSvg}
+            label={hasPngDownloadSupport ? 'Download PNG' : 'Download SVG'}
+            onClick={hasPngDownloadSupport ? downloadPng : downloadSvg}
             Icon={LabelPairedArrowDownToBracketMdRegularIcon}
           />
           <ActionButton
