@@ -1,10 +1,11 @@
-import { ICON_GRID_DISPLAY_SIZE } from '@deriv/constants';
+import { CATEGORIES, ICON_GRID_DISPLAY_SIZE } from '@deriv/constants';
 import { useIcon } from '@deriv/hooks';
 import { TIconEntry } from '@deriv/types';
 import classNames from 'classnames';
 
 export const IconEntry = ({ category, iconName, Icon }: TIconEntry) => {
   const { setIcon, isIconSelected } = useIcon(iconName);
+  const isIllustration = category === CATEGORIES.ILLUSTRATIONS;
 
   return (
     <div
@@ -19,7 +20,11 @@ export const IconEntry = ({ category, iconName, Icon }: TIconEntry) => {
     >
       <span />
       <span className='flex justify-center'>
-        <Icon height={ICON_GRID_DISPLAY_SIZE.HEIGHT} width={ICON_GRID_DISPLAY_SIZE.WIDTH} />
+        <Icon
+          className={isIllustration ? 'max-h-full max-w-full object-contain' : undefined}
+          height={ICON_GRID_DISPLAY_SIZE.HEIGHT}
+          width={ICON_GRID_DISPLAY_SIZE.WIDTH}
+        />
       </span>
       <span className='mt-2 break-words text-xs sm:text-sm'>{`${iconName.slice(0, 20)}...`}</span>
     </div>

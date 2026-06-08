@@ -1,12 +1,15 @@
 import { CATEGORIES } from '@deriv/constants';
-import { QuillSvgProps } from '@deriv/quill-icons';
+import { QuillIllustrationComponent, QuillSvgProps } from '@deriv/quill-icons';
 
 export type TIconEntryCategory = Omit<(typeof CATEGORIES)[keyof typeof CATEGORIES], 'All'>;
+
+export type TQuillSvgIcon = React.ForwardRefExoticComponent<Omit<QuillSvgProps, 'ref'>>;
+export type TQuillIconComponent = TQuillSvgIcon | QuillIllustrationComponent;
 
 export type TIconEntry = {
   category: TIconEntryCategory;
   iconName: string;
-  Icon: React.ForwardRefExoticComponent<Omit<QuillSvgProps, 'ref'>>;
+  Icon: TQuillIconComponent;
 };
 
 export type TCustomIconSize = {

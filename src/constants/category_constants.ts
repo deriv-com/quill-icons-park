@@ -21,6 +21,7 @@ export const CATEGORY_PROMISES = {
   [CATEGORIES.ACCOUNTS]: import('@deriv/quill-icons/Accounts'),
   [CATEGORIES.CURRENCIES]: import('@deriv/quill-icons/Currencies'),
   [CATEGORIES.FLAGS]: import('@deriv/quill-icons/Flags'),
+  [CATEGORIES.ILLUSTRATIONS]: import('@deriv/quill-icons/Illustration'),
   [CATEGORIES.ILLUSTRATIVE]: import('@deriv/quill-icons/Illustrative'),
   [CATEGORIES.LABEL_PAIRED]: import('@deriv/quill-icons/LabelPaired'),
   [CATEGORIES.LOGO]: import('@deriv/quill-icons/Logo'),
@@ -32,7 +33,7 @@ export const CATEGORY_PROMISES = {
   [CATEGORIES.TRADETYPES]: import('@deriv/quill-icons/TradeTypes'),
 };
 
-export const DEFAULT_CATEGORY: TCategoriesType = CATEGORIES.ACCOUNTS;
+export const DEFAULT_CATEGORY: TCategoriesType = CATEGORIES.ALL;
 
 // Supported options:
 // 1. Custom icon size like w:120px, h:120px
