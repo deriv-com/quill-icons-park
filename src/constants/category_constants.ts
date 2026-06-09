@@ -37,11 +37,7 @@ export const DEFAULT_CATEGORY: TCategoriesType = CATEGORIES.ALL;
 
 // Supported options:
 // 1. Custom icon size like w:120px, h:120px
-export const CATEGORIES_TYPE_A: string[] = [
-  CATEGORIES.ALL,
-  CATEGORIES.LOGO,
-  CATEGORIES.ILLUSTRATIONS,
-];
+export const CATEGORIES_TYPE_A: string[] = [CATEGORIES.ALL, CATEGORIES.LOGO];
 
 // Supported options:
 // 1. Icon Fill color

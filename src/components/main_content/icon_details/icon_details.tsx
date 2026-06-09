@@ -1,5 +1,10 @@
 import { IconCodeView, IconFill, IconSizeSelection, NoIconSelected } from '@deriv/components';
-import { CATEGORIES, SELECTED__DOWNLOADABLE_ICON_ID } from '@deriv/constants';
+import {
+  CATEGORIES,
+  ILLUSTRATION_IMAGE_CLASS,
+  ILLUSTRATION_PREVIEW_CONTAINER_CLASS,
+  SELECTED__DOWNLOADABLE_ICON_ID,
+} from '@deriv/constants';
 import { useIcon } from '@deriv/hooks';
 import { IconSize } from '@deriv/quill-icons';
 import { TCustomIconSize } from '@deriv/types';
@@ -15,7 +20,7 @@ export const IconDetails = () => {
     hasFillColorSupport,
     hasCustomIconSizeSupport,
     hasPredefinedIconSizeSupport,
-    hasPngDownloadSupport,
+    hasWebpDownloadSupport,
   } = useIcon();
   const isIllustration = category === CATEGORIES.ILLUSTRATIONS;
   const [fillColor, setFillColor] = useState('#000000');
@@ -34,12 +39,13 @@ export const IconDetails = () => {
         fill: fillColor,
       }
     : {};
-  const customIconSizeProps = hasCustomIconSizeSupport
-    ? {
-        height: customIconSize.height,
-        width: customIconSize.width,
-      }
-    : {};
+  const customIconSizeProps =
+    hasCustomIconSizeSupport && !isIllustration
+      ? {
+          height: customIconSize.height,
+          width: customIconSize.width,
+        }
+      : {};
   const predefinedIconSizeProps = hasPredefinedIconSizeSupport
     ? {
         iconSize: predefinedIconSize,
@@ -67,14 +73,20 @@ export const IconDetails = () => {
         <div className='flex flex-col gap-2'>
           <div className='font-bold text-slate-400'>Selected Icon</div>
           <div className='flex flex-col items-center justify-center gap-2'>
-            <div className='flex h-32 w-full items-center justify-center overflow-scroll rounded-lg border-2 bg-gray-200'>
-              {Icon && (
-                <Icon
-                  id={SELECTED__DOWNLOADABLE_ICON_ID}
-                  className={isIllustration ? 'max-h-full max-w-full object-contain' : undefined}
-                  {...iconProps}
-                />
-              )}
+            <div className='w-full rounded-lg border-2 bg-gray-200'>
+              {Icon &&
+                (isIllustration ? (
+                  <div className={ILLUSTRATION_PREVIEW_CONTAINER_CLASS}>
+                    <Icon
+                      id={SELECTED__DOWNLOADABLE_ICON_ID}
+                      className={ILLUSTRATION_IMAGE_CLASS}
+                    />
+                  </div>
+                ) : (
+                  <div className='flex h-32 w-full items-center justify-center overflow-scroll'>
+                    <Icon id={SELECTED__DOWNLOADABLE_ICON_ID} {...iconProps} />
+                  </div>
+                ))}
             </div>
             <div className='grid w-full grid-cols-[1fr_max-content] gap-2'>
               <div>{getSplitIconName(iconName).join(' ')}</div>
@@ -96,7 +108,7 @@ export const IconDetails = () => {
         />
         <IconCodeView
           iconName={iconName}
-          hasPngDownloadSupport={hasPngDownloadSupport}
+          hasWebpDownloadSupport={hasWebpDownloadSupport}
           fillColor={hasFillColorSupport ? fillColor : undefined}
           customIconSize={hasCustomIconSizeSupport ? customIconSize : undefined}
           predefinedIconSize={hasPredefinedIconSizeSupport ? predefinedIconSize : undefined}

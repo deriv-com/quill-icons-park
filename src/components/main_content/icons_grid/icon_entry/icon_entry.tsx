@@ -1,4 +1,9 @@
-import { CATEGORIES, ICON_GRID_DISPLAY_SIZE } from '@deriv/constants';
+import {
+  CATEGORIES,
+  ICON_GRID_DISPLAY_SIZE,
+  ILLUSTRATION_GRID_CONTAINER_CLASS,
+  ILLUSTRATION_IMAGE_CLASS,
+} from '@deriv/constants';
 import { useIcon } from '@deriv/hooks';
 import { TIconEntry } from '@deriv/types';
 import classNames from 'classnames';
@@ -19,13 +24,15 @@ export const IconEntry = ({ category, iconName, Icon }: TIconEntry) => {
       )}
     >
       <span />
-      <span className='flex justify-center'>
-        <Icon
-          className={isIllustration ? 'max-h-full max-w-full object-contain' : undefined}
-          height={ICON_GRID_DISPLAY_SIZE.HEIGHT}
-          width={ICON_GRID_DISPLAY_SIZE.WIDTH}
-        />
-      </span>
+      {isIllustration ? (
+        <div className={ILLUSTRATION_GRID_CONTAINER_CLASS}>
+          <Icon className={ILLUSTRATION_IMAGE_CLASS} />
+        </div>
+      ) : (
+        <span className='flex flex-1 items-center justify-center'>
+          <Icon height={ICON_GRID_DISPLAY_SIZE.HEIGHT} width={ICON_GRID_DISPLAY_SIZE.WIDTH} />
+        </span>
+      )}
       <span className='mt-2 break-words text-xs sm:text-sm'>{`${iconName.slice(0, 20)}...`}</span>
     </div>
   );
