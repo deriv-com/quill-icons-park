@@ -6,12 +6,13 @@ import {
   LabelPairedArrowDownToBracketMdRegularIcon,
 } from '@deriv/quill-icons';
 import { TCustomIconSize } from '@deriv/types';
+import { downloadIllustrationWebp } from '@deriv/utils';
 import { saveAs } from 'file-saver';
 import { useEffect, useState } from 'react';
 
 type TIconCodeView = {
   iconName: string;
-  hasPngDownloadSupport?: boolean;
+  hasWebpDownloadSupport?: boolean;
   customIconSize?: TCustomIconSize;
   fillColor?: string;
   predefinedIconSize?: IconSize;
@@ -19,7 +20,7 @@ type TIconCodeView = {
 
 export const IconCodeView = ({
   iconName,
-  hasPngDownloadSupport,
+  hasWebpDownloadSupport,
   customIconSize,
   fillColor,
   predefinedIconSize,
@@ -53,14 +54,8 @@ export const IconCodeView = ({
     saveAs(svgBlob, iconName.concat('.svg'));
   };
 
-  const downloadPng = () => {
-    const downloadableIcon = document.querySelector(
-      `#${SELECTED__DOWNLOADABLE_ICON_ID}`,
-    ) as HTMLImageElement | null;
-
-    if (downloadableIcon?.tagName === 'IMG' && downloadableIcon.src) {
-      saveAs(downloadableIcon.src, iconName.concat('.png'));
-    }
+  const downloadWebp = () => {
+    downloadIllustrationWebp(iconName);
   };
 
   const copyCode = () => {
@@ -82,8 +77,8 @@ export const IconCodeView = ({
         </div>
         <div className='grid grid-cols-2 gap-4'>
           <ActionButton
-            label={hasPngDownloadSupport ? 'Download PNG' : 'Download SVG'}
-            onClick={hasPngDownloadSupport ? downloadPng : downloadSvg}
+            label={hasWebpDownloadSupport ? 'Download WebP' : 'Download SVG'}
+            onClick={hasWebpDownloadSupport ? downloadWebp : downloadSvg}
             Icon={LabelPairedArrowDownToBracketMdRegularIcon}
           />
           <ActionButton

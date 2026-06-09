@@ -19,13 +19,13 @@ export const useIcon = (iconNameToCompare?: string) => {
   const hasCustomIconSizeSupport = isCategoryA;
   const hasPredefinedIconSizeSupport = isCategoryB;
   const hasFillColorSupport = isCategoryB;
-  const hasPngDownloadSupport = isIllustrationCategory;
+  const hasWebpDownloadSupport = isIllustrationCategory;
 
   return {
     category: icon?.category ?? DEFAULT_CATEGORY,
     hasCustomIconSizeSupport,
     hasFillColorSupport,
-    hasPngDownloadSupport,
+    hasWebpDownloadSupport,
     hasPredefinedIconSizeSupport,
     setIcon,
     clearIcon,
