@@ -77,7 +77,7 @@ export const IconCodeView = ({
         </div>
         <div className='grid grid-cols-2 gap-4'>
           <ActionButton
-            label={hasWebpDownloadSupport ? 'Download WebP' : 'Download SVG'}
+            label='Download'
             onClick={hasWebpDownloadSupport ? downloadWebp : downloadSvg}
             Icon={LabelPairedArrowDownToBracketMdRegularIcon}
           />

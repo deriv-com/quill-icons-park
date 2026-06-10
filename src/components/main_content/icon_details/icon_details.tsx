@@ -1,8 +1,14 @@
-import { IconCodeView, IconFill, IconSizeSelection, NoIconSelected } from '@deriv/components';
+import {
+  IconCodeView,
+  IconFill,
+  IconSizeSelection,
+  IllustrationIcon,
+  NoIconSelected,
+} from '@deriv/components';
 import {
   CATEGORIES,
-  ILLUSTRATION_IMAGE_CLASS,
   ILLUSTRATION_PREVIEW_CONTAINER_CLASS,
+  ILLUSTRATION_PREVIEW_MAX_SIZE,
   SELECTED__DOWNLOADABLE_ICON_ID,
 } from '@deriv/constants';
 import { useIcon } from '@deriv/hooks';
@@ -77,9 +83,10 @@ export const IconDetails = () => {
               {Icon &&
                 (isIllustration ? (
                   <div className={ILLUSTRATION_PREVIEW_CONTAINER_CLASS}>
-                    <Icon
+                    <IllustrationIcon
+                      Icon={Icon}
                       id={SELECTED__DOWNLOADABLE_ICON_ID}
-                      className={ILLUSTRATION_IMAGE_CLASS}
+                      maxSize={ILLUSTRATION_PREVIEW_MAX_SIZE}
                     />
                   </div>
                 ) : (

@@ -1,8 +1,9 @@
+import { IllustrationIcon } from '@deriv/components';
 import {
   CATEGORIES,
   ICON_GRID_DISPLAY_SIZE,
   ILLUSTRATION_GRID_CONTAINER_CLASS,
-  ILLUSTRATION_IMAGE_CLASS,
+  ILLUSTRATION_GRID_MAX_SIZE,
 } from '@deriv/constants';
 import { useIcon } from '@deriv/hooks';
 import { TIconEntry } from '@deriv/types';
@@ -26,14 +27,14 @@ export const IconEntry = ({ category, iconName, Icon }: TIconEntry) => {
       <span />
       {isIllustration ? (
         <div className={ILLUSTRATION_GRID_CONTAINER_CLASS}>
-          <Icon className={ILLUSTRATION_IMAGE_CLASS} />
+          <IllustrationIcon Icon={Icon} maxSize={ILLUSTRATION_GRID_MAX_SIZE} />
         </div>
       ) : (
         <span className='flex flex-1 items-center justify-center'>
           <Icon height={ICON_GRID_DISPLAY_SIZE.HEIGHT} width={ICON_GRID_DISPLAY_SIZE.WIDTH} />
         </span>
       )}
-      <span className='mt-2 break-words text-xs sm:text-sm'>{`${iconName.slice(0, 20)}...`}</span>
+      <span className='mt-2 text-xs wrap-break-word sm:text-sm'>{`${iconName.slice(0, 20)}...`}</span>
     </div>
   );
 };
