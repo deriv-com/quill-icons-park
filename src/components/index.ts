@@ -14,4 +14,5 @@ export * from './main_content/icons_grid/icon_entry/icon_entry';
 export * from './main_content/icons_grid/icons_grid';
 export * from './main_content/icons_grid/no_icons_found/no_icons_found';
 export * from './main_content/main_content';
+export * from './shared/illustration_icon/illustration_icon';
 export * from './shared/loading/loading';

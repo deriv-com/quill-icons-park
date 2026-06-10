@@ -27,6 +27,18 @@ export const getQuillIconsModules = async (searchText: string) => {
   return quillIconsModules;
 };
 
+export const getIllustrationDisplaySize = (
+  { height, width }: { height: number; width: number },
+  maxSize: number,
+) => {
+  const scale = Math.min(maxSize / width, maxSize / height, 1);
+
+  return {
+    height: Math.round(height * scale),
+    width: Math.round(width * scale),
+  };
+};
+
 export const downloadIllustrationWebp = async (iconName: string) => {
   const downloadableIcon = document.querySelector(
     `#${SELECTED__DOWNLOADABLE_ICON_ID}`,
